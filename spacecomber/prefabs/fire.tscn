@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://04hhf0wxwdp3"]
+
+[ext_resource type="Script" uid="uid://ci5unjck1cspg" path="res://scripts/fire.gd" id="1_ue32e"]
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="2_0v4jd"]
+
+[node name="Fire" type="Node2D" unique_id=1762692797]
+script = ExtResource("1_ue32e")
+min_scale = Vector2(0.7, 0.7)
+max_scale = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=33017441]
+position = Vector2(0, -3)
+texture = ExtResource("2_0v4jd")
+region_enabled = true
+region_rect = Rect2(280.99432, 196.5465, 47.55179, 42.381256)

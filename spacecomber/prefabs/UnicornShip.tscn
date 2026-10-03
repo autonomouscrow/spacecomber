@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dmjhfi4wu36ln"]
+
+[ext_resource type="Texture2D" uid="uid://cfraunbyfax1f" path="res://spacecomb ships.png" id="1_r35og"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_x3acn"]
+points = PackedVector2Array(0, -130, 124, -40, 134, 59, 109, 77, -1, 94, -110, 77, -133, 60, -124, -39)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1546397987]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=431624395]
+shape = SubResource("ConvexPolygonShape2D_x3acn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=649955058]
+position = Vector2(0, -18)
+texture = ExtResource("1_r35og")
+region_enabled = true
+region_rect = Rect2(4.1054077, 0.80015564, 280.84247, 236.03972)
