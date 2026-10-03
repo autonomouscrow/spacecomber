@@ -7,7 +7,7 @@ extends Control
 @export var hab_node: CharacterBody2D 
 func _ready() -> void:
 	health_bar.value = hab_node.health
-	sheild_bar.value = hab_node.shield
+	sheild_bar.value = hab_node.sheild
 	wood_bar.value = hab_node.wood_juice
 	crystal_bar.value = hab_node.crystal_fuel
 	pass 
