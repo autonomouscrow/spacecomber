@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3]
+
+[ext_resource type="FontFile" path="res://fonts/Orbitron.ttf" id="1_orbitron"]
+
+[resource]
+default_font = ExtResource("1_orbitron")
