@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SoundControl="*res://sound_control.tscn"
 SettingsMenu="*res://settings_menu.tscn"
+ControlsMenu="*res://controls_menu.tscn"
 
 [display]
 

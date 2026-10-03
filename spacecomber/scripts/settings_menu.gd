@@ -22,6 +22,8 @@ func is_open() -> bool:
 func open() -> void:
 	if is_open():
 		return
+	# Only one overlay at a time: opening settings closes controls
+	ControlsMenu.close()
 	sync_volume()
 	was_paused = get_tree().paused
 	get_tree().paused = true

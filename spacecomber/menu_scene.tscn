@@ -92,6 +92,21 @@ theme_override_font_sizes/font_size = 28
 text = "press O to toggle settings"
 autowrap_mode = 3
 
+[node name="Controls Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=730238017]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -143.5
+offset_top = 128.0
+offset_right = 143.5
+offset_bottom = 216.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+text = "press C to view controls"
+autowrap_mode = 3
+
 [connection signal="pressed" from="CanvasLayer/EndScreen/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/StartMenu/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/StartMenu/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartMenu/Controls Button" to="." method="_on_controls_button_pressed"]
