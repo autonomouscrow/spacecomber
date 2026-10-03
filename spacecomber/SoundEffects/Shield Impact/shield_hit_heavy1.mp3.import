@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1ksjqdre5nks"
+path="res://.godot/imported/shield_hit_heavy1.mp3-1badcb202bf3c795a73adb74cf654658.mp3str"
+
+[deps]
+
+source_file="res://SoundEffects/Shield Impact/shield_hit_heavy1.mp3"
+dest_files=["res://.godot/imported/shield_hit_heavy1.mp3-1badcb202bf3c795a73adb74cf654658.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
