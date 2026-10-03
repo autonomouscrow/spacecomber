@@ -8,6 +8,9 @@ extends CharacterBody2D
 @onready var Fire2 = $Fire2 
 
 var target: Vector2
+var chase: bool = false
+
+@export var hab_node: CharacterBody2D 
 
 func _ready() -> void:
 	Fire.fire_on(true)
@@ -17,13 +20,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var direction = global_position.direction_to(target)
 	
+	if hab_node and global_position.distance_to(hab_node.global_position) <= Wander_radius:
+		chase = true
+		target = hab_node.global_position
+	else:
+		chase = false
+
+	
 	if global_position.distance_to(target) > 10:
 		velocity = direction * Ship_speed
 		var target_angle = direction.angle()
 		rotation = lerp_angle(rotation, target_angle, 1 * delta)
-	else:
+	elif not chase:
 		velocity = Vector2.ZERO
-		pick_new_target()   # arrived → choose a new random location
+		pick_new_target()  
 	
 	move_and_slide()
 
