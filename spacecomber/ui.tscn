@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dhi2c2c7ebfnr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fel4d"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rid2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0, 0, 1)
+
+[node name="UI" type="Control" unique_id=1326872007]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=410305433]
+layout_mode = 0
+offset_right = 357.0
+offset_bottom = 51.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fel4d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6rid2")
+value = 50.0
+show_percentage = false
