@@ -2,10 +2,29 @@
 
 [ext_resource type="PackedScene" uid="uid://1qcg0ef0r4vw" path="res://prefabs/iron_item.tscn" id="1_07qe2"]
 [ext_resource type="PackedScene" uid="uid://cj7wfy2q6arkh" path="res://prefabs/wood_item.tscn" id="1_dj11j"]
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="2_681g0"]
 [ext_resource type="PackedScene" uid="uid://c3yauhghfslk0" path="res://prefabs/body_item.tscn" id="2_xc041"]
 [ext_resource type="PackedScene" uid="uid://cmcl70kc26aud" path="res://prefabs/crystal_item.tscn" id="3_o2x6t"]
+[ext_resource type="Script" uid="uid://blh6ofu6ws8s" path="res://test_skeff.gd" id="5_o2x6t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
+radius = 34.0
 
 [node name="Skeff Boyardee" type="Node2D" unique_id=1867537977]
+
+[node name="TestSkeff" type="CharacterBody2D" parent="." unique_id=326433018]
+position = Vector2(458, 279)
+script = ExtResource("5_o2x6t")
+
+[node name="Sprite2D" type="Sprite2D" parent="TestSkeff" unique_id=1489392453]
+texture = ExtResource("2_681g0")
+region_enabled = true
+region_rect = Rect2(407.3119, 7.80225, 70.92322, 72.624176)
+
+[node name="Area2D" type="Area2D" parent="TestSkeff" unique_id=1769075455]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestSkeff/Area2D" unique_id=620250047]
+shape = SubResource("CircleShape2D_x3acn")
 
 [node name="IronItem" parent="." unique_id=1827956524 instance=ExtResource("1_07qe2")]
 position = Vector2(358, 177)
@@ -18,3 +37,29 @@ position = Vector2(392, 180)
 
 [node name="WoodItem" parent="." unique_id=1373151170 instance=ExtResource("1_dj11j")]
 position = Vector2(383, 196)
+
+[node name="IronItem2" parent="." unique_id=1620633034 instance=ExtResource("1_07qe2")]
+position = Vector2(358, 177)
+
+[node name="BodyItem2" parent="." unique_id=958752244 instance=ExtResource("2_xc041")]
+position = Vector2(379, 173)
+
+[node name="CrystalItem2" parent="." unique_id=1814789630 instance=ExtResource("3_o2x6t")]
+position = Vector2(392, 180)
+
+[node name="WoodItem2" parent="." unique_id=1502632553 instance=ExtResource("1_dj11j")]
+position = Vector2(383, 196)
+
+[node name="IronItem3" parent="." unique_id=1700555108 instance=ExtResource("1_07qe2")]
+position = Vector2(358, 177)
+
+[node name="BodyItem3" parent="." unique_id=834452974 instance=ExtResource("2_xc041")]
+position = Vector2(379, 173)
+
+[node name="CrystalItem3" parent="." unique_id=256078430 instance=ExtResource("3_o2x6t")]
+position = Vector2(392, 180)
+
+[node name="WoodItem3" parent="." unique_id=214617534 instance=ExtResource("1_dj11j")]
+position = Vector2(383, 196)
+
+[connection signal="body_entered" from="TestSkeff/Area2D" to="TestSkeff" method="_on_area_2d_body_entered"]
