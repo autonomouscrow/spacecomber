@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b75y8r5wckmxa"]
 
+[ext_resource type="PackedScene" uid="uid://dhi2c2c7ebfnr" path="res://ui.tscn" id="1_m7jmp"]
 [ext_resource type="StyleBox" uid="uid://boes6nkj50t8p" path="res://ship_build_panel.tres" id="1_ulcgi"]
 [ext_resource type="StyleBox" uid="uid://cu1ac1e0bi2bg" path="res://test_panel.tres" id="2_nxogm"]
 [ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="3_3253y"]
@@ -10,6 +11,9 @@ atlas = ExtResource("3_3253y")
 region = Rect2(10.664291, 13.513466, 218.5095, 218.94882)
 
 [node name="Node2D" type="Node2D" unique_id=236387114]
+
+[node name="UI" parent="." unique_id=1326872007 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_m7jmp")]
+hab_node = NodePath("../hab")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=965346883]
 visible = false
