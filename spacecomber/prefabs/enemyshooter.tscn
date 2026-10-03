@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bvohi0p70gmk"]
 
-[ext_resource type="Script" uid="uid://b4stnqh6ckh2s" path="res://enemyshooter.gd" id="1_tacc3"]
-[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="3_u6pko"]
+[ext_resource type="Script" uid="uid://b4stnqh6ckh2s" path="res://scripts/enemyshooter.gd" id="1_dohag"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_mu2ei"]
 
 [node name="enemyshooter" type="Node2D" unique_id=1232366354]
-script = ExtResource("1_tacc3")
+script = ExtResource("1_dohag")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1828277432]
 rotation = -1.5707964
-texture = ExtResource("3_u6pko")
+texture = ExtResource("2_mu2ei")
 region_enabled = true
 region_rect = Rect2(387.01917, 103.14421, 11.631683, 0.71474457)

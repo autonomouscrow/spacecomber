@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 SoundControl="*res://sound_control.tscn"
 SettingsMenu="*res://settings_menu.tscn"
-ControlsMenu="*res://controls_menu.tscn"
+ControlsMenu="*res://prefabs/controls_menu.tscn"
 
 [display]
 
@@ -28,6 +28,11 @@ window/size/viewport_height=540
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 

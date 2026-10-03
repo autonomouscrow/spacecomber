@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bkoyac1g33r8v"]
 
-[ext_resource type="Script" uid="uid://b05deuftft1x1" path="res://bullet.gd" id="1_cjadv"]
-[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_su24e"]
+[ext_resource type="Script" uid="uid://b05deuftft1x1" path="res://scripts/bullet.gd" id="1_hrtip"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_ewejl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
 
 [node name="enemybullet" type="CharacterBody2D" unique_id=1114157678]
-script = ExtResource("1_cjadv")
+script = ExtResource("1_hrtip")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1300992300]
 rotation = 1.5707964
@@ -18,6 +18,6 @@ shape = SubResource("CircleShape2D_x3acn")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=70868277]
 rotation = 1.5707964
 scale = Vector2(1.004016, 1)
-texture = ExtResource("1_su24e")
+texture = ExtResource("2_ewejl")
 region_enabled = true
 region_rect = Rect2(306.1191, 294.83737, 25.771423, 41.502228)
