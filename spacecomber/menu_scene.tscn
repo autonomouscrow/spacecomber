@@ -8,6 +8,7 @@ script = ExtResource("1_vbts7")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2075874504]
 
 [node name="EndScreen" type="Control" parent="CanvasLayer" unique_id=2001184549]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,8 +28,16 @@ text = "End Screen"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Back Button" type="Button" parent="CanvasLayer/EndScreen" unique_id=948666362]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 385.0
+offset_right = 776.0
+offset_bottom = 554.0
+theme_override_font_sizes/font_size = 48
+text = "BACK TO START"
+
 [node name="StartMenu" type="Control" parent="CanvasLayer" unique_id=478046632]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,6 +56,25 @@ theme_override_font_sizes/font_size = 64
 text = "Start Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Start Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=844018237]
+custom_minimum_size = Vector2(7.625, 36.625)
+layout_mode = 0
+offset_left = 344.0
+offset_top = 385.0
+offset_right = 619.374
+offset_bottom = 554.0
+theme_override_font_sizes/font_size = 48
+text = "START!"
+
+[node name="Settings Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=1287796229]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 385.0
+offset_right = 934.0
+offset_bottom = 554.0
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=666124588]
 visible = false
@@ -68,3 +96,7 @@ theme_override_font_sizes/font_size = 64
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/StartMenu/Settings Button" to="." method="_on_settings_button_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/EndScreen/Back Button" to="." method="_on_back_button_pressed"]

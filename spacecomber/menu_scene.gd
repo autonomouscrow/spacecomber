@@ -33,3 +33,12 @@ func go_to_end_screen():
 
 func go_to_settings():
 	show_screen(settings_menu)
+
+# Button signal handlers (connected in menu_scene.tscn)
+func _on_settings_button_pressed():
+	print("Settings button pressed")
+	# TODO: go_to_settings()
+
+func _on_back_button_pressed():
+	print("Back button pressed")
+	# TODO: go_to_start_menu()
