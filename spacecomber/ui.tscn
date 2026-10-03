@@ -8,6 +8,22 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wluj2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.42745098, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ec86"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 1, 1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rid2"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 5
@@ -16,19 +32,68 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(1, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3acn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t53hv"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 4
+border_color = Color(0, 1, 0, 1)
+
 [node name="UI" type="Control" unique_id=1326872007]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=410305433]
+[node name="Wood Juice" type="ProgressBar" parent="." unique_id=665590321]
 layout_mode = 0
+offset_left = 868.0
+offset_top = 519.0
+offset_right = 1225.0
+offset_bottom = 570.0
+rotation = 4.712389
+scale = Vector2(0.8456175, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_fel4d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wluj2")
+value = 50.0
+show_percentage = false
+
+[node name="Crystal Fuel" type="ProgressBar" parent="." unique_id=939987499]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 520.0
+offset_right = 394.0
+offset_bottom = 571.0
+rotation = 4.712389
+scale = Vector2(0.8456175, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_fel4d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7ec86")
+value = 50.0
+show_percentage = false
+
+[node name="Health Area" type="Node2D" parent="." unique_id=1823465925]
+position = Vector2(22, 24)
+
+[node name="Health Bar" type="ProgressBar" parent="Health Area" unique_id=410305433]
 offset_right = 357.0
 offset_bottom = 51.0
 theme_override_styles/background = SubResource("StyleBoxFlat_fel4d")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6rid2")
 value = 50.0
+show_percentage = false
+
+[node name="Shield Bar" type="ProgressBar" parent="Health Area" unique_id=215916874]
+offset_right = 357.0
+offset_bottom = 15.0
+theme_override_styles/background = SubResource("StyleBoxFlat_x3acn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t53hv")
+value = 75.0
 show_percentage = false
