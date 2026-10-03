@@ -1,6 +1,22 @@
-[gd_resource type="Theme" format=3]
+[gd_resource type="Theme" format=3 uid="uid://bbhi2pws0cq5j"]
 
-[ext_resource type="FontFile" path="res://fonts/Orbitron.ttf" id="1_orbitron"]
+[ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="1_orbitron"]
+[ext_resource type="Texture2D" uid="uid://dvtx3t2c5p8s7" path="res://ui/slider_grabber.png" id="2_grabber"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider_fill"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 0.35686275, 0.1764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider_track"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 1, 0.5294118, 1)
 
 [resource]
 default_font = ExtResource("1_orbitron")
+HSlider/icons/grabber = ExtResource("2_grabber")
+HSlider/icons/grabber_highlight = ExtResource("2_grabber")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_slider_fill")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_slider_fill")
+HSlider/styles/slider = SubResource("StyleBoxFlat_slider_track")

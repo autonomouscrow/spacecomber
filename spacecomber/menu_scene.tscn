@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://di5aw8sfs6qp3" path="res://menu_scene.gd" id="1_vbts7"]
 [ext_resource type="Theme" path="res://menu_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="3_mfwt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17a84"]
+atlas = ExtResource("3_mfwt2")
+region = Rect2(373.59988, 346.8, 72.00018, 66.00006)
 
 [node name="Menu Scene" type="Node2D" unique_id=762162257]
 script = ExtResource("1_vbts7")
@@ -40,6 +45,7 @@ theme_override_font_sizes/font_size = 48
 text = "BACK TO START"
 
 [node name="StartMenu" type="Control" parent="CanvasLayer" unique_id=478046632]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,24 +69,23 @@ vertical_alignment = 1
 [node name="Start Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=844018237]
 custom_minimum_size = Vector2(7.625, 36.625)
 layout_mode = 0
-offset_left = 344.0
-offset_top = 385.0
-offset_right = 619.374
-offset_bottom = 554.0
+offset_left = 277.0
+offset_top = 389.0
+offset_right = 552.374
+offset_bottom = 558.0
 theme_override_font_sizes/font_size = 48
 text = "START!"
 
 [node name="Settings Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=1287796229]
 layout_mode = 0
-offset_left = 659.0
-offset_top = 385.0
-offset_right = 934.0
-offset_bottom = 554.0
+offset_left = 634.0
+offset_top = 387.0
+offset_right = 921.0
+offset_bottom = 556.0
 theme_override_font_sizes/font_size = 48
 text = "SETTINGS"
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=666124588]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,6 +106,30 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/StartMenu/Settings Button" to="." method="_on_settings_button_pressed"]
+[node name="Volume Label" type="Label" parent="CanvasLayer/SettingsMenu" unique_id=707140624]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 87.0
+offset_right = 696.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+text = "VOLUME: 20"
+horizontal_alignment = 1
+
+[node name="Volume Slider" type="HSlider" parent="CanvasLayer/SettingsMenu" unique_id=1522639123]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 129.0
+offset_right = 733.0
+offset_bottom = 169.0
+max_value = 20.0
+value = 20.0
+
+[node name="SliderSprite" type="Sprite2D" parent="CanvasLayer/SettingsMenu" unique_id=1073939582]
+visible = false
+position = Vector2(681, 355)
+texture = SubResource("AtlasTexture_17a84")
 
 [connection signal="pressed" from="CanvasLayer/EndScreen/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartMenu/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/SettingsMenu/Volume Slider" to="." method="_on_volume_slider_value_changed"]
