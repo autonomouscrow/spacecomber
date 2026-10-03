@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c3yauhghfslk0"]
+
+[ext_resource type="Script" uid="uid://b7023sh1gdbto" path="res://scripts/item.gd" id="1_4jb73"]
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="2_fy1ws"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2drdq"]
+points = PackedVector2Array(-10, -10, 0, -15, 9, -11, 10, -3, 8, 9, 7, 22, -2, 25, -7, 11)
+
+[node name="BodyItem" type="CharacterBody2D" unique_id=1827956524]
+script = ExtResource("1_4jb73")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=373654008]
+texture = ExtResource("2_fy1ws")
+region_enabled = true
+region_rect = Rect2(661.9171, 158.16861, 21.285767, 40.354248)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1729284724]
+position = Vector2(0, -5)
+shape = SubResource("ConvexPolygonShape2D_2drdq")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://1qcg0ef0r4vw"]
+
+[ext_resource type="Script" uid="uid://b7023sh1gdbto" path="res://scripts/item.gd" id="1_3dloj"]
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="2_bl4c5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6a1j"]
+size = Vector2(23, 23)
+
+[node name="IronItem" type="CharacterBody2D" unique_id=1827956524]
+script = ExtResource("1_3dloj")
+
+[node name="Iron" type="Sprite2D" parent="." unique_id=1319354019]
+texture = ExtResource("2_bl4c5")
+region_enabled = true
+region_rect = Rect2(583.3417, 225.6602, 27.32611, 27.026764)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1729284724]
+shape = SubResource("RectangleShape2D_d6a1j")
