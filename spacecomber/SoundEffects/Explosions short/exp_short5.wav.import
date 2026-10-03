@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bwurlahmg57i5"
+path="res://.godot/imported/exp_short5.wav-7a4b0f2dd574328ca11c57e5d90e71de.sample"
+
+[deps]
+
+source_file="res://SoundEffects/Explosions short/exp_short5.wav"
+dest_files=["res://.godot/imported/exp_short5.wav-7a4b0f2dd574328ca11c57e5d90e71de.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

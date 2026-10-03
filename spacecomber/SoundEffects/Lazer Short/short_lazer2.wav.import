@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3vci3osalou8"
+path="res://.godot/imported/short_lazer2.wav-4ddf1a45519eb3f4e8c51d7314dcd7e9.sample"
+
+[deps]
+
+source_file="res://SoundEffects/Lazer Short/short_lazer2.wav"
+dest_files=["res://.godot/imported/short_lazer2.wav-4ddf1a45519eb3f4e8c51d7314dcd7e9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
