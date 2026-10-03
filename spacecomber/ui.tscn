@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhi2c2c7ebfnr"]
 
 [ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://dtyi43mo4f8ox" path="res://scripts/ui.gd" id="1_m6e0p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fel4d"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,6 +64,7 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.0016319)
+script = ExtResource("1_m6e0p")
 
 [node name="Wood Juice" type="ProgressBar" parent="." unique_id=665590321]
 layout_mode = 0
