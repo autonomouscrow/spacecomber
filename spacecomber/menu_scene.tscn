@@ -45,7 +45,6 @@ theme_override_font_sizes/font_size = 48
 text = "BACK TO START"
 
 [node name="StartMenu" type="Control" parent="CanvasLayer" unique_id=478046632]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,14 +77,16 @@ text = "START!"
 
 [node name="Settings Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=1287796229]
 layout_mode = 0
-offset_left = 634.0
-offset_top = 387.0
-offset_right = 921.0
-offset_bottom = 556.0
-theme_override_font_sizes/font_size = 48
-text = "SETTINGS"
+offset_left = 284.0
+offset_top = 276.0
+offset_right = 571.0
+offset_bottom = 445.0
+theme_override_font_sizes/font_size = 28
+text = "press s to go into settings"
+autowrap_mode = 3
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=666124588]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,6 +94,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_theme")
+
+[node name="Backdrop" type="ColorRect" parent="CanvasLayer/SettingsMenu" unique_id=1578584559]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Title" type="Label" parent="CanvasLayer/SettingsMenu" unique_id=1508900747]
 layout_mode = 1
