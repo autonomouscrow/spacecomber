@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dhi2c2c7ebfnr" path="res://ui.tscn" id="1_m7jmp"]
 [ext_resource type="StyleBox" uid="uid://boes6nkj50t8p" path="res://ship_build_panel.tres" id="1_ulcgi"]
-[ext_resource type="PackedScene" uid="uid://dmjhfi4wu36ln" path="res://prefabs/UnicornShip.tscn" id="1_y2354"]
 [ext_resource type="StyleBox" uid="uid://cu1ac1e0bi2bg" path="res://test_panel.tres" id="2_nxogm"]
 [ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="3_3253y"]
 [ext_resource type="Script" uid="uid://iv1crbi1xnfm" path="res://scripts/hab.gd" id="4_u3cyc"]
@@ -63,18 +62,3 @@ texture = SubResource("AtlasTexture_g576v")
 position = Vector2(553, 153)
 scale = Vector2(0.23767202, 0.23767202)
 texture = SubResource("AtlasTexture_g576v")
-
-[node name="CharacterBody2D2" parent="." unique_id=1546397987 instance=ExtResource("1_y2354")]
-position = Vector2(454, 258)
-scale = Vector2(0.25265187, 0.25265187)
-Wander_radius = 400.0
-
-[node name="CharacterBody2D3" parent="." unique_id=1076226921 instance=ExtResource("1_y2354")]
-position = Vector2(313, 164)
-scale = Vector2(0.25265187, 0.25265187)
-Wander_radius = 100.0
-
-[node name="CharacterBody2D" parent="." unique_id=1143329760 instance=ExtResource("1_y2354")]
-position = Vector2(313, 164)
-scale = Vector2(0.25265187, 0.25265187)
-Wander_radius = 100.0
