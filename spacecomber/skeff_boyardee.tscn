@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bv2iqion2v5nh"]
+
+[ext_resource type="PackedScene" uid="uid://1qcg0ef0r4vw" path="res://prefabs/iron_item.tscn" id="1_07qe2"]
+[ext_resource type="PackedScene" uid="uid://cj7wfy2q6arkh" path="res://prefabs/wood_item.tscn" id="1_dj11j"]
+[ext_resource type="PackedScene" uid="uid://c3yauhghfslk0" path="res://prefabs/body_item.tscn" id="2_xc041"]
+[ext_resource type="PackedScene" uid="uid://cmcl70kc26aud" path="res://prefabs/crystal_item.tscn" id="3_o2x6t"]
+
+[node name="Skeff Boyardee" type="Node2D" unique_id=1867537977]
+
+[node name="IronItem" parent="." unique_id=1827956524 instance=ExtResource("1_07qe2")]
+position = Vector2(358, 177)
+
+[node name="BodyItem" parent="." unique_id=1225308675 instance=ExtResource("2_xc041")]
+position = Vector2(379, 173)
+
+[node name="CrystalItem" parent="." unique_id=2116282033 instance=ExtResource("3_o2x6t")]
+position = Vector2(392, 180)
+
+[node name="WoodItem" parent="." unique_id=1373151170 instance=ExtResource("1_dj11j")]
+position = Vector2(383, 196)
