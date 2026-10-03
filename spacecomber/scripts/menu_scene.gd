@@ -7,10 +7,7 @@ extends Node2D
 @onready var volume_slider = $"CanvasLayer/SettingsMenu/Volume Slider"
 @onready var volume_label = $"CanvasLayer/SettingsMenu/Volume Label"
 
-const MAX_VOLUME := 20.0
-
 var current_screen: Control = null
-var master_bus := AudioServer.get_bus_index("Master")
 
 func _ready():
 	# Hide all screens at the start
@@ -23,7 +20,7 @@ func _ready():
 
 	# Match the slider to the current audio level, so coming back to
 	# the menu doesn't reset the volume
-	volume_slider.set_value_no_signal(get_current_volume())
+	volume_slider.set_value_no_signal(SoundControl.get_volume())
 	set_volume(volume_slider.value)
 
 func show_screen(screen: Control) -> void:
@@ -67,24 +64,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		close_settings()
 		get_viewport().set_input_as_handled()
 
-# Audio
-# Sets the Master bus volume from a 0-20 level (0 = muted, 20 = full volume)
+# Audio (the volume itself lives in SoundControl)
 func set_volume(level: float) -> void:
-	if level <= 0:
-		AudioServer.set_bus_mute(master_bus, true)
-	else:
-		AudioServer.set_bus_mute(master_bus, false)
-		AudioServer.set_bus_volume_db(master_bus, linear_to_db(level / MAX_VOLUME))
+	SoundControl.set_volume(level)
 	volume_label.text = "VOLUME: %d" % level
-
-func get_volume() -> float:
-	return volume_slider.value
-
-# Reads the Master bus as a 0-20 level
-func get_current_volume() -> float:
-	if AudioServer.is_bus_mute(master_bus):
-		return 0.0
-	return round(db_to_linear(AudioServer.get_bus_volume_db(master_bus)) * MAX_VOLUME)
 
 # Button signal handlers (connected in menu_scene.tscn)
 func _on_start_button_pressed():

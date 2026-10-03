@@ -7,7 +7,7 @@ path="res://.godot/imported/exp_short1.wav-a33084ac258d3417d97aeeae96cd0163.samp
 
 [deps]
 
-source_file="res://SoundEffects/Explosions short/exp_short1.wav"
+source_file="res://SoundEffects/Explosions short/explosion_short1.wav"
 dest_files=["res://.godot/imported/exp_short1.wav-a33084ac258d3417d97aeeae96cd0163.sample"]
 
 [params]

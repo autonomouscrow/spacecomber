@@ -15,6 +15,10 @@ run/main_scene="uid://cf7q7e5dj1kbq"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SoundControl="*res://sound_control.tscn"
+
 [display]
 
 window/size/viewport_width=960
