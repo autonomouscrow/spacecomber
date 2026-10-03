@@ -1,0 +1,81 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_settings"]
+[ext_resource type="Theme" uid="uid://dem4gbu5v37p7" path="res://menu_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="3_mfwt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17a84"]
+atlas = ExtResource("3_mfwt2")
+region = Rect2(373.59988, 346.8, 72.00018, 66.00006)
+
+[node name="SettingsMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_settings")
+
+[node name="Screen" type="Control" parent="." unique_id=666124588]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Backdrop" type="ColorRect" parent="Screen" unique_id=1578584559]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="Screen" unique_id=1508900747]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Press S to escape settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume Label" type="Label" parent="Screen" unique_id=707140624]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 87.0
+offset_right = 200.0
+offset_bottom = 128.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "VOLUME: 20"
+horizontal_alignment = 1
+
+[node name="Volume Slider" type="HSlider" parent="Screen" unique_id=1522639123]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 129.0
+offset_right = 200.0
+offset_bottom = 169.0
+grow_horizontal = 2
+max_value = 20.0
+value = 20.0
+
+[node name="SliderSprite" type="Sprite2D" parent="Screen" unique_id=1073939582]
+visible = false
+position = Vector2(681, 355)
+texture = SubResource("AtlasTexture_17a84")
+
+[connection signal="value_changed" from="Screen/Volume Slider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="drag_started" from="Screen/Volume Slider" to="." method="_on_volume_slider_drag_started"]
+[connection signal="drag_ended" from="Screen/Volume Slider" to="." method="_on_volume_slider_drag_ended"]
