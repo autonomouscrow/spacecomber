@@ -44,10 +44,10 @@ theme_override_styles/panel = ExtResource("2_nxogm")
 position = Vector2(245, 262)
 texture = SubResource("AtlasTexture_g576v")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1977877888]
+[node name="hab" type="CharacterBody2D" parent="." unique_id=1977877888]
 position = Vector2(458, 264)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=2098575124]
+[node name="hab img" type="Sprite2D" parent="hab" unique_id=2098575124]
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_g576v")
 
