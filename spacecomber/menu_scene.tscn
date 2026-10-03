@@ -36,11 +36,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Back Button" type="Button" parent="CanvasLayer/EndScreen" unique_id=948666362]
-layout_mode = 0
-offset_left = 376.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
 offset_top = 385.0
-offset_right = 776.0
+offset_right = 200.0
 offset_bottom = 554.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "BACK TO START"
 
@@ -67,23 +71,44 @@ vertical_alignment = 1
 
 [node name="Start Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=844018237]
 custom_minimum_size = Vector2(7.625, 36.625)
-layout_mode = 0
-offset_left = 277.0
-offset_top = 389.0
-offset_right = 552.374
-offset_bottom = 558.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.687
+offset_top = 438.0
+offset_right = 137.687
+offset_bottom = 515.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = "START!"
 
 [node name="Settings Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=1287796229]
-layout_mode = 0
-offset_left = 284.0
-offset_top = 276.0
-offset_right = 571.0
-offset_bottom = 445.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -143.5
+offset_top = 319.5
+offset_right = 143.5
+offset_bottom = 407.5
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 28
 text = "press s to go into settings"
 autowrap_mode = 3
+
+[node name="Play Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=1214857607]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.5
+offset_top = 82.0
+offset_right = 137.5
+offset_bottom = 159.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "PLAY"
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=666124588]
 visible = false
@@ -117,21 +142,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Volume Label" type="Label" parent="CanvasLayer/SettingsMenu" unique_id=707140624]
-layout_mode = 0
-offset_left = 296.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
 offset_top = 87.0
-offset_right = 696.0
+offset_right = 200.0
 offset_bottom = 128.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "VOLUME: 20"
 horizontal_alignment = 1
 
 [node name="Volume Slider" type="HSlider" parent="CanvasLayer/SettingsMenu" unique_id=1522639123]
-layout_mode = 0
-offset_left = 333.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
 offset_top = 129.0
-offset_right = 733.0
+offset_right = 200.0
 offset_bottom = 169.0
+grow_horizontal = 2
 max_value = 20.0
 value = 20.0
 
@@ -142,4 +175,5 @@ texture = SubResource("AtlasTexture_17a84")
 
 [connection signal="pressed" from="CanvasLayer/EndScreen/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/StartMenu/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartMenu/Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="value_changed" from="CanvasLayer/SettingsMenu/Volume Slider" to="." method="_on_volume_slider_value_changed"]

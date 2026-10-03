@@ -80,12 +80,14 @@ func get_volume() -> float:
 
 # Button signal handlers (connected in menu_scene.tscn)
 func _on_settings_button_pressed():
-	print("Settings button pressed")
-	# TODO: go_to_settings()
+	go_to_settings()
 
 func _on_back_button_pressed():
-	print("Back button pressed")
-	# TODO: go_to_start_menu()
+	go_to_start_menu()
+
+func _on_play_button_pressed():
+	print("Play button pressed")
+	# TODO: start the game
 
 func _on_volume_slider_value_changed(value: float):
 	set_volume(value)
