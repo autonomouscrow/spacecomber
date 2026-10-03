@@ -8,6 +8,9 @@ radius = 15.033297
 
 [node name="WoodItem" type="CharacterBody2D" unique_id=1827956524]
 script = ExtResource("1_rn0cp")
+min_float_speed = 20.0
+max_spin_speed = 2.0
+type = "wood"
 
 [node name="Wood" type="Sprite2D" parent="." unique_id=1503812001]
 texture = ExtResource("1_bcu2m")

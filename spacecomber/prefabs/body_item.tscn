@@ -8,6 +8,11 @@ points = PackedVector2Array(-10, -10, 0, -15, 9, -11, 10, -3, 8, 9, 7, 22, -2, 2
 
 [node name="BodyItem" type="CharacterBody2D" unique_id=1827956524]
 script = ExtResource("1_4jb73")
+min_float_speed = 2.0
+max_float_speed = 15.0
+min_spin_speed = 0.5
+max_spin_speed = 1.0
+type = "body"
 
 [node name="Body" type="Sprite2D" parent="." unique_id=373654008]
 texture = ExtResource("2_fy1ws")

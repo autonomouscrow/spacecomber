@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var min_spin_speed: float = 1.0
 @export var max_spin_speed: float = 3.0
 
+@export var type: String = ""
 
 var actual_spin_speed: float
 
