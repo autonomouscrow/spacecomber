@@ -13,12 +13,15 @@ region = Rect2(280.5462, 195.35443, 49.658997, 44.1239)
 [node name="WEngineNormal" type="Node2D" unique_id=1790979546]
 metadata/component_type = "w_engine"
 
-[node name="Engine" type="Sprite2D" parent="." unique_id=2033344647]
+[node name="Node2D" type="Node2D" parent="." unique_id=1576357680]
+rotation = -1.5707964
+
+[node name="Engine" type="Sprite2D" parent="Node2D" unique_id=2033344647]
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_hrsg2")
 
-[node name="Fire" type="Sprite2D" parent="." unique_id=1622638343]
+[node name="Fire" type="Sprite2D" parent="Node2D" unique_id=1622638343]
 position = Vector2(0, 15)
-rotation = 3.1415927
+rotation = -3.1415925
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_g576v")
