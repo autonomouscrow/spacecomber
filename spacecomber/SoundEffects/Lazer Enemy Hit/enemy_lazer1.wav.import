@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuom14ojhg2q5"
+path="res://.godot/imported/enemy_lazer1.wav-2c552b57b5450a80f61f7746d5b0241a.sample"
+
+[deps]
+
+source_file="res://SoundEffects/Lazer Enemy Hit/enemy_lazer1.wav"
+dest_files=["res://.godot/imported/enemy_lazer1.wav-2c552b57b5450a80f61f7746d5b0241a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
