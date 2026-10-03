@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c3yauhghfslk0" path="res://prefabs/body_item.tscn" id="2_xc041"]
 [ext_resource type="PackedScene" uid="uid://cmcl70kc26aud" path="res://prefabs/crystal_item.tscn" id="3_o2x6t"]
 [ext_resource type="Script" uid="uid://blh6ofu6ws8s" path="res://scripts/test_skeff.gd" id="5_o2x6t"]
+[ext_resource type="PackedScene" uid="uid://duhlxmocxghhv" path="res://prefabs/advancedfire.tscn" id="8_6we12"]
+[ext_resource type="PackedScene" uid="uid://dmjhfi4wu36ln" path="res://prefabs/UnicornShip.tscn" id="9_xki5j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
 radius = 34.0
@@ -14,7 +16,7 @@ radius = 34.0
 [node name="Skeff Boyardee" type="Node2D" unique_id=1867537977]
 
 [node name="Fire" parent="." unique_id=1762692797 instance=ExtResource("1_gxgxw")]
-position = Vector2(458, 228)
+position = Vector2(458, 240)
 
 [node name="TestSkeff" type="CharacterBody2D" parent="." unique_id=326433018]
 position = Vector2(458, 279)
@@ -41,5 +43,13 @@ position = Vector2(392, 180)
 
 [node name="WoodItem" parent="." unique_id=1373151170 instance=ExtResource("1_dj11j")]
 position = Vector2(383, 196)
+
+[node name="Fire2" parent="." unique_id=271820964 instance=ExtResource("8_6we12")]
+position = Vector2(496, 279)
+rotation = 1.6048533
+
+[node name="CharacterBody2D" parent="." unique_id=1546397987 instance=ExtResource("9_xki5j")]
+position = Vector2(722, 277)
+Ship_speed = 100.0
 
 [connection signal="body_entered" from="TestSkeff/Area2D" to="TestSkeff" method="_on_area_2d_body_entered"]

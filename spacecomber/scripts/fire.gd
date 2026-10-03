@@ -4,7 +4,7 @@ extends Node2D
 @export var max_scale = Vector2(1.5, 1.5) 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	fire_on(true)
+	fire_on(false)
 	
 	var tween = create_tween().set_loops()
 	tween.set_trans(Tween.TRANS_SINE)
