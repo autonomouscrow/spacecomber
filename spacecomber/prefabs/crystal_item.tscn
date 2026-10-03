@@ -8,12 +8,17 @@ points = PackedVector2Array(0, -15, 3.0769231, 12, -2.8846154, 12)
 
 [node name="CrystalItem" type="CharacterBody2D" unique_id=1827956524]
 script = ExtResource("1_b5mw8")
+min_spin_speed = 3.0
+max_spin_speed = 7.0
+type = "crystal"
 
 [node name="Crystal" type="Sprite2D" parent="." unique_id=1224555872]
+position = Vector2(0, -2)
 texture = ExtResource("2_h6ttw")
 region_enabled = true
 region_rect = Rect2(655.29626, 251.4953, 34.103577, 31.178406)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1729284724]
+position = Vector2(0, -2)
 scale = Vector2(5.2, 1)
 shape = SubResource("ConvexPolygonShape2D_qbbnu")
