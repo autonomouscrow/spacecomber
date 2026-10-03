@@ -23,5 +23,3 @@ theme_override_styles/panel = ExtResource("1_ulcgi")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1977877888]
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=2098575124]
-
-[node name="Bone2D" type="Bone2D" parent="CharacterBody2D/Sprite2D" unique_id=1428931838]
