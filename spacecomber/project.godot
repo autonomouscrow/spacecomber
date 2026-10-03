@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Drift"
-run/main_scene="uid://b75y8r5wckmxa"
+run/main_scene="uid://cf7q7e5dj1kbq"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

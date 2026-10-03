@@ -21,7 +21,9 @@ func _ready():
 	# Show the starting screen
 	show_screen(start_menu)
 
-	# Apply the slider's starting value to the audio
+	# Match the slider to the current audio level, so coming back to
+	# the menu doesn't reset the volume
+	volume_slider.set_value_no_signal(get_current_volume())
 	set_volume(volume_slider.value)
 
 func show_screen(screen: Control) -> void:
@@ -78,16 +80,21 @@ func set_volume(level: float) -> void:
 func get_volume() -> float:
 	return volume_slider.value
 
+# Reads the Master bus as a 0-20 level
+func get_current_volume() -> float:
+	if AudioServer.is_bus_mute(master_bus):
+		return 0.0
+	return round(db_to_linear(AudioServer.get_bus_volume_db(master_bus)) * MAX_VOLUME)
+
 # Button signal handlers (connected in menu_scene.tscn)
+func _on_start_button_pressed():
+	get_tree().change_scene_to_file("res://scene.tscn")
+
 func _on_settings_button_pressed():
 	go_to_settings()
 
 func _on_back_button_pressed():
 	go_to_start_menu()
-
-func _on_play_button_pressed():
-	print("Play button pressed")
-	# TODO: start the game
 
 func _on_volume_slider_value_changed(value: float):
 	set_volume(value)

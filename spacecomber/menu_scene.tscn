@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cf7q7e5dj1kbq"]
 
 [ext_resource type="Script" uid="uid://di5aw8sfs6qp3" path="res://scripts/menu_scene.gd" id="1_vbts7"]
-[ext_resource type="Theme" uid="uid://bbhi2pws0cq5j" path="res://menu_theme.tres" id="2_theme"]
+[ext_resource type="Theme" uid="uid://dem4gbu5v37p7" path="res://menu_theme.tres" id="2_theme"]
 [ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="3_mfwt2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_17a84"]
@@ -94,21 +94,8 @@ offset_right = 143.5
 offset_bottom = 407.5
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 28
-text = "press s to go into settings"
+text = "press S to toggle settings"
 autowrap_mode = 3
-
-[node name="Play Button" type="Button" parent="CanvasLayer/StartMenu" unique_id=1214857607]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -137.5
-offset_top = 82.0
-offset_right = 137.5
-offset_bottom = 159.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "PLAY"
 
 [node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=666124588]
 visible = false
@@ -136,8 +123,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "Settings"
+theme_override_font_sizes/font_size = 32
+text = "Press S to escape settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -174,6 +161,6 @@ position = Vector2(681, 355)
 texture = SubResource("AtlasTexture_17a84")
 
 [connection signal="pressed" from="CanvasLayer/EndScreen/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartMenu/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/StartMenu/Settings Button" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/StartMenu/Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="value_changed" from="CanvasLayer/SettingsMenu/Volume Slider" to="." method="_on_volume_slider_value_changed"]
