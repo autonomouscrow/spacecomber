@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://b75y8r5wckmxa"]
 
 [ext_resource type="StyleBox" uid="uid://boes6nkj50t8p" path="res://ship_build_panel.tres" id="1_ulcgi"]
+[ext_resource type="StyleBox" uid="uid://cu1ac1e0bi2bg" path="res://test_panel.tres" id="2_nxogm"]
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="3_3253y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
+atlas = ExtResource("3_3253y")
+region = Rect2(12.782619, 12.752099, 103.51869, 104.47201)
 
 [node name="Node2D" type="Node2D" unique_id=236387114]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=965346883]
+visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=436396287]
 anchors_preset = 8
@@ -20,6 +27,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_ulcgi")
 
+[node name="Control" type="Control" parent="CanvasLayer/Panel" unique_id=578618538]
+anchors_preset = 0
+offset_right = 648.0
+offset_bottom = 648.0
+
+[node name="slot" type="Panel" parent="CanvasLayer/Panel/Control" unique_id=711296444]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 25.0
+offset_right = 74.0
+offset_bottom = 65.0
+theme_override_styles/panel = ExtResource("2_nxogm")
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1977877888]
+position = Vector2(74, 65)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=2098575124]
+texture = SubResource("AtlasTexture_g576v")
