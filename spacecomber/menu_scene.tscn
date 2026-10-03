@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cf7q7e5dj1kbq"]
 
 [ext_resource type="Script" uid="uid://di5aw8sfs6qp3" path="res://menu_scene.gd" id="1_vbts7"]
+[ext_resource type="Theme" path="res://menu_theme.tres" id="2_theme"]
 
 [node name="Menu Scene" type="Node2D" unique_id=762162257]
 script = ExtResource("1_vbts7")
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_theme")
 
 [node name="Title" type="Label" parent="CanvasLayer/EndScreen" unique_id=172854054]
 layout_mode = 1
@@ -44,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_theme")
 
 [node name="Title" type="Label" parent="CanvasLayer/StartMenu" unique_id=809682776]
 layout_mode = 1
@@ -84,6 +87,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_theme")
 
 [node name="Title" type="Label" parent="CanvasLayer/SettingsMenu" unique_id=1508900747]
 layout_mode = 1
