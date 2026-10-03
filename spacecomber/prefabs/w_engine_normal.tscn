@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://dx7rv6bbj76y6"]
 
-[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="1_sympk"]
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="1_jk3ne"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrsg2"]
-atlas = ExtResource("1_sympk")
+atlas = ExtResource("1_jk3ne")
 region = Rect2(274.4898, 8.338165, 71.04422, 72.12339)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
-atlas = ExtResource("1_sympk")
+atlas = ExtResource("1_jk3ne")
 region = Rect2(280.5462, 195.35443, 49.658997, 44.1239)
 
-[node name="EngineNormal" type="Node2D" unique_id=1790979546]
+[node name="WEngineNormal" type="Node2D" unique_id=1790979546]
+metadata/component_type = "w_engine"
 
 [node name="Engine" type="Sprite2D" parent="." unique_id=2033344647]
 scale = Vector2(0.25, 0.25)

@@ -48,6 +48,7 @@ texture = SubResource("AtlasTexture_g576v")
 [node name="hab" type="CharacterBody2D" parent="." unique_id=1977877888]
 position = Vector2(458, 264)
 script = ExtResource("4_u3cyc")
+rotation_speed = 1.0
 
 [node name="hab img" type="Sprite2D" parent="hab" unique_id=2098575124]
 scale = Vector2(0.25, 0.25)
