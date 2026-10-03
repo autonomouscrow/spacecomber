@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://dhi2c2c7ebfnr"]
 
+[ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://dtyi43mo4f8ox" path="res://scripts/ui.gd" id="1_m6e0p"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fel4d"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 5
@@ -37,11 +40,19 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t53hv"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 4
+border_width_left = 4
+border_width_top = 3
+border_width_right = 4
+border_width_bottom = 3
 border_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tkjrr"]
+line_spacing = -4.0
+font_color = Color(1, 0.59607846, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t53hv"]
+line_spacing = -5.0
+font_color = Color(0, 1, 1, 1)
 
 [node name="UI" type="Control" unique_id=1326872007]
 layout_mode = 3
@@ -52,6 +63,8 @@ offset_top = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.0016319)
+script = ExtResource("1_m6e0p")
 
 [node name="Wood Juice" type="ProgressBar" parent="." unique_id=665590321]
 layout_mode = 0
@@ -82,6 +95,17 @@ show_percentage = false
 [node name="Health Area" type="Node2D" parent="." unique_id=1823465925]
 position = Vector2(22, 24)
 
+[node name="Health Lable" type="Label" parent="Health Area" unique_id=41422311]
+offset_top = 47.882698
+offset_right = 97.0
+offset_bottom = 73.8827
+scale = Vector2(1.0175825, 1.0175825)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fyqef")
+theme_override_font_sizes/font_size = 20
+text = "HEALTH"
+
 [node name="Health Bar" type="ProgressBar" parent="Health Area" unique_id=410305433]
 offset_right = 357.0
 offset_bottom = 51.0
@@ -90,10 +114,77 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6rid2")
 value = 50.0
 show_percentage = false
 
-[node name="Shield Bar" type="ProgressBar" parent="Health Area" unique_id=215916874]
+[node name="Shield Area" type="Node2D" parent="Health Area" unique_id=1484820351]
+position = Vector2(0, -0.03910169)
+
+[node name="Shield Bar" type="ProgressBar" parent="Health Area/Shield Area" unique_id=215916874]
+offset_top = 0.039102554
 offset_right = 357.0
-offset_bottom = 15.0
+offset_bottom = 15.039103
+scale = Vector2(1, 1.5600002)
 theme_override_styles/background = SubResource("StyleBoxFlat_x3acn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_t53hv")
 value = 75.0
 show_percentage = false
+
+[node name="Shield Lable" type="Label" parent="Health Area/Shield Area" unique_id=504828]
+offset_top = -24.95927
+offset_right = 97.0
+offset_bottom = 1.0407295
+scale = Vector2(1.0175825, 1.0175825)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_fyqef")
+theme_override_font_sizes/font_size = 20
+text = "SHIELD"
+
+[node name="Wood Lable" type="Label" parent="." unique_id=1181810987]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 346.43472
+offset_right = 945.0
+offset_bottom = 554.4347
+scale = Vector2(1.0175825, 1.0175825)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fyqef")
+theme_override_font_sizes/font_size = 20
+text = "W
+0
+0
+D
+
+J
+U
+I
+C
+E"
+label_settings = SubResource("LabelSettings_tkjrr")
+horizontal_alignment = 1
+
+[node name="Crystal Lable" type="Label" parent="." unique_id=1920453203]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 317.48196
+offset_right = 188.0
+offset_bottom = 525.482
+scale = Vector2(1.0175825, 1.0175825)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fyqef")
+theme_override_font_sizes/font_size = 20
+text = "C
+R
+Y
+S
+T
+A
+L
+
+F
+U
+E
+L"
+label_settings = SubResource("LabelSettings_t53hv")
+horizontal_alignment = 1
+vertical_alignment = 1
