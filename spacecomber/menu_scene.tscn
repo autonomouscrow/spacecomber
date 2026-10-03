@@ -1,3 +1,29 @@
 [gd_scene format=3 uid="uid://cf7q7e5dj1kbq"]
 
 [node name="Menu Scene" type="Node2D" unique_id=762162257]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2075874504]
+
+[node name="EndScreen" type="Control" parent="CanvasLayer" unique_id=2001184549]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartMenu" type="Control" parent="CanvasLayer" unique_id=478046632]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsMenu" type="Control" parent="CanvasLayer" unique_id=666124588]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
