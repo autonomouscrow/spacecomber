@@ -6,7 +6,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
 atlas = ExtResource("3_3253y")
-region = Rect2(12.782619, 12.752099, 103.51869, 104.47201)
+region = Rect2(10.664291, 13.513466, 218.5095, 218.94882)
 
 [node name="Node2D" type="Node2D" unique_id=236387114]
 
