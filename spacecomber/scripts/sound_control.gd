@@ -1,6 +1,6 @@
 extends Node
 # SoundControl: autoloaded, so it stays loaded across every scene.
-# Call it from any script, e.g. SoundControl.play_random_exp_medium()
+# Call it from any script, e.g. SoundControl.play_random_explosion_medium()
 
 # Volume
 const MAX_VOLUME := 20.0
@@ -23,7 +23,7 @@ func get_volume() -> float:
 
 # Sound effects
 # Every sound plays on the Master bus, so the volume above controls it
-const EXP_MEDIUM := [
+const EXPLOSION_MEDIUM := [
 	preload("res://SoundEffects/Explosions medium/explosion_medium1.wav"),
 	preload("res://SoundEffects/Explosions medium/explosion_medium2.wav"),
 	preload("res://SoundEffects/Explosions medium/explosion_medium3.wav"),
@@ -34,7 +34,7 @@ const EXP_MEDIUM := [
 	preload("res://SoundEffects/Explosions medium/explosion_medium8.wav"),
 	preload("res://SoundEffects/Explosions medium/explosion_medium9.wav"),
 ]
-const EXP_SHORT := [
+const EXPLOSION_SHORT := [
 	preload("res://SoundEffects/Explosions short/explosion_short1.wav"),
 	preload("res://SoundEffects/Explosions short/explosion_short2.wav"),
 	preload("res://SoundEffects/Explosions short/explosion_short3.wav"),
@@ -78,11 +78,11 @@ func play_sound(stream: AudioStream) -> void:
 	player.play()
 
 # Random / alternating sounds
-func play_random_exp_medium() -> void:
-	play_sound(EXP_MEDIUM.pick_random())
+func play_random_explosion_medium() -> void:
+	play_sound(EXPLOSION_MEDIUM.pick_random())
 
-func play_random_exp_short() -> void:
-	play_sound(EXP_SHORT.pick_random())
+func play_random_explosion_short() -> void:
+	play_sound(EXPLOSION_SHORT.pick_random())
 
 func play_random_object_impact() -> void:
 	play_sound(OBJECT_IMPACT.pick_random())
@@ -93,28 +93,24 @@ func play_random_enemy_lazer() -> void:
 func play_random_short_lazer() -> void:
 	play_sound(SHORT_LAZER.pick_random())
 
-# Plays short_lazer1, then short_lazer2, then short_lazer1, ...
-func play_alternating_short_lazer() -> void:
-	play_sound(SHORT_LAZER[short_lazer_next])
-	short_lazer_next = (short_lazer_next + 1) % SHORT_LAZER.size()
 
 # Individual sounds
-func play_exp_medium1() -> void: play_sound(EXP_MEDIUM[0])
-func play_exp_medium2() -> void: play_sound(EXP_MEDIUM[1])
-func play_exp_medium3() -> void: play_sound(EXP_MEDIUM[2])
-func play_exp_medium4() -> void: play_sound(EXP_MEDIUM[3])
-func play_exp_medium5() -> void: play_sound(EXP_MEDIUM[4])
-func play_exp_medium6() -> void: play_sound(EXP_MEDIUM[5])
-func play_exp_medium7() -> void: play_sound(EXP_MEDIUM[6])
-func play_exp_medium8() -> void: play_sound(EXP_MEDIUM[7])
-func play_exp_medium9() -> void: play_sound(EXP_MEDIUM[8])
+func play_explosion_medium1() -> void: play_sound(EXPLOSION_MEDIUM[0])
+func play_explosion_medium2() -> void: play_sound(EXPLOSION_MEDIUM[1])
+func play_explosion_medium3() -> void: play_sound(EXPLOSION_MEDIUM[2])
+func play_explosion_medium4() -> void: play_sound(EXPLOSION_MEDIUM[3])
+func play_explosion_medium5() -> void: play_sound(EXPLOSION_MEDIUM[4])
+func play_explosion_medium6() -> void: play_sound(EXPLOSION_MEDIUM[5])
+func play_explosion_medium7() -> void: play_sound(EXPLOSION_MEDIUM[6])
+func play_explosion_medium8() -> void: play_sound(EXPLOSION_MEDIUM[7])
+func play_explosion_medium9() -> void: play_sound(EXPLOSION_MEDIUM[8])
 
-func play_exp_short1() -> void: play_sound(EXP_SHORT[0])
-func play_exp_short2() -> void: play_sound(EXP_SHORT[1])
-func play_exp_short3() -> void: play_sound(EXP_SHORT[2])
-func play_exp_short4() -> void: play_sound(EXP_SHORT[3])
-func play_exp_short5() -> void: play_sound(EXP_SHORT[4])
-func play_exp_short6() -> void: play_sound(EXP_SHORT[5])
+func play_explosion_short1() -> void: play_sound(EXPLOSION_SHORT[0])
+func play_explosion_short2() -> void: play_sound(EXPLOSION_SHORT[1])
+func play_explosion_short3() -> void: play_sound(EXPLOSION_SHORT[2])
+func play_explosion_short4() -> void: play_sound(EXPLOSION_SHORT[3])
+func play_explosion_short5() -> void: play_sound(EXPLOSION_SHORT[4])
+func play_explosion_short6() -> void: play_sound(EXPLOSION_SHORT[5])
 
 func play_object_impact1() -> void: play_sound(OBJECT_IMPACT[0])
 func play_object_impact2() -> void: play_sound(OBJECT_IMPACT[1])
