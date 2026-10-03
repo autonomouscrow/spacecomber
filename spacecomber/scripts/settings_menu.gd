@@ -1,6 +1,6 @@
 extends CanvasLayer
 # SettingsMenu: autoloaded, so it works in every scene (menu and game).
-# S toggles it, Escape closes it. Open it from code with SettingsMenu.open()
+# O toggles it, Escape closes it. Open it from code with SettingsMenu.open()
 
 @onready var screen = $Screen
 @onready var volume_slider = $"Screen/Volume Slider"
@@ -39,11 +39,11 @@ func toggle() -> void:
 	else:
 		open()
 
-# S toggles the settings overlay, Escape closes it
+# O toggles the settings overlay, Escape closes it
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventKey and event.pressed and not event.echo):
 		return
-	if event.keycode == KEY_S:
+	if event.keycode == KEY_O:
 		toggle()
 		get_viewport().set_input_as_handled()
 	elif event.keycode == KEY_ESCAPE and is_open():

@@ -68,22 +68,3 @@ texture = SubResource("AtlasTexture_g576v")
 position = Vector2(313, 164)
 scale = Vector2(0.25265187, 0.25265187)
 hab_node = NodePath("../hab")
-
-[node name="CharacterBody2D2" parent="." unique_id=1300355486 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_y2354")]
-position = Vector2(454, 258)
-scale = Vector2(0.25265187, 0.25265187)
-Wander_radius = 400.0
-hab_node = NodePath("../hab")
-
-[node name="CharacterBody2D3" parent="." unique_id=1076226921 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_y2354")]
-position = Vector2(313, 164)
-scale = Vector2(0.25265187, 0.25265187)
-Wander_radius = 100.0
-hab_node = NodePath("../hab")
-
-[node name="CharacterBody2D" parent="." unique_id=1143329760 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_y2354")]
-position = Vector2(313, 164)
-scale = Vector2(0.25265187, 0.25265187)
-Wander_radius = 100.0
-hab_node = NodePath("../hab")
-
