@@ -12,7 +12,7 @@ points = PackedVector2Array(-3.0000057, -130, 85.99999, -94, 98, -12.000004, 72,
 scale = Vector2(0.27890193, 0.27890193)
 script = ExtResource("1_ry585")
 Ship_speed = 40.0
-Ship_health = 10
+Ship_health = 15
 Ship_fire_rate = 2
 Wander_radius = 200.0
 
