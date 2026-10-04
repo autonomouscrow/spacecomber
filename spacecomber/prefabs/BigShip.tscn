@@ -42,11 +42,11 @@ shape = SubResource("ConvexPolygonShape2D_x3acn")
 
 [node name="enemyshooter" parent="." unique_id=1232366354 instance=ExtResource("4_k5rl7")]
 position = Vector2(142, -56)
-fire_rate = 0.2
+fire_rate = 0.7
 
 [node name="enemyshooter2" parent="." unique_id=1230185333 instance=ExtResource("4_k5rl7")]
 position = Vector2(143.41959, 43.025875)
-fire_rate = 0.2
+fire_rate = 0.7
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
