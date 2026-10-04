@@ -40,3 +40,5 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	if _body.has_method("take_damage"):
 		_body.take_damage(100000)
+	if _body.has_method("disappear"):
+		_body.disappear()
