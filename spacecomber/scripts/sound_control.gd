@@ -68,6 +68,28 @@ const TOWER_IMPACT = preload("res://SoundEffects/Tower_inpact.wav")
 
 var short_lazer_next := 0
 
+# Background ambience: loops whenever the game scene is running, and stops
+# in the menu. It keeps playing while settings/controls are open
+const BACKGROUND_AMBIENT = preload("res://SoundEffects/Background_Ambiant.mp3")
+const AMBIENT_SCENE := "res://scene.tscn"
+var ambient_player: AudioStreamPlayer
+
+func _ready() -> void:
+	ambient_player = AudioStreamPlayer.new()
+	ambient_player.stream = BACKGROUND_AMBIENT
+	ambient_player.bus = "Master"
+	add_child(ambient_player)
+	# Start again from the top whenever it finishes, so it loops
+	ambient_player.finished.connect(ambient_player.play)
+
+func _process(_delta: float) -> void:
+	var scene = get_tree().current_scene
+	var in_game = scene != null and scene.scene_file_path == AMBIENT_SCENE
+	if in_game and not ambient_player.playing:
+		ambient_player.play()
+	elif not in_game and ambient_player.playing:
+		ambient_player.stop()
+
 # Plays a sound once. Each call gets its own player, so sounds can overlap
 func play_sound(stream: AudioStream) -> void:
 	var player := AudioStreamPlayer.new()
@@ -81,8 +103,9 @@ func play_sound(stream: AudioStream) -> void:
 func play_random_explosion_medium() -> void:
 	play_sound(EXPLOSION_MEDIUM.pick_random())
 
+# explosion_short1 is left out: it's the asteroid hit sound
 func play_random_explosion_short() -> void:
-	play_sound(EXPLOSION_SHORT.pick_random())
+	play_sound(EXPLOSION_SHORT.slice(1).pick_random())
 
 func play_random_object_impact() -> void:
 	play_sound(OBJECT_IMPACT.pick_random())

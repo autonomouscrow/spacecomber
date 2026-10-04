@@ -118,6 +118,9 @@ func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
 	var bullet = area.get_parent()
 	if bullet.get_script() != BULLET_SCRIPT or bullet.hit:
 		return
+	# Everything makes the hit sound except tumbleweed
+	if size != "tumbleweed":
+		SoundControl.play_explosion_short1()
 	bullet.disappear()
 	take_damage(bullet_damage)
 

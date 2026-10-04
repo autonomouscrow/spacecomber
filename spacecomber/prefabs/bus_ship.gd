@@ -63,6 +63,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		return
 	bullet.disappear()
 	take_damage(bullet_damage)
+	# Lasers fired by an enemy ship's gun make a hit sound (unless that hit
+	# destroyed the ship, which plays an explosion instead)
+	if bullet.has_meta("owner_ship") and not destroyed:
+		SoundControl.play_random_enemy_lazer()
 
 func take_damage(amount: int) -> void:
 	if destroyed:
@@ -70,6 +74,7 @@ func take_damage(amount: int) -> void:
 	Ship_health -= amount
 	if Ship_health <= 0:
 		destroyed = true
+		SoundControl.play_random_explosion_short()
 		drop_items()
 		queue_free()
 
