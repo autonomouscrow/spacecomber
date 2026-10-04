@@ -19,7 +19,7 @@ var wood_juice: int = 100
 var wood: int = 100
 var iron: int = 100
 var nimine: int = 100
-var corpse: int = 9999
+var corpse: int = 5
 
 var w_engine_vel: Vector2 = Vector2.ZERO
 var w_engine_rot_vel: float = 0
@@ -149,11 +149,14 @@ func open_builder():
 	
 	build_menu.parts_dict = parts_dict
 	build_menu.spawn_parts()
+	build_menu.current_debit_credit = [0, 0, 0, 0]
+	build_menu.spawn_shop_blocks()
 	
 	build_menu.visible = true
 
 func close_builder():
 	build_menu.set_parts_dict()
+	build_menu.pay()
 	
 	for part_loc in part_locations:
 		for child in build_menu.loc_slots[part_loc].get_children():

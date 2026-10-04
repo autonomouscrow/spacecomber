@@ -2,12 +2,19 @@ class_name BuildMenu
 extends Node2D
 
 const W_ENGINE_NORMAL_BUILDER_SCENE = preload("res://prefabs/ship_builder/w_engine_normal_builder.tscn")
+const SHOP_BLOCK_SCENE = preload("res://prefabs/ShopBlock.tscn")
 
 var part_locations = ["n", "e", "s", "w", "ne", "nw", "se", "sw", 
 					  "nl", "el", "sl", "wl", "nel", "nwl", "sel", "swl", 
 					  "nr", "er", "sr", "wr", "ner", "nwr", "ser", "swr"]
 var parts_dict: Dictionary
 var loc_slots: Dictionary
+
+var item_datas: Array[ItemData] = [
+	ItemData.new("Basic Engine (W)", "nyoooom", "w_engine_normal", [0, 0, 0, 1])
+]
+
+var current_debit_credit = [0, 0, 0, 0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,6 +50,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	active_set()
 	has_child_set()
+	currency_display()
 
 func active_set() -> void:
 	var base_directions = ["n", "e", "s", "w", "ne", "nw", "se", "sw"]
@@ -94,3 +102,66 @@ func spawn_part(slot: Control, component_type: String) -> void:
 		w_engine_normal.position = Vector2(35, 35)
 		w_engine_normal.rotation = deg_to_rad(slot.slot_rotation)
 		
+func spawn_shop_blocks() -> void:
+	var ShopGrid = $"ScrollContainer/ShopGrid"
+	for child in ShopGrid.get_children():
+		child.queue_free()
+		
+	for item_data in item_datas:
+		var shop_block = SHOP_BLOCK_SCENE.instantiate()
+		shop_block.setup(item_data)
+		ShopGrid.add_child(shop_block)
+		shop_block.name = item_data.item_name
+		
+func currency_display() -> void:
+	var hab = $"../../hab"
+	var wood = $money/wood
+	var iron = $money/iron
+	var nimine = $money/nimine
+	var corpse = $money/corpse
+	
+	wood.text = add_adjustments(hab.wood, current_debit_credit[0])
+	iron.text = add_adjustments(hab.iron, current_debit_credit[1])
+	nimine.text = add_adjustments(hab.nimine, current_debit_credit[2])
+	corpse.text = add_adjustments(hab.corpse, current_debit_credit[3])
+
+func add_adjustments(raw_num, modifier) -> String:
+	if modifier != 0:
+		return str(raw_num) + " (" + str(modifier) + ")"
+	else:
+		return str(raw_num)
+
+func can_buy(data: ItemData) -> bool:
+	var hab = $"../../hab"
+	if hab.wood + current_debit_credit[0] < data.item_cost[0]:
+		return false
+	if hab.iron + current_debit_credit[1] < data.item_cost[1]:
+		return false
+	if hab.nimine + current_debit_credit[2] < data.item_cost[2]:
+		return false
+	if hab.corpse + current_debit_credit[3] < data.item_cost[3]:
+		return false
+	return true
+
+func add_debt(data: ItemData) -> void:
+	if data == null:
+		return
+	else:
+		current_debit_credit[0] -= data.item_cost[0]
+		current_debit_credit[1] -= data.item_cost[1]
+		current_debit_credit[2] -= data.item_cost[2]
+		current_debit_credit[3] -= data.item_cost[3]
+		
+
+func stop_hint(item_name: String) -> void:
+	var shops = $ScrollContainer/ShopGrid
+	for shop in shops.get_children():
+		if shop.name == item_name:
+			shop.turn_off_drag_sign()
+
+func pay() -> void:
+	var hab = $"../../hab"
+	hab.wood += current_debit_credit[0]
+	hab.iron += current_debit_credit[1]
+	hab.nimine += current_debit_credit[2]
+	hab.corpse += current_debit_credit[3]

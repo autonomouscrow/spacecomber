@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://cucxil240xmb0"]
+
+[ext_resource type="Script" uid="uid://2fa43vcxjysb" path="res://scripts/shop_block.gd" id="1_6ifv8"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_c7p87"]
+[ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="2_dpq2v"]
+[ext_resource type="PackedScene" uid="uid://deq6c0ssytiwp" path="res://prefabs/ShopSlot.tscn" id="4_6ifv8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
+atlas = ExtResource("1_c7p87")
+region = Rect2(16.9668, 338.9493, 282.09064, 89.11441)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v0hoe"]
+font = ExtResource("2_dpq2v")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_g576v"]
+font = ExtResource("2_dpq2v")
+font_size = 13
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ifv8"]
+atlas = ExtResource("1_c7p87")
+region = Rect2(586.465, 292.1395, 34.22711, 31.461731)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t0lnq"]
+font = ExtResource("2_dpq2v")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m15ow"]
+atlas = ExtResource("1_c7p87")
+region = Rect2(582.9075, 224.88518, 28.057983, 28.057983)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llqm2"]
+atlas = ExtResource("1_c7p87")
+region = Rect2(655.4579, 250.84818, 34.22711, 31.461731)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ggsb"]
+atlas = ExtResource("1_c7p87")
+region = Rect2(656.4769, 155.75732, 33.64746, 44.659927)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2il8"]
+atlas = ExtResource("1_c7p87")
+region = Rect2(789.7058, 275.04895, 113.37988, 53.14673)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2il8"]
+font = ExtResource("2_dpq2v")
+font_size = 20
+
+[node name="ShopBlock" type="Control" unique_id=787951314]
+custom_minimum_size = Vector2(450, 115)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6ifv8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=620340620]
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 111.0
+texture = SubResource("AtlasTexture_g576v")
+region_rect = Rect2(-0.025725842, -0.0028157234, 282.07047, 89.09499)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="name" type="Label" parent="." unique_id=387828891]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 52.0
+offset_bottom = 33.0
+text = "Test Item"
+label_settings = SubResource("LabelSettings_v0hoe")
+
+[node name="desc" type="Label" parent="." unique_id=1582608695]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -438.0
+offset_top = -65.0
+offset_right = -310.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(1, 0.5)
+text = "sure is an item"
+label_settings = SubResource("LabelSettings_g576v")
+
+[node name="cost" type="GridContainer" parent="." unique_id=891405428]
+custom_maximum_size = Vector2(-1, 32)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -550.0
+offset_top = -44.0
+offset_right = -112.99988
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+pivot_offset_ratio = Vector2(1, 1)
+columns = 11
+
+[node name="TextureRect" type="TextureRect" parent="cost" unique_id=1697769314]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6ifv8")
+
+[node name="wood" type="Label" parent="cost" unique_id=1671297772]
+layout_mode = 2
+text = "10,000"
+label_settings = SubResource("LabelSettings_t0lnq")
+
+[node name="Control" type="Control" parent="cost" unique_id=538495818]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="cost" unique_id=1367502802]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m15ow")
+expand_mode = 2
+
+[node name="iron" type="Label" parent="cost" unique_id=1291920516]
+layout_mode = 2
+text = "10,000"
+label_settings = SubResource("LabelSettings_t0lnq")
+
+[node name="Control2" type="Control" parent="cost" unique_id=184295169]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="cost" unique_id=1778204764]
+layout_mode = 2
+texture = SubResource("AtlasTexture_llqm2")
+
+[node name="nimine" type="Label" parent="cost" unique_id=993154412]
+layout_mode = 2
+text = "10,000"
+label_settings = SubResource("LabelSettings_t0lnq")
+
+[node name="TextureRect4" type="TextureRect" parent="cost" unique_id=888345650]
+layout_mode = 2
+texture = SubResource("AtlasTexture_0ggsb")
+stretch_mode = 5
+
+[node name="corpse" type="Label" parent="cost" unique_id=397707792]
+layout_mode = 2
+text = "10,000"
+label_settings = SubResource("LabelSettings_t0lnq")
+
+[node name="buy" type="Button" parent="." unique_id=560535871]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 10.0
+offset_right = 437.75
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="buy" unique_id=428524328]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -12.0
+offset_right = 46.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BUY!!!!!!!!"
+label_settings = SubResource("LabelSettings_v0hoe")
+horizontal_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="buy" unique_id=484483511]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.375
+offset_top = -16.5
+offset_right = 142.625
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_g576v")
+region_rect = Rect2(-0.025725842, -0.0028157234, 282.07047, 89.09499)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="drag_sign" type="TextureRect" parent="." unique_id=119194726]
+layout_mode = 0
+offset_left = 291.0
+offset_top = 48.0
+offset_right = 404.0
+offset_bottom = 101.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_h2il8")
+flip_h = true
+
+[node name="Label" type="Label" parent="drag_sign" unique_id=1772071460]
+layout_mode = 0
+offset_left = -38.0
+offset_top = -20.0
+offset_right = 66.0
+offset_bottom = 6.0
+text = "Drag this!"
+label_settings = SubResource("LabelSettings_h2il8")
+
+[node name="ShopSlot" parent="." unique_id=6190384 instance=ExtResource("4_6ifv8")]
+custom_minimum_size = Vector2(70, 70)
+custom_maximum_size = Vector2(70, 70)
+layout_mode = 1
+offset_left = 351.0
+offset_top = 49.0
+offset_right = -29.0
+offset_bottom = 4.0
+scale = Vector2(0.75, 0.75)
+
+[connection signal="pressed" from="buy" to="." method="_on_buy_pressed"]

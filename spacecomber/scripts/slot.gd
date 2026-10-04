@@ -1,3 +1,4 @@
+class_name Slot
 extends Control
 
 @export var slot_active:bool = true
@@ -13,9 +14,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	set_icon()
-
-#func remove_item(item:Item)->void:
-	#inventory.remove_item(item)
 
 func _get_drag_data(at_position:Vector2)->Variant:
 	var part = get_child_of_type(self, ShipBuilderPart)
@@ -46,6 +44,16 @@ func _drop_data(at_position:Vector2, data:Variant)->void:
 	add_item(drag_data.item.duplicate())
 	
 	if drag_data.source: drag_data.source.remove_item(drag_data.item)
+	
+	var build_menu = get_parent()
+	while build_menu != null:
+		if build_menu.name == "BuildMenu":
+			break
+		build_menu = build_menu.get_parent()
+		
+	build_menu.add_debt(drag_data.item_data)
+	if drag_data.source is ShopSlot:
+		build_menu.stop_hint(drag_data.item_data.item_name)
 
 func get_child_of_type(parent_node: Node, type_to_find) -> Node:
 	for child in parent_node.get_children():
