@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b75y8r5wckmxa"]
 
+[ext_resource type="PackedScene" uid="uid://bvn5yhe4j00c4" path="res://SkeffControl.tscn" id="1_fy5k1"]
 [ext_resource type="PackedScene" uid="uid://dhi2c2c7ebfnr" path="res://ui.tscn" id="1_m7jmp"]
 [ext_resource type="StyleBox" uid="uid://boes6nkj50t8p" path="res://ship_build_panel.tres" id="1_ulcgi"]
 [ext_resource type="Script" uid="uid://c8i5s5w1dhic4" path="res://scripts/BuildMenu.gd" id="2_ni31j"]
@@ -9,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="6_ni31j"]
 [ext_resource type="Script" uid="uid://bcyrc8hhiqm4g" path="res://prefabs/sell_slot.gd" id="7_5juve"]
 [ext_resource type="Script" uid="uid://dtbtof1cly127" path="res://scripts/follow_camera.gd" id="10_cam"]
+[ext_resource type="PackedScene" uid="uid://bvsej4tgbhn5b" path="res://prefabs/shield_base.tscn" id="10_fy5k1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
 atlas = ExtResource("3_3253y")
@@ -40,6 +42,9 @@ radius = 26.0
 radius = 40.0
 
 [node name="root" type="Node2D" unique_id=236387114]
+
+[node name="Node2D" parent="." unique_id=960636859 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_fy5k1")]
+hab_node = NodePath("../hab")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1748203961]
 
@@ -373,7 +378,8 @@ position = Vector2(458, 264)
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("4_u3cyc")
-manual_rotation_speed = 1.0
+
+[node name="ShieldBase" parent="hab" unique_id=1815835711 instance=ExtResource("10_fy5k1")]
 
 [node name="hab img" type="Sprite2D" parent="hab" unique_id=2098575124]
 scale = Vector2(0.25, 0.25)

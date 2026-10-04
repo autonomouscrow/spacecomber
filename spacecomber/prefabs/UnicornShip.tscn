@@ -12,7 +12,7 @@ points = PackedVector2Array(0, -130, 124, -40, 134, 59, 109, 77, -1, 94, -110, 7
 scale = Vector2(0.25022942, 0.25022942)
 script = ExtResource("1_dhj34")
 Ship_speed = 20.0
-Ship_fire_rate = 2
+Ship_fire_rate = 1
 Wander_radius = 500.0
 Ship_health = 10
 
@@ -46,9 +46,11 @@ shape = SubResource("ConvexPolygonShape2D_x3acn")
 
 [node name="enemyshooter" parent="Area2D" unique_id=1232366354 instance=ExtResource("4_3m12c")]
 position = Vector2(43, 106)
+fire_rate = 1.0
 
 [node name="enemyshooter2" parent="Area2D" unique_id=2066360245 instance=ExtResource("4_3m12c")]
 position = Vector2(43, -110)
+fire_rate = 1.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
