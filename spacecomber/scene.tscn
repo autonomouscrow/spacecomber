@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b75y8r5wckmxa"]
 
-[ext_resource type="PackedScene" uid="uid://bvn5yhe4j00c4" path="res://SkeffControl.tscn" id="1_fy5k1"]
 [ext_resource type="PackedScene" uid="uid://dhi2c2c7ebfnr" path="res://ui.tscn" id="1_m7jmp"]
 [ext_resource type="StyleBox" uid="uid://boes6nkj50t8p" path="res://ship_build_panel.tres" id="1_ulcgi"]
 [ext_resource type="Script" uid="uid://c8i5s5w1dhic4" path="res://scripts/BuildMenu.gd" id="2_ni31j"]
@@ -41,9 +40,6 @@ radius = 26.0
 radius = 40.0
 
 [node name="root" type="Node2D" unique_id=236387114]
-
-[node name="Node2D" parent="." unique_id=960636859 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_fy5k1")]
-hab_node = NodePath("../hab")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1748203961]
 
@@ -409,5 +405,5 @@ position = Vector2(553, 153)
 scale = Vector2(0.23767202, 0.23767202)
 texture = SubResource("AtlasTexture_g576v")
 
-[connection signal="body_entered" from="hab/pickup area" to="hab" method="_on_pickup_area_body_entered"]
 [connection signal="area_entered" from="hab/hitbox" to="hab" method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hab/pickup area" to="hab" method="_on_pickup_area_body_entered"]
