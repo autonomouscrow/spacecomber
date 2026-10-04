@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const W_ENGINE_NORMAL_SCENE = preload("res://prefabs/ship_parts/w_engine_normal.tscn")
-
 @export var engine_speed_mult: float = 300.0
 @export var engine_rot_mult: float = 1
 @export var manual_rotation_speed: float
@@ -23,6 +21,8 @@ var corpse: int = 5
 
 var w_engine_vel: Vector2 = Vector2.ZERO
 var w_engine_rot_vel: float = 0
+var s_engine_vel: Vector2 = Vector2.ZERO
+var s_engine_rot_vel: float = 0
 
 var part_locations = ["n", "e", "s", "w", "ne", "nw", "se", "sw", 
 					  "nl", "el", "sl", "wl", "nel", "nwl", "sel", "swl", 
@@ -87,29 +87,59 @@ func _physics_process(delta: float) -> void:
 			build_mode = true
 			open_builder()
 
-	if Input.is_physical_key_pressed(KEY_W):
-		var real_w_engine_vel = w_engine_vel.rotated(rotation)
-		velocity.x += real_w_engine_vel.x * engine_speed_mult * delta
-		velocity.y += real_w_engine_vel.y * engine_speed_mult * delta
-		rot_vel += w_engine_rot_vel * engine_rot_mult * delta
-		
-	
+	var w_firing := Input.is_physical_key_pressed(KEY_W)
+	var s_firing := Input.is_physical_key_pressed(KEY_S)
+	if w_firing:
+		fire_engines(w_engine_vel, w_engine_rot_vel, delta)
+	if s_firing:
+		fire_engines(s_engine_vel, s_engine_rot_vel, delta)
+	show_engine_flames(ShipParts.W_ENGINES, w_firing)
+	show_engine_flames(ShipParts.S_ENGINES, s_firing)
+
 	rotation += rot_vel * delta
 
 	move_and_slide()
 
-func get_w_engine() -> void:
-	var w_engines = get_children_with_meta(self, "component_type", "w_engine_normal")
-	
+func fire_engines(engine_vel: Vector2, engine_rot_vel: float, delta: float) -> void:
+	var real_engine_vel = engine_vel.rotated(rotation)
+	velocity.x += real_engine_vel.x * engine_speed_mult * delta
+	velocity.y += real_engine_vel.y * engine_speed_mult * delta
+	rot_vel += engine_rot_vel * engine_rot_mult * delta
+
+# Flames show on the engines whose key is held
+func show_engine_flames(engine_types: Array, firing: bool) -> void:
+	for engine in get_engines(engine_types):
+		var fire = engine.get_node_or_null("Fire")
+		if fire:
+			fire.fire_on(firing)
+
+func get_engines(engine_types: Array) -> Array[Node]:
+	var engines: Array[Node] = []
+	for engine_type in engine_types:
+		engines.append_array(get_children_with_meta(self, "component_type", engine_type))
+	return engines
+
+# Works out the total push and spin of the W engines and the S engines
+# (normal and better engines have the same stats for now)
+func update_engines() -> void:
+	var w_result = get_engine_thrust(ShipParts.W_ENGINES)
+	w_engine_vel = w_result[0]
+	w_engine_rot_vel = w_result[1]
+	var s_result = get_engine_thrust(ShipParts.S_ENGINES)
+	s_engine_vel = s_result[0]
+	s_engine_rot_vel = s_result[1]
+
+# Returns [total thrust, total torque] of the engines of these types
+func get_engine_thrust(engine_types: Array) -> Array:
 	var total_thrust: Vector2 = Vector2.ZERO
 	var total_torque: float = 0
-	for engine in w_engines:
+	for engine in get_engines(engine_types):
 		var r_vec: Vector2 = engine.position
 		var distance: float = r_vec.length()
 		
 		if distance == 0.0:
-			return
-			
+			continue
+
 		var r_hat: Vector2 = r_vec.normalized() # Unit vector pointing from engine to self
 		
 		var thrust_direction: Vector2 = Vector2.RIGHT.rotated(engine.rotation)
@@ -122,10 +152,9 @@ func get_w_engine() -> void:
 	
 		total_thrust += thrust_vector
 		total_torque += torque
-		
-	w_engine_vel = total_thrust
-	w_engine_rot_vel = total_torque
-	
+
+	return [total_thrust, total_torque]
+
 func get_children_with_meta(parent: Node, meta_key: String, target_value) -> Array[Node]:
 	var matching_children: Array[Node] = []
 	
@@ -168,19 +197,20 @@ func close_builder():
 		var component_type = parts_dict[part_loc]
 		if component_type != null:
 			spawn_part(component_type, location_concrete[part_loc], part_loc)
-	get_w_engine()
-	
+	update_engines()
+
 	build_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	build_menu.visible = false
 			
 func spawn_part(component_type: String, location_data: LocationData, location_name: String) -> void:
-	if component_type == "w_engine_normal":
-		var w_engine_normal = W_ENGINE_NORMAL_SCENE.instantiate()
-		add_child(w_engine_normal)
-		w_engine_normal.position = Vector2(location_data.x, location_data.y)
-		w_engine_normal.rotation = deg_to_rad(location_data.rot)
-		w_engine_normal.scale = Vector2(location_data.size, location_data.size)
-		w_engine_normal.name = location_name
+	if not ShipParts.SCENES.has(component_type):
+		return
+	var part = ShipParts.SCENES[component_type].instantiate()
+	add_child(part)
+	part.position = Vector2(location_data.x, location_data.y)
+	part.rotation = deg_to_rad(location_data.rot)
+	part.scale = Vector2(location_data.size, location_data.size)
+	part.name = location_name
 
 # Outside forces (black hole pull, tower launch). The ship keeps its
 # momentum, so these add straight to its velocity like the engines do

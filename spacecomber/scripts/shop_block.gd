@@ -1,7 +1,5 @@
 extends Control
 
-const W_ENGINE_NORMAL_BUILDER_SCENE = preload("res://prefabs/ship_builder/w_engine_normal_builder.tscn")
-
 var component_type
 var bought = false
 var data
@@ -51,11 +49,11 @@ func _on_buy_pressed() -> void:
 	if parent.can_buy(data):
 		drag_sign.visible = true
 		
-		if component_type == "w_engine_normal":
-			var w_engine_normal = W_ENGINE_NORMAL_BUILDER_SCENE.instantiate()
-			shop_slot.add_child(w_engine_normal)
-			w_engine_normal.position = Vector2(35, 35)
-			w_engine_normal.rotation = 0
+		if ShipParts.BUILDER_SCENES.has(component_type):
+			var part = ShipParts.BUILDER_SCENES[component_type].instantiate()
+			shop_slot.add_child(part)
+			part.position = Vector2(35, 35)
+			part.rotation = 0
 
 func turn_off_drag_sign() -> void:
 	var drag_sign = $drag_sign

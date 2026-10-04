@@ -1,7 +1,6 @@
 class_name BuildMenu
 extends Node2D
 
-const W_ENGINE_NORMAL_BUILDER_SCENE = preload("res://prefabs/ship_builder/w_engine_normal_builder.tscn")
 const SHOP_BLOCK_SCENE = preload("res://prefabs/ShopBlock.tscn")
 
 var part_locations = ["n", "e", "s", "w", "ne", "nw", "se", "sw", 
@@ -11,7 +10,10 @@ var parts_dict: Dictionary
 var loc_slots: Dictionary
 
 var item_datas: Array[ItemData] = [
-	ItemData.new("Basic Engine (W)", "nyoooom", "w_engine_normal", [0, 0, 0, 1])
+	ItemData.new("Basic Engine (W)", "nyoooom", "w_engine_normal", [0, 0, 0, 1]),
+	ItemData.new("Basic Engine (S)", "nyoooom", "s_engine_normal", [0, 0, 0, 1]),
+	ItemData.new("Better Engine (W)", "NYOOOOM", "w_engine_better", [0, 0, 0, 1]),
+	ItemData.new("Better Engine (S)", "NYOOOOM", "s_engine_better", [0, 0, 0, 1]),
 ]
 
 var current_debit_credit = [0, 0, 0, 0]
@@ -96,11 +98,12 @@ func spawn_parts() -> void:
 			spawn_part(slot, parts_dict[part_dir])
 			
 func spawn_part(slot: Control, component_type: String) -> void:
-	if component_type == "w_engine_normal":
-		var w_engine_normal = W_ENGINE_NORMAL_BUILDER_SCENE.instantiate()
-		slot.add_child(w_engine_normal)
-		w_engine_normal.position = Vector2(35, 35)
-		w_engine_normal.rotation = deg_to_rad(slot.slot_rotation)
+	if not ShipParts.BUILDER_SCENES.has(component_type):
+		return
+	var part = ShipParts.BUILDER_SCENES[component_type].instantiate()
+	slot.add_child(part)
+	part.position = Vector2(35, 35)
+	part.rotation = deg_to_rad(slot.slot_rotation)
 		
 func spawn_shop_blocks() -> void:
 	var ShopGrid = $"ScrollContainer/ShopGrid"

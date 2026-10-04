@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5f1slofs4d16" path="res://prefabs/slot.tscn" id="4_ni31j"]
 [ext_resource type="Script" uid="uid://iv1crbi1xnfm" path="res://scripts/hab.gd" id="4_u3cyc"]
 [ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="6_ni31j"]
+[ext_resource type="Script" path="res://scripts/follow_camera.gd" id="10_cam"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
 atlas = ExtResource("3_3253y")
@@ -370,8 +371,8 @@ texture = SubResource("AtlasTexture_g576v")
 shape = SubResource("CircleShape2D_hab")
 
 [node name="Camera2D" type="Camera2D" parent="hab" unique_id=1093857142]
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
+process_callback = 0
+script = ExtResource("10_cam")
 
 [node name="test orb" type="Sprite2D" parent="." unique_id=127475164]
 position = Vector2(553, 153)
