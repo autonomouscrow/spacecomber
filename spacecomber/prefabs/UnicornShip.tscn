@@ -12,7 +12,7 @@ points = PackedVector2Array(0, -130, 124, -40, 134, 59, 109, 77, -1, 94, -110, 7
 scale = Vector2(0.25022942, 0.25022942)
 script = ExtResource("1_dhj34")
 Ship_speed = 20.0
-Ship_health = 100
+Ship_health = 10
 Ship_fire_rate = 2
 Wander_radius = 500.0
 
@@ -51,3 +51,4 @@ position = Vector2(43, 106)
 position = Vector2(43, -110)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

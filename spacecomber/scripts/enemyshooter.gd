@@ -27,4 +27,13 @@ func spawn_bullet(direction: Vector2 = Vector2.RIGHT) -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
 	bullet.global_rotation = global_rotation
+	# Tag the bullet with the ship that fired it, so it can't hurt that ship
+	bullet.set_meta("owner_ship", get_owner_ship())
 	get_tree().current_scene.add_child(bullet)
+
+# The ship this gun is mounted on (the nearest parent that can take damage)
+func get_owner_ship() -> Node:
+	var node = get_parent()
+	while node and not node.has_method("take_damage"):
+		node = node.get_parent()
+	return node
