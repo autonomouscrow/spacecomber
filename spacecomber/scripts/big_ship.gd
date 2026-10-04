@@ -60,7 +60,6 @@ func _process(delta: float) -> void:
 func update_guns() -> void:
 	if not hab_node or not is_instance_valid(hab_node):
 		set_guns_firing(false)
-		print("update_guns")
 		return
 
 	# Direction the ship is currently facing
