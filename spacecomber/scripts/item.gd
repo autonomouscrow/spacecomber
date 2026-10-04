@@ -25,12 +25,6 @@ func _ready():
 
 func _physics_process(delta):
 	rotation += spin_speed * delta
-	
-	var collision = move_and_collide(velocity * delta)
-	
-	if collision:
-		velocity = velocity.bounce(collision.get_normal())
-	
 	move_with_push(delta)
 
 
@@ -54,8 +48,13 @@ var push_velocity := Vector2.ZERO
 func push(amount: Vector2) -> void:
 	push_velocity += amount
 
+# Moves once per frame by the item's own drift plus any push. The drift
+# bounces off things; a push just stops dead against them (so a magnet
+# pulling an item into the ship never flings it back out or off to the side)
 func move_with_push(delta: float) -> void:
-	velocity += push_velocity
-	move_and_slide()
-	velocity -= push_velocity
+	var collision = move_and_collide((velocity + push_velocity) * delta)
+	if collision:
+		var normal = collision.get_normal()
+		velocity = velocity.bounce(normal)
+		push_velocity = Vector2.ZERO
 	push_velocity *= exp(-push_damping * delta)

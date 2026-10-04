@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cl5e8g0s3c440"]
+
+[ext_resource type="Script" uid="uid://b8cvpce3e8vw4" path="res://scripts/ship_part.gd" id="1_cqv70"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_t6q6m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itrpq"]
+atlas = ExtResource("2_t6q6m")
+region = Rect2(440.54315, 99.79996, 72.05699, 71.5782)
+
+[node name="WEngineNormalBuilder" type="Node2D" unique_id=308680197]
+script = ExtResource("1_cqv70")
+metadata/_custom_type_script = "uid://b8cvpce3e8vw4"
+metadata/component_type = "magnet"
+
+[node name="container" type="Node2D" parent="." unique_id=679202527]
+rotation = -1.5707964
+scale = Vector2(4, 4)
+
+[node name="Engine" type="Sprite2D" parent="container" unique_id=538840663]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_itrpq")
