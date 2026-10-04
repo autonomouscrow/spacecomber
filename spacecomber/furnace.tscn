@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c1q45xwye1sr3"]
+
+[ext_resource type="Script" uid="uid://dhxi4w00moc6i" path="res://furnace.gd" id="1_70vc4"]
+[ext_resource type="PackedScene" uid="uid://04hhf0wxwdp3" path="res://prefabs/fire.tscn" id="2_gvx8l"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="3_w7ifq"]
+
+[node name="furnace" type="Node2D" unique_id=2136088194]
+scale = Vector2(0.24875255, 0.24875255)
+script = ExtResource("1_70vc4")
+
+[node name="Fire" parent="." unique_id=1762692797 instance=ExtResource("2_gvx8l")]
+position = Vector2(0, 4.571164)
+scale = Vector2(0.71513826, 0.71513826)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=296630023]
+texture = ExtResource("3_w7ifq")
+region_enabled = true
+region_rect = Rect2(864.62134, 12.23164, 73.484375, 73.89485)
