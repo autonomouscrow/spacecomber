@@ -13,20 +13,20 @@ const BULLET_SCRIPT = preload("res://scripts/bullet.gd")
 # the same for every size for now)
 const IRON_ITEM_SCENE = preload("res://prefabs/iron_item.tscn")
 const CRYSTAL_ITEM_SCENE = preload("res://prefabs/crystal_item.tscn")
-@export var min_iron_drop: int = 2
-@export var max_iron_drop: int = 4
+@export var min_iron_drop: int = 5
+@export var max_iron_drop: int = 10
 @export var min_crystal_drop: int = 0
-@export var max_crystal_drop: int = 1
+@export var max_crystal_drop: int = 10
 # How far from the asteroid's center the drops are scattered
 @export var drop_spread: float = 15.0
 
 # Tumbleweed drops wood instead of iron, never nimine, and sometimes corpses
 const WOOD_ITEM_SCENE = preload("res://prefabs/wood_item.tscn")
 const CORPSE_ITEM_SCENE = preload("res://prefabs/body_item.tscn")
-@export var min_wood_drop: int = 2
-@export var max_wood_drop: int = 4
+@export var min_wood_drop: int = 5
+@export var max_wood_drop: int = 10
 @export var corpse_chance: float = 1.0 / 10.0
-@export var corpse_jackpot_chance: float = 1.0 / 10000.0
+@export var corpse_jackpot_chance: float = 1.0 / 1000.0
 @export var corpse_jackpot_amount: int = 9000
 
 # MEGA LOG only drops wood: 20, give or take 5
