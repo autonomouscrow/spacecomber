@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://casg5hcio550e" path="res://prefabs/BusShip.tscn" id="7_ctff6"]
 [ext_resource type="PackedScene" uid="uid://dmjhfi4wu36ln" path="res://prefabs/UnicornShip.tscn" id="8_wjq6t"]
 [ext_resource type="PackedScene" uid="uid://bcvkhneoophmu" path="res://prefabs/SpaceSimTower.tscn" id="10_c7813"]
+[ext_resource type="PackedScene" uid="uid://bxra1wx47th5a" path="res://prefabs/BigShip.tscn" id="11_ctff6"]
 
 [node name="Node2D" type="Node2D" unique_id=960636859]
 script = ExtResource("1_gnhmx")
 item_prefabs = Array[PackedScene]([ExtResource("2_yp5ml"), ExtResource("4_81sii"), ExtResource("5_03cld"), ExtResource("6_2oln5"), ExtResource("7_ctff6"), ExtResource("8_wjq6t"), ExtResource("6_2oln5"), ExtResource("6_2oln5"), ExtResource("6_2oln5"), ExtResource("6_2oln5"), ExtResource("4_81sii"), ExtResource("2_yp5ml")])
-item_rare = Array[PackedScene]([ExtResource("6_kyy4r"), ExtResource("10_c7813"), ExtResource("3_kyy4r"), ExtResource("3_kyy4r")])
+item_rare = Array[PackedScene]([ExtResource("6_kyy4r"), ExtResource("10_c7813"), ExtResource("3_kyy4r"), ExtResource("3_kyy4r"), ExtResource("6_kyy4r"), ExtResource("6_kyy4r"), ExtResource("3_kyy4r"), ExtResource("3_kyy4r"), ExtResource("11_ctff6")])
