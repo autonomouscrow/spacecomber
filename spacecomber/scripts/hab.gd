@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var engine_rot_mult: float = 1
 @export var manual_rotation_speed: float
 
-@export var build_mode: bool = false
+@export var build_mode: bool = true
 
 var rot_vel: float = 0
 
@@ -74,6 +74,7 @@ func _ready() -> void:
 		parts_dict[part_loc] = null
 	
 	build_menu = $"../CanvasLayer/BuildMenu"
+	open_builder()
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")

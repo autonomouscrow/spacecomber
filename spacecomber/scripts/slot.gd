@@ -6,14 +6,18 @@ extends Control
 
 @export var has_child = false
 
+var parent_slot: String
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	set_icon()
+	
+func set_parent_slot(_parent_slot: String) -> void:
+	parent_slot = _parent_slot
 
 func _get_drag_data(at_position:Vector2)->Variant:
 	var part = get_child_of_type(self, ShipBuilderPart)
@@ -33,6 +37,7 @@ func _get_drag_data(at_position:Vector2)->Variant:
 
 func _can_drop_data(at_position:Vector2, data:Variant)->bool:
 	if !data is ItemDrag: return false
+	if self.parent_slot == data.source.name: return false
 	return slot_active
 
 func _drop_data(at_position:Vector2, data:Variant)->void:
@@ -53,7 +58,7 @@ func _drop_data(at_position:Vector2, data:Variant)->void:
 		
 	build_menu.add_debt(drag_data.item_data)
 	if drag_data.source is ShopSlot:
-		build_menu.stop_hint(drag_data.item_data.item_name)
+		build_menu.restock_shop(drag_data.item_data.item_name)
 
 func get_child_of_type(parent_node: Node, type_to_find) -> Node:
 	for child in parent_node.get_children():

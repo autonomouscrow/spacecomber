@@ -50,6 +50,8 @@ func _ready() -> void:
 	loc_slots["nwr"] = %nwr
 	loc_slots["ser"] = %ser
 	loc_slots["swr"] = %swr
+	
+	set_slot_parent()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -82,6 +84,16 @@ func has_child_set() -> void:
 			base_slot.has_child = true
 		else:
 			base_slot.has_child = false
+			
+func set_slot_parent() -> void:
+	var base_directions = ["n", "e", "s", "w", "ne", "nw", "se", "sw"]
+	
+	for dir in base_directions:
+		var l_child = loc_slots[dir + "l"]
+		var r_child = loc_slots[dir + "r"]
+		
+		l_child.set_parent_slot(dir)
+		r_child.set_parent_slot(dir)
 
 func set_parts_dict() -> void:
 	for part_dir in part_locations:
@@ -159,11 +171,12 @@ func add_debt(data: ItemData) -> void:
 		current_debit_credit[3] -= data.item_cost[3]
 		
 
-func stop_hint(item_name: String) -> void:
+func restock_shop(item_name: String) -> void:
 	var shops = $ScrollContainer/ShopGrid
 	for shop in shops.get_children():
 		if shop.name == item_name:
 			shop.turn_off_drag_sign()
+			shop.can_sell = true
 
 func pay() -> void:
 	var hab = $"../../hab"
