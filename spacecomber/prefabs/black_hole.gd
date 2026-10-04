@@ -38,4 +38,5 @@ func _physics_process(delta: float) -> void:
 # Something reached the center of the black hole (the small inner Area2D).
 # Connected in BlackHole.tscn; nothing happens there yet
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	pass
+	if _body.has_method("take_damage"):
+		_body.take_damage(100000)

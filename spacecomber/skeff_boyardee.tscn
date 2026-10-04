@@ -69,7 +69,7 @@ position = Vector2(464, 499)
 position = Vector2(464, 499)
 
 [node name="BlackHole" parent="." unique_id=382168958 instance=ExtResource("12_kmyvf")]
-position = Vector2(142.00002, 278)
+position = Vector2(142, 278.00003)
 
 [node name="CharacterBody2D5" parent="." unique_id=788914277 instance=ExtResource("13_627nh")]
 position = Vector2(279, 106)
