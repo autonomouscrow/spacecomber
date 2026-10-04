@@ -4,6 +4,11 @@ extends Node2D
 var target_scale_y = scale.y * 800.0
 var normal_scale_y = scale.y
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_V:
+			shoot()
+
 func shoot() -> void:
 	var tween = create_tween().set_parallel(false)
 	
