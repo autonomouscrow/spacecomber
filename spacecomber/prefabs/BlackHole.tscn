@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bsx4nakcfemg"]
+
+[ext_resource type="Script" uid="uid://btcjen0emn38" path="res://prefabs/black_hole.gd" id="1_smkxa"]
+[ext_resource type="Script" uid="uid://bxxy6cavnrgxx" path="res://prefabs/animated_sprite_2d.gd" id="3_4jc7o"]
+[ext_resource type="Texture2D" uid="uid://cu2pe5r74txlu" path="res://black hole.png" id="3_smkxa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1hotc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jc7o"]
+atlas = ExtResource("3_smkxa")
+region = Rect2(1022, 0, 1022, 543)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y21d5"]
+atlas = ExtResource("3_smkxa")
+region = Rect2(0, 0, 1022, 543)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24cit"]
+atlas = ExtResource("3_smkxa")
+region = Rect2(0, 543, 1022, 543)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3acn"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jc7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y21d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24cit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y21d5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BlackHole" type="CharacterBody2D" unique_id=1827956524]
+position = Vector2(426, 292)
+script = ExtResource("1_smkxa")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=296604228]
+scale = Vector2(0.25629532, 0.25629532)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729284724]
+position = Vector2(-3.9017491, 11.705248)
+scale = Vector2(32.153305, 32.153305)
+shape = SubResource("CircleShape2D_1hotc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=547968631]
+position = Vector2(7, 0)
+scale = Vector2(0.3484501, 0.3484501)
+sprite_frames = SubResource("SpriteFrames_x3acn")
+frame = 3
+frame_progress = 0.15044457
+script = ExtResource("3_4jc7o")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -27,4 +27,4 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("entered")
 	var direction = (body.global_position - global_position).normalized()
-	body.velocity += direction * 1000
+	ody.velocity += direction * 1000
