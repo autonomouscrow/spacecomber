@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
 
 [node name="enemybullet" type="CharacterBody2D" unique_id=1114157678]
+scale = Vector2(0.39812455, 0.39812455)
 script = ExtResource("1_hrtip")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1300992300]

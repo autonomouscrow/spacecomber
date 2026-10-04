@@ -9,6 +9,7 @@
 points = PackedVector2Array(0, -130, 124, -40, 134, 59, 109, 77, -1, 94, -110, 77, -133, 60, -124, -39)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1546397987]
+scale = Vector2(0.25022942, 0.25022942)
 script = ExtResource("1_dhj34")
 Ship_speed = 20.0
 Ship_health = 100

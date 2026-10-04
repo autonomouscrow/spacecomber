@@ -1,6 +1,8 @@
 # BulletSpawner.gd
 extends Node2D
 
+const scenescene = preload("res://scene.tscn")
+
 const bullet_scene = preload("res://prefabs/enemybullet.tscn")   
 @export var fire_rate: float = 0.5     
 @export var auto_fire: bool = false    
@@ -22,5 +24,6 @@ func _start_auto_fire() -> void:
 func spawn_bullet(direction: Vector2 = Vector2.RIGHT) -> void:
 	
 	var bullet = bullet_scene.instantiate()
-	bullet.global_position = Vector2(0,0)
-	add_child(bullet)
+	bullet.global_position = global_position
+	bullet.global_rotation = global_rotation
+	get_tree().current_scene.add_child(bullet)
