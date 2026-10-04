@@ -29,6 +29,10 @@ const CORPSE_ITEM_SCENE = preload("res://prefabs/body_item.tscn")
 @export var corpse_jackpot_chance: float = 1.0 / 10000.0
 @export var corpse_jackpot_amount: int = 9000
 
+# MEGA LOG only drops wood: 20, give or take 5
+@export var min_mega_log_wood_drop: int = 15
+@export var max_mega_log_wood_drop: int = 25
+
 # How fast tumbleweed spins (radians per second, random direction)
 @export var min_tumble_spin: float = 1.0
 @export var max_tumble_spin: float = 3.0
@@ -38,7 +42,7 @@ var destroyed := false
 var size := ""
 
 # Pick a size in the Inspector, or leave it on Random to get a random one
-@export_enum("Random", "small", "medium", "big", "Massive", "tumbleweed") var asteroid_size: String = "Random"
+@export_enum("Random", "small", "medium", "big", "Massive", "tumbleweed", "MEGA LOG") var asteroid_size: String = "Random"
 
 # Speed range for a small asteroid; bigger sizes are slowed down by SIZE_SPEED
 @export var min_speed: float = 20.0
@@ -55,6 +59,7 @@ const SIZE_SPEED := {
 	"big": 0.5,
 	"Massive": 0.3,
 	"tumbleweed": 1.0,
+	"MEGA LOG": 0.3,
 }
 
 # Starting health for each size
@@ -64,6 +69,7 @@ const SIZE_HEALTH := {
 	"big": 15,
 	"Massive": 20,
 	"tumbleweed": 5,
+	"MEGA LOG": 20,
 }
 
 func _ready():
@@ -135,6 +141,10 @@ func drop_items() -> void:
 				spawn_drop(CORPSE_ITEM_SCENE)
 		elif randf() < corpse_chance:
 			spawn_drop(CORPSE_ITEM_SCENE)
+		return
+	if size == "MEGA LOG":
+		for i in randi_range(min_mega_log_wood_drop, max_mega_log_wood_drop):
+			spawn_drop(WOOD_ITEM_SCENE)
 		return
 	for i in randi_range(min_iron_drop, max_iron_drop):
 		spawn_drop(IRON_ITEM_SCENE)

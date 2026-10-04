@@ -19,6 +19,9 @@ points = PackedVector2Array(82, 85, -31, 103, -112, 28, -119, -60, -60, -78, -41
 [sub_resource type="CircleShape2D" id="CircleShape2D_17a84"]
 radius = 32.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18psr"]
+size = Vector2(344, 54)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=968976270]
 script = ExtResource("2_asteroid")
 
@@ -73,3 +76,14 @@ region_rect = Rect2(702.4912, 154.10388, 123.108765, 118.29608)
 position = Vector2(-2, 0)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_17a84")
+
+[node name="MEGA LOG" type="Sprite2D" parent="." unique_id=646385179]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_k8jc2")
+region_enabled = true
+region_rect = Rect2(551.9999, 329.99997, 381.59998, 108.79999)
+
+[node name="MEGA LOG collision" type="CollisionShape2D" parent="." unique_id=1160219448]
+position = Vector2(0, 3.5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_18psr")
