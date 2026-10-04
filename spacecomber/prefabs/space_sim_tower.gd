@@ -25,7 +25,7 @@ func _physics_process(delta):
 
 
 # How hard the tower launches ships away from itself
-@export var launch_speed: float = 100000.0
+@export var launch_speed: float = 10000.0
 
 # Launches anything that can be pushed (the player, enemy ships and items have push())
 func _on_area_2d_body_entered(body: Node2D) -> void:
