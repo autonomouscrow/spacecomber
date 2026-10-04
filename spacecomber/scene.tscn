@@ -10,11 +10,6 @@
 [ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="6_ni31j"]
 [ext_resource type="Script" uid="uid://bcyrc8hhiqm4g" path="res://prefabs/sell_slot.gd" id="7_5juve"]
 [ext_resource type="Script" uid="uid://dtbtof1cly127" path="res://scripts/follow_camera.gd" id="10_cam"]
-[ext_resource type="PackedScene" uid="uid://bvsej4tgbhn5b" path="res://prefabs/shield_base.tscn" id="10_fy5k1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
-atlas = ExtResource("3_3253y")
-region = Rect2(10.664291, 13.513466, 218.5095, 218.94882)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2il8"]
 atlas = ExtResource("3_3253y")
@@ -35,6 +30,10 @@ region = Rect2(655.4579, 250.84818, 34.22711, 31.461731)
 atlas = ExtResource("3_3253y")
 region = Rect2(656.4769, 155.75732, 33.64746, 44.659927)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
+atlas = ExtResource("3_3253y")
+region = Rect2(10.664291, 13.513466, 218.5095, 218.94882)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_hab"]
 radius = 26.0
 
@@ -53,7 +52,63 @@ hab_node = NodePath("../../hab")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=965346883]
 
+[node name="money" type="GridContainer" parent="CanvasLayer" unique_id=188069417]
+custom_minimum_size = Vector2(0, 32)
+custom_maximum_size = Vector2(-1, 32)
+offset_left = 398.0
+offset_top = 14.0
+offset_right = 835.0
+offset_bottom = 46.0
+columns = 10
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/money" unique_id=1901913897]
+layout_mode = 2
+texture = SubResource("AtlasTexture_h2il8")
+
+[node name="wood" type="Label" parent="CanvasLayer/money" unique_id=362508678]
+layout_mode = 2
+text = "10,000"
+label_settings = SubResource("LabelSettings_30xwg")
+
+[node name="Control" type="Control" parent="CanvasLayer/money" unique_id=2117823212]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/money" unique_id=1994555089]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xlvrw")
+expand_mode = 2
+
+[node name="iron" type="Label" parent="CanvasLayer/money" unique_id=1307792851]
+layout_mode = 2
+text = "10,000"
+label_settings = SubResource("LabelSettings_30xwg")
+
+[node name="Control2" type="Control" parent="CanvasLayer/money" unique_id=587928231]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/money" unique_id=201893797]
+layout_mode = 2
+texture = SubResource("AtlasTexture_73fnb")
+
+[node name="nimine" type="Label" parent="CanvasLayer/money" unique_id=854654955]
+layout_mode = 2
+text = "10,000"
+label_settings = SubResource("LabelSettings_30xwg")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/money" unique_id=80364422]
+layout_mode = 2
+texture = SubResource("AtlasTexture_5juve")
+stretch_mode = 5
+
+[node name="corpse" type="Label" parent="CanvasLayer/money" unique_id=1116123319]
+layout_mode = 2
+text = "10,000"
+label_settings = SubResource("LabelSettings_30xwg")
+
 [node name="BuildMenu" type="Node2D" parent="CanvasLayer" unique_id=1116602992]
+visible = false
 script = ExtResource("2_ni31j")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/BuildMenu" unique_id=436396287]
@@ -378,8 +433,6 @@ position = Vector2(458, 264)
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("4_u3cyc")
-
-[node name="ShieldBase" parent="hab" unique_id=1815835711 instance=ExtResource("10_fy5k1")]
 
 [node name="hab img" type="Sprite2D" parent="hab" unique_id=2098575124]
 scale = Vector2(0.25, 0.25)

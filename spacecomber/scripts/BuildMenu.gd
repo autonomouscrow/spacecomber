@@ -66,6 +66,7 @@ func _process(delta: float) -> void:
 	has_child_set()
 	calc_debts()
 	currency_display()
+	generate_shields() 
 
 func active_set() -> void:
 	var base_directions = ["n", "e", "s", "w", "ne", "nw", "se", "sw"]
@@ -218,3 +219,11 @@ func get_cost(component_type: String) -> Array:
 		if data.component_type == component_type:
 			return data.item_cost
 	return Array()
+
+func generate_shields() -> void:
+	for dir in part_locations:
+		var slot = loc_slots[dir]
+		for item in slot.get_children():
+			if item is ShieldBuild:
+				item.create_shield()
+				break

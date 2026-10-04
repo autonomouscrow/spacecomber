@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bf8bj8fpgyjf1"]
 
-[ext_resource type="Script" uid="uid://b8cvpce3e8vw4" path="res://scripts/ship_part.gd" id="1_41wsf"]
+[ext_resource type="Script" uid="uid://d1st0ai2co5p5" path="res://prefabs/ship_builder/shield_generator_build.gd" id="1_41wsf"]
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_cbogt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41wsf"]

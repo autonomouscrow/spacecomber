@@ -159,9 +159,9 @@ func _physics_process(delta: float) -> void:
 	var velocity_before := velocity
 	move_and_slide()
 	push_what_we_hit(velocity_before)
-	
+	update_money()
 		
-	generate_shields() # temp
+	generate_shields() # temp, remove when shields deactivate when gone, and only run when shields over 5%
 
 
 # Bumping into something that can be pushed (asteroids, enemy ships) hands it
@@ -326,6 +326,7 @@ func open_builder():
 	build_menu.parts_dict = parts_dict
 	build_menu.spawn_parts()
 	build_menu.current_debit_credit = [0, 0, 0, 0]
+	build_menu.just_bought = []
 	build_menu.spawn_shop_blocks()
 	
 	build_menu.visible = true
@@ -428,3 +429,14 @@ func generate_shields() -> void:
 		if child.name in part_locations:
 			if child is ShieldGenerator:
 				child.create_shield()
+
+func update_money() -> void:
+	var wood_label = $"../CanvasLayer/money/wood"
+	var iron_label = $"../CanvasLayer/money/iron"
+	var nimine_label = $"../CanvasLayer/money/nimine"
+	var corpse_label = $"../CanvasLayer/money/corpse"
+	
+	wood_label.text = str(wood)
+	iron_label.text = str(iron)
+	nimine_label.text = str(nimine)
+	corpse_label.text = str(corpse)

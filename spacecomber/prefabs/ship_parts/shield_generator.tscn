@@ -12,6 +12,7 @@ script = ExtResource("1_hi0p3")
 metadata/component_type = "shield_generator"
 
 [node name="Node2D" type="Node2D" parent="." unique_id=511933934]
+position = Vector2(-8.12, 0)
 scale = Vector2(0.25, 0.25)
 
 [node name="TextureRect" type="TextureRect" parent="Node2D" unique_id=209499979]
