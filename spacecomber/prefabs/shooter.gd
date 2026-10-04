@@ -13,5 +13,5 @@ func _input(event: InputEvent) -> void:
 		shooter.spawn_bullet()
 		SoundControl.play_random_short_lazer()
 		can_shoot = false
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.2, false).timeout
 		can_shoot = true

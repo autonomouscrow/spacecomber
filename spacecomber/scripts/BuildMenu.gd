@@ -68,6 +68,19 @@ func _process(delta: float) -> void:
 	currency_display()
 	generate_shields() 
 
+# B closes build mode. The ship can't hear it while building (the game is
+# paused), so the menu does it; not while settings / controls are open on top
+func _unhandled_input(event: InputEvent) -> void:
+	if not event.is_action_pressed("build_mode_toggle"):
+		return
+	if SettingsMenu.is_open() or ControlsMenu.is_open():
+		return
+	var hab = $"../../hab"
+	if hab.build_mode:
+		hab.build_mode = false
+		hab.close_builder()
+		get_viewport().set_input_as_handled()
+
 func active_set() -> void:
 	var base_directions = ["n", "e", "s", "w", "ne", "nw", "se", "sw"]
 	

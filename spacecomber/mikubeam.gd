@@ -31,7 +31,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 		while body in current_bodies:
 			body.take_damage(7)
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(1.0, false).timeout
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	

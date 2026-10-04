@@ -125,13 +125,6 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	rot_vel += direction * manual_rotation_speed * delta
 
-	if Input.is_action_just_pressed("build_mode_toggle"):
-		if build_mode:
-			build_mode = false
-			close_builder()
-		else:
-			build_mode = true
-			open_builder()
 
 	# Engines only fire while there's wood juice in the tank
 	var has_juice := wood_juice > 0
@@ -169,6 +162,14 @@ func _physics_process(delta: float) -> void:
 # Bumping into something that can be pushed (asteroids, enemy ships) hands it
 # this fraction of the ship's speed going into it, and the ship loses that much
 @export var collision_transfer: float = 0.5
+
+# B opens build mode. (Build mode pauses the game, so the build menu itself
+# handles B to close it again; see BuildMenu._unhandled_input)
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("build_mode_toggle") and not build_mode:
+		build_mode = true
+		open_builder()
+		get_viewport().set_input_as_handled()
 
 func push_what_we_hit(velocity_before: Vector2) -> void:
 	var pushed := []
@@ -323,7 +324,9 @@ func open_builder():
 			parts_dict[child.name] = child.get_meta("component_type")
 			child.queue_free()
 	
-	build_menu.process_mode = Node.PROCESS_MODE_INHERIT
+	# Everything else pauses while building; the build menu keeps running
+	build_menu.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
 	
 	build_menu.parts_dict = parts_dict
 	build_menu.spawn_parts()
@@ -351,6 +354,7 @@ func close_builder():
 
 	build_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	build_menu.visible = false
+	get_tree().paused = false
 			
 func spawn_part(component_type: String, location_data: LocationData, location_name: String) -> void:
 	if not ShipParts.SCENES.has(component_type):

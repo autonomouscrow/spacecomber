@@ -17,7 +17,7 @@ func _ready() -> void:
 func _start_auto_fire() -> void:
 	while auto_fire:
 
-		await get_tree().create_timer(fire_rate).timeout
+		await get_tree().create_timer(fire_rate, false).timeout
 
 		spawn_bullet()
 
