@@ -188,7 +188,10 @@ func _physics_process(delta):
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
 
-	if not get_visible_area().grow(despawn_margin).has_point(global_position):
+	# Asteroids made by the spawner are removed by it (it spawns them well off
+	# screen); this is only for ones placed by hand
+	var spawned := get_parent() != null and get_parent().get("max_despawn_distance") != null
+	if not spawned and not get_visible_area().grow(despawn_margin).has_point(global_position):
 		queue_free()
 
 # Pushes (the player's ship bumping into it, black holes, towers) add to the
