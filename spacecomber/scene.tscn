@@ -390,6 +390,13 @@ shape = SubResource("CircleShape2D_hab")
 process_callback = 0
 script = ExtResource("10_cam")
 
+[node name="hitbox" type="Area2D" parent="hab" unique_id=1324906582]
+collision_layer = 0
+monitorable = false
+
+[node name="hitbox collision" type="CollisionShape2D" parent="hab/hitbox" unique_id=517309244]
+shape = SubResource("CircleShape2D_hab")
+
 [node name="pickup area" type="Area2D" parent="hab" unique_id=1648203917]
 collision_layer = 0
 monitorable = false
@@ -403,3 +410,4 @@ scale = Vector2(0.23767202, 0.23767202)
 texture = SubResource("AtlasTexture_g576v")
 
 [connection signal="body_entered" from="hab/pickup area" to="hab" method="_on_pickup_area_body_entered"]
+[connection signal="area_entered" from="hab/hitbox" to="hab" method="_on_hitbox_area_entered"]
