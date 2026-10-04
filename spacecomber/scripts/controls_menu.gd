@@ -7,14 +7,12 @@ extends CanvasLayer
 const CONTROLS := [
 	["W / S", "Fire engines (thrust)"],
 	["A / D  or  LEFT / RIGHT", "Turn the ship"],
-	["SPACE", "Shoot"],
-	["V", "Fire Miku beam"],
+	["SPACE / ENTER", "Shoot"],
 	["E", "Brake"],
-	["B", "Open / close build mode"],
-	["MOUSE DRAG", "Move parts between slots while in build mode"],
 	["O", "Open / close settings"],
-	["C", "Open / close controls"],
-	["ESCAPE", "Close settings / controls"],
+	["B", "Open / close build mode"],
+	["V", "Fire Miku beam"],
+	["ESCAPE", "Close settings / controls / build mode"],
 ]
 const KEY_COLOR := Color(1, 1, 0.5294118)  # yellow #ffff87, same as the slider
 const LIST_FONT_SIZE := 22

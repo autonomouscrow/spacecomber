@@ -4,8 +4,18 @@ extends Node2D
 @export var min_distance: float = 10.0 # Prevents objects from freaking out when too close
 
 @onready var gravity_area: Area2D = $Area2D2
+# The small area right in the middle
+@onready var center_area: Area2D = $Area2D
+
+# Health per second the player loses while in the very centre
+@export var center_damage_per_second: float = 25.0
 
 func _physics_process(delta: float) -> void:
+	# The player sitting in the centre keeps taking damage
+	for body in center_area.get_overlapping_bodies():
+		if body.is_in_group("player"):
+			body.health -= center_damage_per_second * delta
+
 	# Get all bodies currently inside the area
 	var bodies = gravity_area.get_overlapping_bodies()
 	
