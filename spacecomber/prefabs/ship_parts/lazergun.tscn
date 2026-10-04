@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://8wicr48vcq05"]
+
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_v0k7v"]
+[ext_resource type="Script" path="res://scripts/lazergun.gd" id="2_lazer"]
+[ext_resource type="PackedScene" uid="uid://bvohi0p70gmk" path="res://prefabs/enemyshooter.tscn" id="3_gun"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njq15"]
+atlas = ExtResource("1_v0k7v")
+region = Rect2(368.75992, 99.55199, 50.336, 77.44002)
+
+[node name="Lazergun" type="Node2D" unique_id=1790979546]
+script = ExtResource("2_lazer")
+metadata/component_type = "lazergun"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=551971642]
+rotation = 4.712389
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_njq15")
+
+[node name="Gun" parent="." unique_id=1263950418 instance=ExtResource("3_gun")]
+position = Vector2(10, 0)

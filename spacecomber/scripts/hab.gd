@@ -29,6 +29,10 @@ var wood_juice: float = 100
 @export var max_health: float = 100.0
 @export var corpse_convert_time: float = 10.0
 @export var health_per_corpse: float = 10.0
+# Each furnace on the ship adds this much conversion speed (1.0 = one furnace
+# converts twice as fast, two furnaces three times as fast, ...)
+@export var furnace_speed_bonus: float = 1.0
+var furnace_count := 0
 # Juice / health from a used-up wood / corpse that hasn't flowed in yet
 var juice_to_add := 0.0
 # All the wood juice the engines have ever burned (the HUD shows recent use)
@@ -147,12 +151,14 @@ func burn_wood_juice(engines: Array[Node], delta: float) -> void:
 # Slowly turns wood into wood juice and corpses into health, one at a time,
 # while there's some left and the tank / health isn't full
 func convert_resources(delta: float) -> void:
+	# Furnaces speed up both conversions
+	var speed := 1.0 + furnace_count * furnace_speed_bonus
 	# Start on the next wood once the last one has fully flowed in
 	if juice_to_add <= 0 and wood > 0 and wood_juice < max_wood_juice:
 		wood -= 1
 		juice_to_add = juice_per_wood
 	# Flow it in smoothly; if the tank fills up, the rest waits for room
-	var juice := minf(juice_to_add, minf(juice_per_wood / wood_convert_time * delta, max_wood_juice - wood_juice))
+	var juice := minf(juice_to_add, minf(juice_per_wood / wood_convert_time * speed * delta, max_wood_juice - wood_juice))
 	if juice > 0:
 		juice_to_add -= juice
 		wood_juice += juice
@@ -160,7 +166,7 @@ func convert_resources(delta: float) -> void:
 	if health_to_add <= 0 and corpse > 0 and health < max_health:
 		corpse -= 1
 		health_to_add = health_per_corpse
-	var heal := minf(health_to_add, minf(health_per_corpse / corpse_convert_time * delta, max_health - health))
+	var heal := minf(health_to_add, minf(health_per_corpse / corpse_convert_time * speed * delta, max_health - health))
 	if heal > 0:
 		health_to_add -= heal
 		health += heal
@@ -181,9 +187,11 @@ func get_engines(engine_types: Array) -> Array[Node]:
 		engines.append_array(get_children_with_meta(self, "component_type", engine_type))
 	return engines
 
-# Works out the total push and spin of the W engines and the S engines
+# Counts the furnaces, and works out the total push and spin of the W engines
+# and the S engines
 # (normal and better engines have the same stats for now)
 func update_engines() -> void:
+	furnace_count = get_children_with_meta(self, "component_type", "furnace").size()
 	w_engines = get_engines(ShipParts.W_ENGINES)
 	s_engines = get_engines(ShipParts.S_ENGINES)
 	var w_result = get_engine_thrust(w_engines)
