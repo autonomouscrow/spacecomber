@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		pick_new_target()
 	
-	move_and_slide()
+	move_with_push(delta)
 
 	# --- Shooting only when facing the hab_node ---
 	update_guns()
@@ -171,3 +171,22 @@ func spawn_drop(scene: PackedScene) -> void:
 	item.position = get_parent().to_local(spot)
 	# Added next frame: physics bodies can't be added mid-collision
 	get_parent().add_child.call_deferred(item)
+
+# Outside forces (black hole pull, tower launch). Steering resets velocity
+# every frame, so pushes are kept separately in push_velocity, added on top
+# of the steering, and fade away so the ship goes back to normal afterwards
+var push_velocity := Vector2.ZERO
+# How fast pushes fade (higher = shorter launches, weaker steady pulls)
+@export var push_damping: float = 1.5
+
+func custom_pull(amount: Vector2) -> void:
+	push_velocity += amount
+
+func launch(amount: Vector2) -> void:
+	push_velocity += amount
+
+func move_with_push(delta: float) -> void:
+	velocity += push_velocity
+	move_and_slide()
+	velocity -= push_velocity
+	push_velocity *= exp(-push_damping * delta)

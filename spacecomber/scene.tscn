@@ -31,6 +31,9 @@ region = Rect2(655.4579, 250.84818, 34.22711, 31.461731)
 atlas = ExtResource("3_3253y")
 region = Rect2(656.4769, 155.75732, 33.64746, 44.659927)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hab"]
+radius = 26.0
+
 [node name="root" type="Node2D" unique_id=236387114]
 
 [node name="UI" parent="." unique_id=1326872007 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_m7jmp")]
@@ -360,6 +363,9 @@ manual_rotation_speed = 1.0
 [node name="hab img" type="Sprite2D" parent="hab" unique_id=2098575124]
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_g576v")
+
+[node name="hab collision" type="CollisionShape2D" parent="hab" unique_id=171846517]
+shape = SubResource("CircleShape2D_hab")
 
 [node name="test orb" type="Sprite2D" parent="." unique_id=127475164]
 position = Vector2(553, 153)

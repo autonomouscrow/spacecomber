@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bsx4nakcfemg"]
 
 [ext_resource type="Script" uid="uid://bxxy6cavnrgxx" path="res://prefabs/animated_sprite_2d.gd" id="3_4jc7o"]
+[ext_resource type="Script" uid="uid://btcjen0emn38" path="res://prefabs/black_hole.gd" id="4_blackhole"]
 [ext_resource type="Texture2D" uid="uid://cu2pe5r74txlu" path="res://black hole.png" id="3_smkxa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
@@ -43,6 +44,7 @@ animations = [{
 [node name="BlackHole" type="Node2D" unique_id=274801078]
 position = Vector2(446, 271.00003)
 scale = Vector2(0.5743868, 0.5743868)
+script = ExtResource("4_blackhole")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1595087887]
 

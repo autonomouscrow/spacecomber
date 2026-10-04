@@ -31,6 +31,11 @@ func _physics_process(delta: float) -> void:
 				body.apply_central_force(force)
 				
 			elif body.has_method("custom_pull"):
-				# If you have custom characters that move via move_and_slide(), 
+				# If you have custom characters that move via move_and_slide(),
 				# you can call a custom method on them:
 				body.custom_pull(direction * pull_strength * delta)
+
+# Something reached the center of the black hole (the small inner Area2D).
+# Connected in BlackHole.tscn; nothing happens there yet
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	pass

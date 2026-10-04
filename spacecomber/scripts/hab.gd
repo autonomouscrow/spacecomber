@@ -181,3 +181,11 @@ func spawn_part(component_type: String, location_data: LocationData, location_na
 		w_engine_normal.rotation = deg_to_rad(location_data.rot)
 		w_engine_normal.scale = Vector2(location_data.size, location_data.size)
 		w_engine_normal.name = location_name
+
+# Outside forces (black hole pull, tower launch). The ship keeps its
+# momentum, so these add straight to its velocity like the engines do
+func custom_pull(amount: Vector2) -> void:
+	velocity += amount
+
+func launch(amount: Vector2) -> void:
+	velocity += amount
