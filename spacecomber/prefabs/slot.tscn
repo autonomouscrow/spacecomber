@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b5f1slofs4d16"]
+
+[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="1_lsl1e"]
+[ext_resource type="Script" uid="uid://v7bufthgjp1w" path="res://scripts/slot.gd" id="1_mferg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
+atlas = ExtResource("1_lsl1e")
+region = Rect2(503.39328, 13.37446, 34.167755, 34.3854)
+
+[node name="Slot" type="Control" unique_id=1387891524]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -515.0
+offset_top = -305.0
+offset_right = -445.0
+offset_bottom = -235.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("1_mferg")
+
+[node name="icon" type="Sprite2D" parent="." unique_id=821154733]
+texture = SubResource("AtlasTexture_g576v")
+offset = Vector2(35, 35)
