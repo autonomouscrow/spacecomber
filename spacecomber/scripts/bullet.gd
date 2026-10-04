@@ -10,7 +10,9 @@ func _ready() -> void:
 	get_tree().create_timer(lifetime).timeout.connect(queue_free)
 
 func _process(delta: float) -> void:
-	position += transform.x * 600 * delta
+	# Flies forward at 600, plus velocity: the speed of the ship that fired it
+	# (set by the player's guns), so a moving ship can't overtake its own shots
+	position += (transform.x * 600 + velocity) * delta
 
 func disappear():
 	if hit:

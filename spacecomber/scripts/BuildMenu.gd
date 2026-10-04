@@ -18,6 +18,10 @@ var item_datas: Array[ItemData] = [
 	ItemData.new("Magnet", "pulls in iron", "magnet", [0, 0, 0, 1]),
 	ItemData.new("Magwood", "pulls in wood", "magwood", [0, 0, 0, 1]),
 	ItemData.new("Nagnet", "pulls in nimine", "nagnet", [0, 0, 0, 1]),
+	ItemData.new("Mouth", "eats corpses", "mouth", [0, 0, 0, 1]),
+	ItemData.new("Lazergun", "pew pew (SPACE)", "lazergun", [0, 0, 0, 1]),
+	ItemData.new("Mikugun", "MIKU MIKU BEAM (V)", "mikugun", [0, 0, 0, 1]),
+	ItemData.new("Furnace", "regen fuel and health faster", "furnace", [0, 0, 0, 1]),
 ]
 
 var current_debit_credit = [0, 0, 0, 0]

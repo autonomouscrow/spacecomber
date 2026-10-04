@@ -22,7 +22,7 @@ func _start_auto_fire() -> void:
 
 		spawn_bullet()
 
-func spawn_bullet(direction: Vector2 = Vector2.RIGHT) -> void:
+func spawn_bullet(direction: Vector2 = Vector2.RIGHT) -> Node2D:
 	
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
@@ -30,6 +30,7 @@ func spawn_bullet(direction: Vector2 = Vector2.RIGHT) -> void:
 	# Tag the bullet with the ship that fired it, so it can't hurt that ship
 	bullet.set_meta("owner_ship", get_owner_ship())
 	get_tree().current_scene.add_child(bullet)
+	return bullet
 
 # The ship this gun is mounted on (the nearest parent that can take damage)
 func get_owner_ship() -> Node:

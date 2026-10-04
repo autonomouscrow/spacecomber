@@ -22,7 +22,9 @@ func _physics_process(delta: float) -> void:
 		return
 	if Input.is_action_pressed("ui_accept") and cooldown <= 0:
 		cooldown = fire_rate
-		gun.spawn_bullet()
+		# The bullet keeps the ship's speed, so the ship can't outrun it
+		var bullet = gun.spawn_bullet()
+		bullet.velocity = ship.velocity
 		if Engine.get_physics_frames() != last_sound_frame:
 			last_sound_frame = Engine.get_physics_frames()
 			SoundControl.play_random_short_lazer()

@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b8cvpce3e8vw4" path="res://scripts/ship_part.gd" id="1_part"]
+[ext_resource type="PackedScene" uid="uid://c1q45xwye1sr3" path="res://furnace.tscn" id="2_furnace"]
+
+[node name="FurnaceBuilder" type="Node2D" unique_id=1735092846]
+script = ExtResource("1_part")
+metadata/_custom_type_script = "uid://b8cvpce3e8vw4"
+metadata/component_type = "furnace"
+
+[node name="FurnaceBody" parent="." unique_id=640281937 instance=ExtResource("2_furnace")]
+scale = Vector2(1, 1)

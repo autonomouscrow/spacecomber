@@ -10,7 +10,7 @@ region = Rect2(445.9867, 173.47768, 65.02045, 60.578156)
 [node name="WEngineNormalBuilder" type="Node2D" unique_id=308680197]
 script = ExtResource("1_jgb5c")
 metadata/_custom_type_script = "uid://b8cvpce3e8vw4"
-metadata/component_type = "nagnet"
+metadata/component_type = "mouth"
 
 [node name="container" type="Node2D" parent="." unique_id=679202527]
 rotation = -1.5707964

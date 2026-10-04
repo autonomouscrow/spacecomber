@@ -5,12 +5,12 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_itrpq"]
 atlas = ExtResource("2_eu8ht")
-region = Rect2(272.75992, 100.35199, 74.43997, 74.448)
+region = Rect2(368.75992, 99.55199, 50.336, 77.44002)
 
 [node name="WEngineNormalBuilder" type="Node2D" unique_id=308680197]
 script = ExtResource("1_px1ks")
 metadata/_custom_type_script = "uid://b8cvpce3e8vw4"
-metadata/component_type = "w_engine_normal"
+metadata/component_type = "lazergun"
 
 [node name="container" type="Node2D" parent="." unique_id=679202527]
 rotation = -1.5707964
