@@ -68,10 +68,12 @@ func _process(delta: float) -> void:
 	currency_display()
 	generate_shields() 
 
-# B closes build mode. The ship can't hear it while building (the game is
-# paused), so the menu does it; not while settings / controls are open on top
+# B or Escape closes build mode. The ship can't hear it while building (the
+# game is paused), so the menu does it; not while settings / controls are open
+# on top (then Escape closes those first)
 func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("build_mode_toggle"):
+	var escape: bool = event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE
+	if not (event.is_action_pressed("build_mode_toggle") or escape):
 		return
 	if SettingsMenu.is_open() or ControlsMenu.is_open():
 		return
