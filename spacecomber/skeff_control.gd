@@ -58,6 +58,10 @@ func _spawn_random_item() -> void:
 	if item_instance:
 		container.add_child(item_instance)
 		item_instance.global_position = spawn_pos
+		
+		# Check if the item has the 'set_hab' function and call it
+		if item_instance.has_method("set_hab"):
+			item_instance.set_hab(hab_node)
 
 func _get_random_valid_position() -> Vector2:
 	# Generate a random angle and a random distance between min and max spawn bounds

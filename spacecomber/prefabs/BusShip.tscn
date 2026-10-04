@@ -13,8 +13,8 @@ position = Vector2(506, 246)
 scale = Vector2(0.25022942, 0.25022942)
 script = ExtResource("1_vgk5v")
 Ship_speed = 20.0
-Ship_health = 10
 Wander_radius = 2000.0
+Ship_health = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1670046717]
 position = Vector2(-3.9963284, -3.9963412)

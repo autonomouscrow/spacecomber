@@ -70,3 +70,6 @@ func drop_items() -> void:
 	spawn_drops(CRYSTAL_ITEM_SCENE, min_nimine_drop, max_nimine_drop)
 	spawn_drops(WOOD_ITEM_SCENE, min_wood_drop, max_wood_drop)
 	spawn_drops(CORPSE_ITEM_SCENE, min_corpse_drop, max_corpse_drop)
+	
+func set_hab(hab: CharacterBody2D) -> void:
+	hab_node = hab

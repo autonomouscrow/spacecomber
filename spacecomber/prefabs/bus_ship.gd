@@ -46,3 +46,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func drop_items() -> void:
 	spawn_drops(CORPSE_ITEM_SCENE, corpse_drop, corpse_drop)
 	spawn_drops(IRON_ITEM_SCENE, min_iron_drop, max_iron_drop)
+	
