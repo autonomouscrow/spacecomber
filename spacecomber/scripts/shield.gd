@@ -1,5 +1,6 @@
 extends Node2D
 
+var active = false
 var shield_generator
 var location_angle: Dictionary = {
 	"n": -90,
@@ -37,7 +38,7 @@ var location_angle: Dictionary = {
 
 func _process(delta):
 	# Safely checks if the node still exists in memory and hasn't been freed
-	if !is_instance_valid(shield_generator):
+	if active and !is_instance_valid(shield_generator):
 		queue_free()
 		
 func display_shield(dir: String, in_play: bool) -> void:

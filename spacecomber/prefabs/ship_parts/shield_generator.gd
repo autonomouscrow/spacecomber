@@ -17,5 +17,7 @@ func create_shield() -> void:
 		hab.add_child(shield_base)
 		shield_base.position = Vector2(0, 0)
 		shield_base.display_shield(name, true)
+		shield_base.shield_generator = self
+		shield_base.active = true
 		
 		generated_shield = shield_base
