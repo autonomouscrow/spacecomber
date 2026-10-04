@@ -12,7 +12,9 @@ var build_menu: BuildMenu
 
 var health: float = 100
 var shield: int = 100
-var crystal_fuel: int = 100
+var crystal_fuel: float = 100
+# All the crystal fuel the guns have ever used (the HUD shows recent use)
+var crystal_fuel_used := 0.0
 var wood_juice: float = 100
 
 # Wood juice is the engines' fuel: each engine burns this much per second
@@ -29,10 +31,20 @@ var wood_juice: float = 100
 @export var max_health: float = 100.0
 @export var corpse_convert_time: float = 10.0
 @export var health_per_corpse: float = 10.0
+# Nimine slowly refills the guns' crystal fuel the same way: one nimine's
+# crystal_per_nimine fuel flows in over nimine_convert_time seconds
+@export var max_crystal_fuel: float = 100.0
+@export var nimine_convert_time: float = 5.0
+@export var crystal_per_nimine: float = 5.0
+var crystal_to_add := 0.0
 # Each furnace on the ship adds this much conversion speed (1.0 = one furnace
 # converts twice as fast, two furnaces three times as fast, ...)
 @export var furnace_speed_bonus: float = 1.0
 var furnace_count := 0
+# Holding E with brakes on the ship adds friction: speed and spin fade by
+# this much per second for each brake (higher = stops quicker)
+@export var brake_strength: float = 1.5
+var brake_count := 0
 # Juice / health from a used-up wood / corpse that hasn't flowed in yet
 var juice_to_add := 0.0
 # All the wood juice the engines have ever burned (the HUD shows recent use)
@@ -122,6 +134,9 @@ func _physics_process(delta: float) -> void:
 	if s_firing:
 		fire_engines(s_engine_vel, s_engine_rot_vel, delta)
 		burn_wood_juice(s_engines, delta)
+	if Input.is_physical_key_pressed(KEY_E) and not build_mode:
+		apply_brakes(delta)
+
 	# Paused while building, so the shop's prices don't change under you
 	if not build_mode:
 		convert_resources(delta)
@@ -142,16 +157,22 @@ func fire_engines(engine_vel: Vector2, engine_rot_vel: float, delta: float) -> v
 	velocity.y += real_engine_vel.y * engine_speed_mult * delta
 	rot_vel += engine_rot_vel * engine_rot_mult * delta
 
+# Friction from the brakes: slows the ship's movement and its spin
+func apply_brakes(delta: float) -> void:
+	var friction := exp(-brake_strength * brake_count * delta)
+	velocity *= friction
+	rot_vel *= friction
+
 func burn_wood_juice(engines: Array[Node], delta: float) -> void:
 	var engine_count := engines.filter(is_instance_valid).size()
 	var burned: float = min(engine_count * wood_juice_per_engine_second * delta, wood_juice)
 	wood_juice -= burned
 	wood_juice_burned += burned
 
-# Slowly turns wood into wood juice and corpses into health, one at a time,
-# while there's some left and the tank / health isn't full
+# Slowly turns wood into wood juice, corpses into health and nimine into
+# crystal fuel, one at a time, while there's some left and it isn't full
 func convert_resources(delta: float) -> void:
-	# Furnaces speed up both conversions
+	# Furnaces speed up all the conversions
 	var speed := 1.0 + furnace_count * furnace_speed_bonus
 	# Start on the next wood once the last one has fully flowed in
 	if juice_to_add <= 0 and wood > 0 and wood_juice < max_wood_juice:
@@ -171,6 +192,14 @@ func convert_resources(delta: float) -> void:
 		health_to_add -= heal
 		health += heal
 
+	if crystal_to_add <= 0 and nimine > 0 and crystal_fuel < max_crystal_fuel:
+		nimine -= 1
+		crystal_to_add = crystal_per_nimine
+	var crystal := minf(crystal_to_add, minf(crystal_per_nimine / nimine_convert_time * speed * delta, max_crystal_fuel - crystal_fuel))
+	if crystal > 0:
+		crystal_to_add -= crystal
+		crystal_fuel += crystal
+
 # Flames show on the engines whose key is held
 func show_engine_flames(engines: Array[Node], firing: bool) -> void:
 	for engine in engines:
@@ -187,11 +216,12 @@ func get_engines(engine_types: Array) -> Array[Node]:
 		engines.append_array(get_children_with_meta(self, "component_type", engine_type))
 	return engines
 
-# Counts the furnaces, and works out the total push and spin of the W engines
+# Counts the furnaces and brakes, and works out the total push and spin of the W engines
 # and the S engines
 # (normal and better engines have the same stats for now)
 func update_engines() -> void:
 	furnace_count = get_children_with_meta(self, "component_type", "furnace").size()
+	brake_count = get_children_with_meta(self, "component_type", "break").size()
 	w_engines = get_engines(ShipParts.W_ENGINES)
 	s_engines = get_engines(ShipParts.S_ENGINES)
 	var w_result = get_engine_thrust(w_engines)
@@ -291,6 +321,15 @@ func spawn_part(component_type: String, location_data: LocationData, location_na
 # momentum, so pushes add straight to its velocity like the engines do
 func push(amount: Vector2) -> void:
 	velocity += amount
+
+# Guns pay for each shot with crystal fuel. Returns false (and spends nothing)
+# when there isn't enough, so the gun doesn't fire
+func use_crystal_fuel(amount: float) -> bool:
+	if crystal_fuel < amount:
+		return false
+	crystal_fuel -= amount
+	crystal_fuel_used += amount
+	return true
 
 # Which ship resource each item type adds to
 const ITEM_RESOURCES := {"iron": "iron", "wood": "wood", "crystal": "nimine", "body": "corpse"}

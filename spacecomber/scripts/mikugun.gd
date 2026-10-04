@@ -3,8 +3,11 @@ extends Node2D
 # the slot it's mounted in. The beam stretches out, holds, then shrinks back,
 # damaging anything in it; the gun can't fire again until the beam is done
 
-# Seconds before the gun can fire again (the beam lasts about 3)
-@export var cooldown_time: float = 3.5
+# Seconds before the gun can fire again (the beam lasts about 4: a 1s
+# wind-up, stretching out, 2s at full length, shrinking back)
+@export var cooldown_time: float = 4.5
+# Crystal fuel each beam uses (no beam without it)
+@export var crystal_cost: float = 20.0
 
 @onready var beam = $Beam
 
@@ -25,6 +28,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	var ship = get_parent()
 	# No shooting while the build menu is open
 	if ship == null or ship.get("build_mode") or cooldown > 0:
+		return
+	if not ship.use_crystal_fuel(crystal_cost):
 		return
 	cooldown = cooldown_time
 	beam.shoot()

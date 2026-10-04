@@ -49,7 +49,7 @@ offset_right = 460.0
 offset_bottom = 455.0
 grow_horizontal = 2
 theme_override_constants/h_separation = 40
-theme_override_constants/v_separation = 12
+theme_override_constants/v_separation = 6
 columns = 2
 
 [node name="Hint" type="Label" parent="Screen" unique_id=1497583039]

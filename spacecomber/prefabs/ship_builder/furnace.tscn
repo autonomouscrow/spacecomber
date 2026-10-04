@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dsdi4h7uktq1m"]
 
 [ext_resource type="Script" uid="uid://b8cvpce3e8vw4" path="res://scripts/ship_part.gd" id="1_part"]
 [ext_resource type="PackedScene" uid="uid://c1q45xwye1sr3" path="res://furnace.tscn" id="2_furnace"]
@@ -9,4 +9,5 @@ metadata/_custom_type_script = "uid://b8cvpce3e8vw4"
 metadata/component_type = "furnace"
 
 [node name="FurnaceBody" parent="." unique_id=640281937 instance=ExtResource("2_furnace")]
+rotation = 1.5707964
 scale = Vector2(1, 1)

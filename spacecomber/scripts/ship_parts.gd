@@ -17,6 +17,7 @@ const SCENES := {
 	"lazergun": preload("res://prefabs/ship_parts/lazergun.tscn"),
 	"mikugun": preload("res://prefabs/ship_parts/mikugun.tscn"),
 	"furnace": preload("res://prefabs/ship_parts/furnace.tscn"),
+	"break": preload("res://prefabs/ship_parts/break.tscn"),
 }
 
 # The bigger version shown in the build menu slots and shop

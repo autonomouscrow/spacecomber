@@ -9,6 +9,7 @@ const CONTROLS := [
 	["A / D  or  LEFT / RIGHT", "Turn the ship"],
 	["SPACE", "Shoot"],
 	["V", "Fire Miku beam"],
+	["E", "Brake"],
 	["B", "Open / close build mode"],
 	["MOUSE DRAG", "Move parts between slots while in build mode"],
 	["O", "Open / close settings"],

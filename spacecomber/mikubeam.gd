@@ -1,7 +1,7 @@
 extends Node2D
 @export var stretch_duration: float = 0.5
 
-var target_scale_y = scale.y * 800.0
+var target_scale_y = scale.y * 1200
 var normal_scale_y = scale.y
 
 func _input(event: InputEvent) -> void:
@@ -11,7 +11,7 @@ func _input(event: InputEvent) -> void:
 
 func shoot() -> void:
 	var tween = create_tween().set_parallel(false)
-	
+	tween.tween_interval(1)
 	tween.tween_property(self, "scale:y", target_scale_y, stretch_duration) \
 		.set_ease(Tween.EASE_OUT) 
 

@@ -4,6 +4,8 @@ extends Node2D
 
 # Seconds between shots
 @export var fire_rate: float = 0.2
+# Crystal fuel each shot uses (no shot without it)
+@export var crystal_cost: float = 1.0
 
 @onready var gun = $Gun
 
@@ -22,6 +24,8 @@ func _physics_process(delta: float) -> void:
 		return
 	if Input.is_action_pressed("ui_accept") and cooldown <= 0:
 		cooldown = fire_rate
+		if not ship.use_crystal_fuel(crystal_cost):
+			return
 		# The bullet keeps the ship's speed, so the ship can't outrun it
 		var bullet = gun.spawn_bullet()
 		bullet.velocity = ship.velocity

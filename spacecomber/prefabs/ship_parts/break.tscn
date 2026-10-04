@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ddfoqaejclhne"]
+
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_6164s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhr5q"]
+atlas = ExtResource("1_6164s")
+region = Rect2(892.32227, 121.80632, 68.10364, 99.42728)
+
+[node name="Break" type="Node2D" unique_id=1583920471]
+metadata/component_type = "break"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=624695740]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_lhr5q")
