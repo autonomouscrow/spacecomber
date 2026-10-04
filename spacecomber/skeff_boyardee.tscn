@@ -57,7 +57,7 @@ position = Vector2(722, 277)
 Ship_speed = 100.0
 
 [node name="CharacterBody2D2" parent="." unique_id=1578104527 instance=ExtResource("10_58pve")]
-position = Vector2(464, 499)
+position = Vector2(374, 414)
 
 [node name="SpaceSimTower" parent="." unique_id=469053009 instance=ExtResource("11_kmyvf")]
 position = Vector2(628, 491)
