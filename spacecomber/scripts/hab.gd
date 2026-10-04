@@ -336,6 +336,23 @@ func spawn_part(component_type: String, location_data: LocationData, location_na
 func push(amount: Vector2) -> void:
 	velocity += amount
 
+# Enemy bullets that hit the ship (its hitbox, the same size as its body)
+# disappear and take this much health
+@export var enemy_bullet_damage: int = 5
+const BULLET_SCRIPT = preload("res://scripts/bullet.gd")
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	var bullet = area.get_parent()
+	if bullet.get_script() != BULLET_SCRIPT or bullet.hit:
+		return
+	# Only enemy guns tag their bullets with the ship that fired them, so the
+	# player's own lasers are ignored
+	if not bullet.has_meta("owner_ship"):
+		return
+	bullet.disappear()
+	health -= bullet.get_meta("damage", enemy_bullet_damage)
+	SoundControl.play_random_enemy_lazer()
+
 # Out of health: back to the menu, which opens on the end (game over) screen
 const MENU_SCENE_SCRIPT = preload("res://scripts/menu_scene.gd")
 var is_game_over := false
