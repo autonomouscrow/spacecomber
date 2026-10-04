@@ -11,11 +11,11 @@ var loc_slots: Dictionary
 var just_bought: Array = []
 
 var item_datas: Array[ItemData] = [
+	ItemData.new("Brake", "slows you down (E)", "break", [0, 0, 0, 1]),
 	ItemData.new("Basic Engine (W)", "nyoooom", "w_engine_normal", [0, 0, 0, 1]),
 	ItemData.new("Basic Engine (S)", "nyoooom", "s_engine_normal", [0, 0, 0, 1]),
 	ItemData.new("Better Engine (W)", "NYOOOOM", "w_engine_better", [0, 0, 0, 1]),
 	ItemData.new("Better Engine (S)", "NYOOOOM", "s_engine_better", [0, 0, 0, 1]),
-	ItemData.new("Brake", "slows you down (E)", "break", [0, 0, 0, 1]),
 	ItemData.new("Magnet", "pulls in iron", "magnet", [0, 0, 0, 1]),
 	ItemData.new("Magwood", "pulls in wood", "magwood", [0, 0, 0, 1]),
 	ItemData.new("Nagnet", "pulls in nimine", "nagnet", [0, 0, 0, 1]),
