@@ -2,6 +2,7 @@ extends Control
 
 @onready var health_bar = $"Health Area/Health Bar"
 @onready var shield_bar = $"Health Area/Shield Area/Shield Bar"
+@onready var shield_area = $"Health Area/Shield Area"
 @onready var wood_bar = $"Wood Juice"
 @onready var crystal_bar = $"Crystal Fuel"
 @export var hab_node: CharacterBody2D
@@ -48,7 +49,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	health_bar.value = hab_node.health
-	shield_bar.value = hab_node.shield
+	show_shield()
 	wood_bar.value = hab_node.wood_juice
 	crystal_bar.value = hab_node.crystal_fuel
 	clock += delta
@@ -61,6 +62,15 @@ func _process(delta: float) -> void:
 	var crystal_recent := amount_used(crystal_history, hab_node.crystal_fuel_used)
 	show_used(crystal_bar, crystal_used, crystal_recent if hab_node.can_afford_a_shot() else 0.0)
 	pass
+
+# The shield bar only shows while the ship has shield generators on it, and
+# its length is their combined max (each shield on the ship knows it)
+func show_shield() -> void:
+	var shields = hab_node.get_children().filter(func(c): return c.has_method("get_max_shield") and c.active)
+	shield_area.visible = shields.size() > 0
+	if shields.size() > 0:
+		shield_bar.max_value = shields[0].get_max_shield()
+	shield_bar.value = hab_node.shield
 
 func make_used_strip(bar: ProgressBar) -> ColorRect:
 	var strip := ColorRect.new()
