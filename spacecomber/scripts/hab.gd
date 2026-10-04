@@ -159,6 +159,10 @@ func _physics_process(delta: float) -> void:
 	var velocity_before := velocity
 	move_and_slide()
 	push_what_we_hit(velocity_before)
+	
+		
+	generate_shields() # temp
+
 
 # Bumping into something that can be pushed (asteroids, enemy ships) hands it
 # this fraction of the ship's speed going into it, and the ship loses that much
@@ -418,3 +422,9 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 	set(resource, get(resource) + 1)
 	body.disappear()
 	SoundControl.play_item_pickup()
+
+func generate_shields() -> void:
+	for child in self.get_children():
+		if child.name in part_locations:
+			if child is ShieldGenerator:
+				child.create_shield()

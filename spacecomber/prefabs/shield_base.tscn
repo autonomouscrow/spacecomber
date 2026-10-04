@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bvsej4tgbhn5b"]
+
+[ext_resource type="Script" uid="uid://3vbchq87xlnc" path="res://scripts/shield.gd" id="1_j3xwq"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_smxdm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
+atlas = ExtResource("1_smxdm")
+region = Rect2(646.54974, 34.73737, 193.28528, 28.583218)
+
+[node name="ShieldBase" type="Node2D" unique_id=1815835711]
+script = ExtResource("1_j3xwq")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=574785449]
+scale = Vector2(0.25, 0.25)
+
+[node name="TextureRect" type="TextureRect" parent="Node2D" unique_id=1654781771]
+offset_left = 245.0
+offset_top = -96.642
+offset_right = 438.285
+offset_bottom = -68.642
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_g576v")
+stretch_mode = 4
+
+[node name="Area2D" type="Area2D" parent="." unique_id=784429381]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=904289490]
+polygon = PackedVector2Array(48, -21, 56, -24, 57.5, -20, 58.5, -17, 59.25, -14.25, 60, -11.5, 60.5, -7.5, 61, -3.25, 61, 0, 61, 3.25, 60.5, 7.5, 60, 11.5, 59.25, 14.25, 58.5, 17, 57.5, 20, 56, 24, 48, 21)

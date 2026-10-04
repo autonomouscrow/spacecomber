@@ -18,6 +18,7 @@ const SCENES := {
 	"mikugun": preload("res://prefabs/ship_parts/mikugun.tscn"),
 	"furnace": preload("res://prefabs/ship_parts/furnace.tscn"),
 	"break": preload("res://prefabs/ship_parts/break.tscn"),
+	"shield_generator": preload("res://prefabs/ship_parts/shield_generator.tscn")
 }
 
 # The bigger version shown in the build menu slots and shop
@@ -34,6 +35,7 @@ const BUILDER_SCENES := {
 	"mikugun": preload("res://prefabs/ship_builder/mikugun.tscn"),
 	"furnace": preload("res://prefabs/ship_builder/furnace.tscn"),
 	"break": preload("res://prefabs/ship_builder/break.tscn"),
+	"shield_generator": preload("res://prefabs/ship_builder/shield_generator.tscn")
 }
 
 # Which engines fire on which key

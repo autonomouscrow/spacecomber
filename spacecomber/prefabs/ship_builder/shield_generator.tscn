@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bf8bj8fpgyjf1"]
+
+[ext_resource type="Script" uid="uid://b8cvpce3e8vw4" path="res://scripts/ship_part.gd" id="1_41wsf"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_cbogt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41wsf"]
+atlas = ExtResource("1_cbogt")
+region = Rect2(810.3983, 121.63437, 66.59387, 57.26895)
+
+[node name="ShieldGenerator" type="Node2D" unique_id=1800007173]
+script = ExtResource("1_41wsf")
+metadata/component_type = "shield_generator"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2023283665]
+position = Vector2(-3.385, 0)
+
+[node name="TextureRect" type="Sprite2D" parent="Node2D" unique_id=891492530]
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_41wsf")

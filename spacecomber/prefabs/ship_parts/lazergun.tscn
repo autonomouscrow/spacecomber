@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8wicr48vcq05"]
 
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_v0k7v"]
-[ext_resource type="Script" path="res://scripts/lazergun.gd" id="2_lazer"]
+[ext_resource type="Script" uid="uid://dpomo1mmwahbl" path="res://scripts/lazergun.gd" id="2_lazer"]
 [ext_resource type="PackedScene" uid="uid://bvohi0p70gmk" path="res://prefabs/enemyshooter.tscn" id="3_gun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_njq15"]

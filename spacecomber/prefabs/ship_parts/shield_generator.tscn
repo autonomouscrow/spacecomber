@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b0bl3j2qj8v0n"]
+
+[ext_resource type="Script" uid="uid://4qmxy4d8l65c" path="res://prefabs/ship_parts/shield_generator.gd" id="1_hi0p3"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_dxn5n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
+atlas = ExtResource("2_dxn5n")
+region = Rect2(810.3983, 121.63437, 66.59387, 57.26895)
+
+[node name="ShieldGenerator" type="Node2D" unique_id=345488020]
+script = ExtResource("1_hi0p3")
+metadata/component_type = "shield_generator"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=511933934]
+scale = Vector2(0.25, 0.25)
+
+[node name="TextureRect" type="TextureRect" parent="Node2D" unique_id=209499979]
+offset_left = 57.269
+offset_top = -33.297
+offset_right = 123.269
+offset_bottom = 23.703
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_g576v")
