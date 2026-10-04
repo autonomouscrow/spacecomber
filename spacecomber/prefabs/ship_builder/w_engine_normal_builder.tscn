@@ -24,3 +24,5 @@ texture = SubResource("AtlasTexture_itrpq")
 [node name="Fire" parent="." unique_id=1762692797 instance=ExtResource("3_5ihh7")]
 position = Vector2(40, 0)
 rotation = 1.5707964
+min_scale = Vector2(0.91, 0.91)
+max_scale = Vector2(1.3, 1.3)
