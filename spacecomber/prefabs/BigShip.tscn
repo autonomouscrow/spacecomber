@@ -16,6 +16,12 @@ Ship_health = 100
 Ship_fire_rate = 2
 Wander_radius = 200.0
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661029812]
+position = Vector2(1.9999999, -3.9999998)
+rotation = -4.712389
+scale = Vector2(0.9203077, 0.9203077)
+shape = SubResource("ConvexPolygonShape2D_x3acn")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=649955058]
 position = Vector2(18, -3)
 rotation = 1.5707964
@@ -39,7 +45,7 @@ position = Vector2(142, -56)
 fire_rate = 0.2
 
 [node name="enemyshooter2" parent="." unique_id=1230185333 instance=ExtResource("4_k5rl7")]
-position = Vector2(142, 43)
+position = Vector2(143.41959, 43.025875)
 fire_rate = 0.2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
