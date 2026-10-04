@@ -8,12 +8,12 @@ extends Node2D
 
 @export_category("Spawn Settings")
 @export var max_items: int = 20
-@export var min_spawn_distance: float = 500.0  # Minimum distance from hab_node (not too close)
-@export var max_spawn_distance: float = 1000.0  # Maximum distance from hab_node to spawn within
-@export var spawn_interval: float = 0.10        # How often to attempt spawning (seconds)
+@export var min_spawn_distance: float = 1000.0  # Minimum distance from hab_node (not too close)
+@export var max_spawn_distance: float = 2000.0  # Maximum distance from hab_node to spawn within
+@export var spawn_interval: float = 0.05        # How often to attempt spawning (seconds)
 
 @export_category("Despawn Settings")
-@export var max_despawn_distance: float = 1200.0 # Distance at which items get deleted
+@export var max_despawn_distance: float = 2100.0 # Distance at which items get deleted
 
 var spawn_timer: float = 0.0
 # We use a Node2D container to keep the Scene Tree clean, or we can parent to self
