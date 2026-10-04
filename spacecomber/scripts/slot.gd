@@ -36,6 +36,7 @@ func _get_drag_data(at_position:Vector2)->Variant:
 	return drag_data
 
 func _can_drop_data(at_position:Vector2, data:Variant)->bool:
+	if data.force == true: return slot_active
 	if !data is ItemDrag: return false
 	if self.parent_slot == data.source.name: return false
 	return slot_active
@@ -43,6 +44,8 @@ func _can_drop_data(at_position:Vector2, data:Variant)->bool:
 func _drop_data(at_position:Vector2, data:Variant)->void:
 	if !data is ItemDrag: return
 	var drag_data := data as ItemDrag
+	
+	var curr_part = get_child_of_type(self, ShipBuilderPart)
 
 	drag_data.destination = self
 	
@@ -59,6 +62,14 @@ func _drop_data(at_position:Vector2, data:Variant)->void:
 	build_menu.add_debt(drag_data.item_data)
 	if drag_data.source is ShopSlot:
 		build_menu.restock_shop(drag_data.item_data.item_name)
+		build_menu.add_just_bought(drag_data.destination.name)
+		
+	if drag_data.source is Slot:
+		if curr_part != null:
+			drag_data.source.add_item(curr_part.duplicate())
+			drag_data.destination.remove_item(curr_part)
+		build_menu.swap_just_bought(drag_data.source.name, drag_data.destination.name)
+		print(build_menu.just_bought)
 
 func get_child_of_type(parent_node: Node, type_to_find) -> Node:
 	for child in parent_node.get_children():

@@ -8,6 +8,7 @@ var part_locations = ["n", "e", "s", "w", "ne", "nw", "se", "sw",
 					  "nr", "er", "sr", "wr", "ner", "nwr", "ser", "swr"]
 var parts_dict: Dictionary
 var loc_slots: Dictionary
+var just_bought: Array = []
 
 var item_datas: Array[ItemData] = [
 	ItemData.new("Basic Engine (W)", "nyoooom", "w_engine_normal", [0, 0, 0, 1]),
@@ -184,3 +185,19 @@ func pay() -> void:
 	hab.iron += current_debit_credit[1]
 	hab.nimine += current_debit_credit[2]
 	hab.corpse += current_debit_credit[3]
+
+func add_just_bought(dir: String) -> void:
+	just_bought.append(dir)
+	
+func remove_just_bought(dir: String) -> void:
+	just_bought.erase(dir)
+
+func swap_just_bought(dir1: String, dir2: String) -> void:
+	var has_dir1 = dir1 in just_bought
+	var has_dir2 = dir2 in just_bought
+	remove_just_bought(dir1)
+	remove_just_bought(dir2)
+	if has_dir1:
+		add_just_bought(dir2)
+	if has_dir2:
+		add_just_bought(dir1)
