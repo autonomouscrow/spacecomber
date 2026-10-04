@@ -115,8 +115,13 @@ func _ready() -> void:
 	for part_loc in part_locations:
 		parts_dict[part_loc] = null
 	
-	build_menu = $"../CanvasLayer/BuildMenu"
-	open_builder()
+	# Test scenes may have the ship without the build menu: then there's just
+	# no build mode
+	build_menu = get_node_or_null("../CanvasLayer/BuildMenu")
+	if build_menu:
+		open_builder()
+	else:
+		build_mode = false
 
 func _physics_process(delta: float) -> void:
 	if health <= 0:
@@ -167,7 +172,7 @@ func _physics_process(delta: float) -> void:
 # B opens build mode. (Build mode pauses the game, so the build menu itself
 # handles B to close it again; see BuildMenu._unhandled_input)
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("build_mode_toggle") and not build_mode:
+	if event.is_action_pressed("build_mode_toggle") and not build_mode and build_menu:
 		build_mode = true
 		open_builder()
 		get_viewport().set_input_as_handled()
@@ -344,6 +349,10 @@ func open_builder():
 func close_builder():
 	build_menu.set_parts_dict()
 	build_menu.pay()
+	# Whatever was in the sell slot is gone now (sold, or the purchase cancelled)
+	for child in build_menu.get_node("sell").get_children():
+		if child.has_meta("component_type"):
+			child.queue_free()
 	
 	for part_loc in part_locations:
 		for child in build_menu.loc_slots[part_loc].get_children():
@@ -442,10 +451,14 @@ func generate_shields() -> void:
 				child.create_shield()
 
 func update_money() -> void:
-	var wood_label = $"../CanvasLayer/money/wood"
-	var iron_label = $"../CanvasLayer/money/iron"
-	var nimine_label = $"../CanvasLayer/money/nimine"
-	var corpse_label = $"../CanvasLayer/money/corpse"
+	# Not every scene has the money display (e.g. test scenes)
+	var money = get_node_or_null("../CanvasLayer/money")
+	if money == null:
+		return
+	var wood_label = money.get_node("wood")
+	var iron_label = money.get_node("iron")
+	var nimine_label = money.get_node("nimine")
+	var corpse_label = money.get_node("corpse")
 	
 	wood_label.text = str(wood)
 	iron_label.text = str(iron)

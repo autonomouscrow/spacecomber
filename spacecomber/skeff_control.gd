@@ -83,9 +83,11 @@ func _check_despawn_distances() -> void:
 			if distance > max_despawn_distance:
 				child.queue_free()
 
+# When the last warning was printed, so it only warns every 3 seconds
+var last_warn := -3000.0
+
 func warning_msg(msg: String) -> void:
 	# Prevents spamming logs if array is empty
-	var last_warn := 0.0
 	if Time.get_ticks_msec() - last_warn > 3000:
 		print_rich("[color=yellow]%s[/color]" % msg)
 		last_warn = Time.get_ticks_msec()

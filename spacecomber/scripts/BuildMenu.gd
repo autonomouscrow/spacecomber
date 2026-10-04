@@ -175,19 +175,35 @@ func add_adjustments(raw_num, modifier) -> String:
 
 func can_buy(data: ItemData) -> bool:
 	var hab = $"../../hab"
-	if hab.wood + current_debit_credit[0] < data.item_cost[0]:
+	# Parts already bought but still waiting in the shop to be dragged count too,
+	# so you can't buy more than you can afford by not placing them yet
+	var waiting = waiting_in_shop_costs()
+	if hab.wood + current_debit_credit[0] - waiting[0] < data.item_cost[0]:
 		return false
-	if hab.iron + current_debit_credit[1] < data.item_cost[1]:
+	if hab.iron + current_debit_credit[1] - waiting[1] < data.item_cost[1]:
 		return false
-	if hab.nimine + current_debit_credit[2] < data.item_cost[2]:
+	if hab.nimine + current_debit_credit[2] - waiting[2] < data.item_cost[2]:
 		return false
-	if hab.corpse + current_debit_credit[3] < data.item_cost[3]:
+	if hab.corpse + current_debit_credit[3] - waiting[3] < data.item_cost[3]:
 		return false
 	return true
+
+# Total cost of the parts sitting in the shop after BUY was pressed
+func waiting_in_shop_costs() -> Array:
+	var total = [0, 0, 0, 0]
+	for block in $ScrollContainer/ShopGrid.get_children():
+		for part in block.get_node("ShopSlot").get_children():
+			if part is ShipBuilderPart and not part.is_queued_for_deletion():
+				var cost = get_cost(part.get_meta("component_type"))
+				for i in 4:
+					total[i] += cost[i]
+	return total
 
 func calc_debts() -> void:
 	current_debit_credit = [0, 0, 0, 0]
 	
+	# Parts in the sell slot cost nothing: one bought this visit is just
+	# cancelled, and one you already owned is scrapped (no refund)
 	for dir in just_bought:
 		if dir != "sell":
 			var slot = loc_slots[dir]
@@ -214,7 +230,9 @@ func pay() -> void:
 	hab.corpse += current_debit_credit[3]
 
 func add_just_bought(dir: String) -> void:
-	just_bought.append(dir)
+	# Each slot is only listed once, so its part isn't charged twice
+	if not dir in just_bought:
+		just_bought.append(dir)
 	
 func remove_just_bought(dir: String) -> void:
 	just_bought.erase(dir)
@@ -233,7 +251,8 @@ func get_cost(component_type: String) -> Array:
 	for data in item_datas:
 		if data.component_type == component_type:
 			return data.item_cost
-	return Array()
+	# Not sold in the shop: free (instead of crashing the price maths)
+	return [0, 0, 0, 0]
 
 func generate_shields() -> void:
 	for dir in part_locations:

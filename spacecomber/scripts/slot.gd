@@ -60,6 +60,9 @@ func _drop_data(at_position:Vector2, data:Variant)->void:
 		build_menu = build_menu.get_parent()
 		
 	if drag_data.source is ShopSlot:
+		# The new part replaces what was in the slot (otherwise both get paid for)
+		if curr_part != null:
+			drag_data.destination.remove_item(curr_part)
 		build_menu.restock_shop(drag_data.item_data.item_name)
 		build_menu.add_just_bought(drag_data.destination.name)
 		

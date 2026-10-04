@@ -14,9 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://bcvkhneoophmu" path="res://prefabs/SpaceSimTower.tscn" id="11_kmyvf"]
 [ext_resource type="PackedScene" uid="uid://bsx4nakcfemg" path="res://prefabs/BlackHole.tscn" id="12_kmyvf"]
 [ext_resource type="PackedScene" uid="uid://bxra1wx47th5a" path="res://prefabs/BigShip.tscn" id="13_627nh"]
+[ext_resource type="Script" uid="uid://iv1crbi1xnfm" path="res://scripts/hab.gd" id="14_686an"]
+[ext_resource type="Script" uid="uid://dtbtof1cly127" path="res://scripts/follow_camera.gd" id="16_l7id4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
-radius = 34.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlbqc"]
+atlas = ExtResource("2_681g0")
+region = Rect2(10.664291, 13.513466, 218.5095, 218.94882)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62yya"]
+radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8j58i"]
+radius = 40.0
 
 [node name="Skeff Boyardee" type="Node2D" unique_id=1867537977]
 
@@ -30,15 +39,7 @@ position = Vector2(458, 240)
 position = Vector2(458, 279)
 script = ExtResource("5_o2x6t")
 
-[node name="Sprite2D" type="Sprite2D" parent="TestSkeff" unique_id=1489392453]
-texture = ExtResource("2_681g0")
-region_enabled = true
-region_rect = Rect2(407.3119, 7.80225, 70.92322, 72.624176)
-
 [node name="Area2D" type="Area2D" parent="TestSkeff" unique_id=1769075455]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestSkeff/Area2D" unique_id=620250047]
-shape = SubResource("CircleShape2D_x3acn")
 
 [node name="IronItem" parent="." unique_id=1827956524 instance=ExtResource("1_07qe2")]
 position = Vector2(358, 177)
@@ -83,4 +84,37 @@ hab_node = NodePath("../TestSkeff")
 [node name="CharacterBody2D6" parent="." unique_id=622261339 instance=ExtResource("13_627nh")]
 position = Vector2(500, 134)
 
+[node name="hab" type="CharacterBody2D" parent="." unique_id=2129688361 groups=["player"]]
+position = Vector2(458, 264)
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("14_686an")
+
+[node name="hab img" type="Sprite2D" parent="hab" unique_id=806414376]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_tlbqc")
+
+[node name="hab collision" type="CollisionShape2D" parent="hab" unique_id=1945608933]
+shape = SubResource("CircleShape2D_62yya")
+
+[node name="Camera2D" type="Camera2D" parent="hab" unique_id=1485193139]
+process_callback = 0
+script = ExtResource("16_l7id4")
+
+[node name="hitbox" type="Area2D" parent="hab" unique_id=1724821227]
+collision_layer = 0
+monitorable = false
+
+[node name="hitbox collision" type="CollisionShape2D" parent="hab/hitbox" unique_id=71782283]
+shape = SubResource("CircleShape2D_62yya")
+
+[node name="pickup area" type="Area2D" parent="hab" unique_id=264821291]
+collision_layer = 0
+monitorable = false
+
+[node name="pickup collision" type="CollisionShape2D" parent="hab/pickup area" unique_id=858208697]
+shape = SubResource("CircleShape2D_8j58i")
+
 [connection signal="body_entered" from="TestSkeff/Area2D" to="TestSkeff" method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="hab/hitbox" to="hab" method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hab/pickup area" to="hab" method="_on_pickup_area_body_entered"]

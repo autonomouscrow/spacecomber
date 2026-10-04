@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_fy1ws"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2drdq"]
-points = PackedVector2Array(-10, -10, 0, -15, 9, -11, 10, -3, 8, 9, 7, 22, -2, 25, -7, 11)
+points = PackedVector2Array(-10, -10, 0, -15, 9, -11, 10, -3, 7, 22, -2, 25, -7, 11)
 
 [node name="BodyItem" type="CharacterBody2D" unique_id=1827956524]
 scale = Vector2(0.2533576, 0.2533576)
