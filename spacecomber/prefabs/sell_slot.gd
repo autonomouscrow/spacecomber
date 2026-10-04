@@ -5,6 +5,9 @@ extends Control
 
 var data: ItemData
 
+func _process(delta: float) -> void:
+	set_icon()
+
 func set_item_data(_data: ItemData):
 	data = _data
 
@@ -72,3 +75,10 @@ func add_item(item: Node) -> void:
 
 func remove_item(item: Node) -> void:
 	item.queue_free()
+
+func set_icon() -> void:
+	var icon = $icon
+	if get_child_of_type(self, ShipBuilderPart) == null:
+		icon.visible = true
+	else:
+		icon.visible = false
