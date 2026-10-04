@@ -14,11 +14,17 @@ max_float_speed = 2.0
 min_spin_speed = 0.1
 max_spin_speed = 0.5
 
-[node name="Iron" type="Sprite2D" parent="." unique_id=1319354019]
+[node name="Area2D" type="Area2D" parent="." unique_id=296604228]
+scale = Vector2(0.25629532, 0.25629532)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729284724]
+scale = Vector2(3.9017491, 3.9017491)
+shape = SubResource("ConvexPolygonShape2D_tilby")
+
+[node name="SpaceSimTower" type="Sprite2D" parent="." unique_id=1319354019]
 scale = Vector2(0.25629532, 0.25629532)
 texture = ExtResource("2_f32rw")
 region_enabled = true
 region_rect = Rect2(890.6105, 28.352665, 156.82043, 381.31488)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1729284724]
-shape = SubResource("ConvexPolygonShape2D_tilby")
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

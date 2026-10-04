@@ -8,7 +8,6 @@ extends CharacterBody2D
 
 var spin_speed: float
 var is_collected: bool = false
-@onready var collision_shape = $CollisionShape2D
 
 func _ready():
 	var random_angle = randf() * TAU
@@ -23,8 +22,9 @@ func _ready():
 
 func _physics_process(delta):
 	rotation += spin_speed * delta
-	
-	var collision = move_and_collide(velocity * delta)
-	
-	if collision:
-		velocity = velocity.bounce(collision.get_normal())
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("entered")
+	var direction = (body.global_position - global_position).normalized()
+	body.velocity += direction * 1000

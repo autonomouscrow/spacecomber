@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://blh6ofu6ws8s" path="res://scripts/test_skeff.gd" id="5_o2x6t"]
 [ext_resource type="PackedScene" uid="uid://duhlxmocxghhv" path="res://prefabs/advancedfire.tscn" id="8_6we12"]
 [ext_resource type="PackedScene" uid="uid://dmjhfi4wu36ln" path="res://prefabs/UnicornShip.tscn" id="9_xki5j"]
+[ext_resource type="PackedScene" uid="uid://casg5hcio550e" path="res://prefabs/BusShip.tscn" id="10_58pve"]
+[ext_resource type="PackedScene" uid="uid://bcvkhneoophmu" path="res://prefabs/SpaceSimTower.tscn" id="11_kmyvf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
 radius = 34.0
@@ -51,5 +53,17 @@ rotation = 1.6048533
 [node name="CharacterBody2D" parent="." unique_id=1546397987 instance=ExtResource("9_xki5j")]
 position = Vector2(722, 277)
 Ship_speed = 100.0
+
+[node name="CharacterBody2D2" parent="." unique_id=1578104527 instance=ExtResource("10_58pve")]
+position = Vector2(464, 499)
+
+[node name="SpaceSimTower" parent="." unique_id=469053009 instance=ExtResource("11_kmyvf")]
+position = Vector2(628, 491)
+
+[node name="CharacterBody2D3" parent="." unique_id=297775488 instance=ExtResource("10_58pve")]
+position = Vector2(464, 499)
+
+[node name="CharacterBody2D4" parent="." unique_id=113660695 instance=ExtResource("10_58pve")]
+position = Vector2(464, 499)
 
 [connection signal="body_entered" from="TestSkeff/Area2D" to="TestSkeff" method="_on_area_2d_body_entered"]
