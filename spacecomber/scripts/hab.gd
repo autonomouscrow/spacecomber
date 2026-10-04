@@ -10,10 +10,30 @@ var rot_vel: float = 0
 
 var build_menu: BuildMenu
 
-var health: int = 100
+var health: float = 100
 var shield: int = 100
 var crystal_fuel: int = 100
-var wood_juice: int = 100
+var wood_juice: float = 100
+
+# Wood juice is the engines' fuel: each engine burns this much per second
+# while it fires, and engines can't fire with an empty tank
+@export var max_wood_juice: float = 100.0
+@export var wood_juice_per_engine_second: float = 2.0
+# Wood slowly turns into wood juice while there's wood and the tank isn't full:
+# one wood is used up, and its juice_per_wood juice flows in over
+# wood_convert_time seconds, then the next wood starts
+@export var wood_convert_time: float = 5.0
+@export var juice_per_wood: float = 5.0
+# Corpses slowly heal the ship the same way: one corpse's health_per_corpse
+# health flows in over corpse_convert_time seconds
+@export var max_health: float = 100.0
+@export var corpse_convert_time: float = 10.0
+@export var health_per_corpse: float = 10.0
+# Juice / health from a used-up wood / corpse that hasn't flowed in yet
+var juice_to_add := 0.0
+# All the wood juice the engines have ever burned (the HUD shows recent use)
+var wood_juice_burned := 0.0
+var health_to_add := 0.0
 var wood: int = 100
 var iron: int = 100
 var nimine: int = 100
@@ -88,12 +108,19 @@ func _physics_process(delta: float) -> void:
 			build_mode = true
 			open_builder()
 
-	var w_firing := Input.is_physical_key_pressed(KEY_W)
-	var s_firing := Input.is_physical_key_pressed(KEY_S)
+	# Engines only fire while there's wood juice in the tank
+	var has_juice := wood_juice > 0
+	var w_firing := Input.is_physical_key_pressed(KEY_W) and has_juice
+	var s_firing := Input.is_physical_key_pressed(KEY_S) and has_juice
 	if w_firing:
 		fire_engines(w_engine_vel, w_engine_rot_vel, delta)
+		burn_wood_juice(w_engines, delta)
 	if s_firing:
 		fire_engines(s_engine_vel, s_engine_rot_vel, delta)
+		burn_wood_juice(s_engines, delta)
+	# Paused while building, so the shop's prices don't change under you
+	if not build_mode:
+		convert_resources(delta)
 	if w_firing != w_flames_on:
 		w_flames_on = w_firing
 		show_engine_flames(w_engines, w_firing)
@@ -110,6 +137,33 @@ func fire_engines(engine_vel: Vector2, engine_rot_vel: float, delta: float) -> v
 	velocity.x += real_engine_vel.x * engine_speed_mult * delta
 	velocity.y += real_engine_vel.y * engine_speed_mult * delta
 	rot_vel += engine_rot_vel * engine_rot_mult * delta
+
+func burn_wood_juice(engines: Array[Node], delta: float) -> void:
+	var engine_count := engines.filter(is_instance_valid).size()
+	var burned: float = min(engine_count * wood_juice_per_engine_second * delta, wood_juice)
+	wood_juice -= burned
+	wood_juice_burned += burned
+
+# Slowly turns wood into wood juice and corpses into health, one at a time,
+# while there's some left and the tank / health isn't full
+func convert_resources(delta: float) -> void:
+	# Start on the next wood once the last one has fully flowed in
+	if juice_to_add <= 0 and wood > 0 and wood_juice < max_wood_juice:
+		wood -= 1
+		juice_to_add = juice_per_wood
+	# Flow it in smoothly; if the tank fills up, the rest waits for room
+	var juice := minf(juice_to_add, minf(juice_per_wood / wood_convert_time * delta, max_wood_juice - wood_juice))
+	if juice > 0:
+		juice_to_add -= juice
+		wood_juice += juice
+
+	if health_to_add <= 0 and corpse > 0 and health < max_health:
+		corpse -= 1
+		health_to_add = health_per_corpse
+	var heal := minf(health_to_add, minf(health_per_corpse / corpse_convert_time * delta, max_health - health))
+	if heal > 0:
+		health_to_add -= heal
+		health += heal
 
 # Flames show on the engines whose key is held
 func show_engine_flames(engines: Array[Node], firing: bool) -> void:
