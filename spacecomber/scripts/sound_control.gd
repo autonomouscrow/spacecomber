@@ -102,10 +102,15 @@ func is_on_screen(node: Node2D) -> bool:
 			return true
 	return false
 
+# All the laser sounds play at this fraction of normal volume
+const LAZER_VOLUME := 0.5
+
 # Plays a sound once. Each call gets its own player, so sounds can overlap
 func play_sound(stream: AudioStream) -> void:
 	var player := AudioStreamPlayer.new()
 	player.stream = stream
+	if stream in ENEMY_LAZER or stream in SHORT_LAZER:
+		player.volume_db = linear_to_db(LAZER_VOLUME)
 	player.bus = "Master"
 	add_child(player)
 	player.finished.connect(player.queue_free)
