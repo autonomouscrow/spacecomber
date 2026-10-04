@@ -15,6 +15,7 @@ var item_datas: Array[ItemData] = [
 	ItemData.new("Basic Engine (S)", "nyoooom", "s_engine_normal", [0, 0, 0, 1]),
 	ItemData.new("Better Engine (W)", "NYOOOOM", "w_engine_better", [0, 0, 0, 1]),
 	ItemData.new("Better Engine (S)", "NYOOOOM", "s_engine_better", [0, 0, 0, 1]),
+	ItemData.new("Brake", "slows you down (E)", "break", [0, 0, 0, 1]),
 	ItemData.new("Magnet", "pulls in iron", "magnet", [0, 0, 0, 1]),
 	ItemData.new("Magwood", "pulls in wood", "magwood", [0, 0, 0, 1]),
 	ItemData.new("Nagnet", "pulls in nimine", "nagnet", [0, 0, 0, 1]),
@@ -22,7 +23,6 @@ var item_datas: Array[ItemData] = [
 	ItemData.new("Lazergun", "pew pew (SPACE)", "lazergun", [0, 0, 0, 1]),
 	ItemData.new("Mikugun", "MIKU MIKU BEAM (V)", "mikugun", [0, 0, 0, 1]),
 	ItemData.new("Furnace", "regen fuel and health faster", "furnace", [0, 0, 0, 1]),
-	ItemData.new("Brake", "slows you down (E)", "break", [0, 0, 0, 1]),
 	ItemData.new("Shield Generator", "is shield", "shield_generator", [0, 0, 0, 1]),
 ]
 
