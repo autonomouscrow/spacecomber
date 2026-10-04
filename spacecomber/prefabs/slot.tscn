@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5f1slofs4d16"]
 
-[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="1_lsl1e"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_lsl1e"]
 [ext_resource type="Script" uid="uid://v7bufthgjp1w" path="res://scripts/slot.gd" id="1_mferg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
