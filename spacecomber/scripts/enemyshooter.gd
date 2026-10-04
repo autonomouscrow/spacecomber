@@ -5,13 +5,14 @@ const scenescene = preload("res://scene.tscn")
 
 const bullet_scene = preload("res://prefabs/enemybullet.tscn")   
 @export var fire_rate: float = 0.5     
-@export var auto_fire: bool = false    
+@export var auto_fire: bool = true    
 
 var can_shoot: bool = true
 
 func _ready() -> void:
 	if auto_fire:
 		_start_auto_fire()
+	
 
 
 func _start_auto_fire() -> void:

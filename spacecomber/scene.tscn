@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="3_3253y"]
 [ext_resource type="PackedScene" uid="uid://b5f1slofs4d16" path="res://prefabs/slot.tscn" id="4_ni31j"]
 [ext_resource type="Script" uid="uid://iv1crbi1xnfm" path="res://scripts/hab.gd" id="4_u3cyc"]
-[ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="6_ni31j"]
+[ext_resource type="PackedScene" uid="uid://bxra1wx47th5a" path="res://prefabs/BigShip.tscn" id="6_ni31j"]
+[ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="7_xlvrw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
 atlas = ExtResource("3_3253y")
@@ -17,7 +18,7 @@ atlas = ExtResource("3_3253y")
 region = Rect2(586.465, 292.1395, 34.22711, 31.461731)
 
 [sub_resource type="LabelSettings" id="LabelSettings_30xwg"]
-font = ExtResource("6_ni31j")
+font = ExtResource("7_xlvrw")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xlvrw"]
 atlas = ExtResource("3_3253y")
@@ -32,6 +33,10 @@ atlas = ExtResource("3_3253y")
 region = Rect2(656.4769, 155.75732, 33.64746, 44.659927)
 
 [node name="root" type="Node2D" unique_id=236387114]
+
+[node name="CharacterBody2D" parent="." unique_id=1546397987 node_paths=PackedStringArray("hab_node") instance=ExtResource("6_ni31j")]
+position = Vector2(550.99994, 173.99998)
+hab_node = NodePath("../hab")
 
 [node name="UI" parent="." unique_id=1326872007 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_m7jmp")]
 hab_node = NodePath("../hab")
@@ -362,3 +367,12 @@ texture = SubResource("AtlasTexture_g576v")
 position = Vector2(553, 153)
 scale = Vector2(0.23767202, 0.23767202)
 texture = SubResource("AtlasTexture_g576v")
+
+[node name="CharacterBody2D2" parent="." unique_id=1576841076 node_paths=PackedStringArray("hab_node") instance=ExtResource("6_ni31j")]
+position = Vector2(550.99994, 173.99998)
+hab_node = NodePath("../hab")
+
+[node name="CharacterBody2D3" parent="." unique_id=1656004108 node_paths=PackedStringArray("hab_node") instance=ExtResource("6_ni31j")]
+position = Vector2(550.99994, 173.99998)
+rotation = 2.2080474
+hab_node = NodePath("../hab")
