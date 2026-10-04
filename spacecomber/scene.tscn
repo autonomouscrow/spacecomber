@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="3_3253y"]
 [ext_resource type="Script" uid="uid://iv1crbi1xnfm" path="res://scripts/hab.gd" id="4_u3cyc"]
 [ext_resource type="PackedScene" uid="uid://bq3kyw0bwxgr" path="res://prefabs/BigShip.tscn" id="6_ni31j"]
-[ext_resource type="PackedScene" uid="uid://bd22uyluyh46e" path="res://prefabs/asteroids.tscn" id="7_ni31j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
 atlas = ExtResource("3_3253y")
@@ -85,15 +84,3 @@ hab_node = NodePath("../hab")
 position = Vector2(315, 415.00003)
 scale = Vector2(0.24977627, 0.24977627)
 hab_node = NodePath("../hab")
-
-[node name="Asteroid1" parent="." unique_id=968976270 instance=ExtResource("7_ni31j")]
-position = Vector2(99, 182)
-
-[node name="Asteroid2" parent="." unique_id=1785687542 instance=ExtResource("7_ni31j")]
-position = Vector2(225, 415)
-
-[node name="Asteroid3" parent="." unique_id=1351257621 instance=ExtResource("7_ni31j")]
-position = Vector2(649, 334)
-
-[node name="Asteroid4" parent="." unique_id=1903894350 instance=ExtResource("7_ni31j")]
-position = Vector2(352, 298)

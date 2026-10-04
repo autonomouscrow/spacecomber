@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bd22uyluyh46e"]
 
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_k8jc2"]
-[ext_resource type="Script" uid="uid://b86fyry2y4bwa" path="res://scripts/asteroid.gd" id="2_asteroid"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2hq35"]
 custom_solver_bias = 1.0
@@ -17,45 +16,39 @@ points = PackedVector2Array(48, 58, -1, 44, -40, 84, -99, 49, -53, -65, 24, -86,
 points = PackedVector2Array(82, 85, -31, 103, -112, 28, -119, -60, -60, -78, -41, -45, 15, -97, 96, -81, 119, -12)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=968976270]
-script = ExtResource("2_asteroid")
 
 [node name="small" type="Sprite2D" parent="." unique_id=2138397373]
-scale = Vector2(0.25, 0.25)
+visible = false
 texture = ExtResource("1_k8jc2")
 region_enabled = true
 region_rect = Rect2(480.43494, 436.31256, 153.74536, 137.13855)
 
-[node name="small collision" type="CollisionShape2D" parent="." unique_id=568268268]
-position = Vector2(-0.5, -0.25)
-scale = Vector2(0.25, 0.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="small" unique_id=568268268]
+position = Vector2(-2, -1)
 shape = SubResource("ConvexPolygonShape2D_2hq35")
 
 [node name="medium" type="Sprite2D" parent="." unique_id=1483768932]
-scale = Vector2(0.25, 0.25)
+visible = false
 texture = ExtResource("1_k8jc2")
 region_enabled = true
 region_rect = Rect2(41.157104, 443.3344, 160.4748, 149.4176)
 
-[node name="medium collision" type="CollisionShape2D" parent="." unique_id=1627906765]
-scale = Vector2(0.25, 0.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="medium" unique_id=1627906765]
 shape = SubResource("ConvexPolygonShape2D_tg1vm")
 
 [node name="big" type="Sprite2D" parent="." unique_id=697791730]
-scale = Vector2(0.25, 0.25)
+visible = false
 texture = ExtResource("1_k8jc2")
 region_enabled = true
 region_rect = Rect2(625.7999, 512.5643, 225.61322, 199.0357)
 
-[node name="big collision" type="CollisionShape2D" parent="." unique_id=551940435]
-scale = Vector2(0.25, 0.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="big" unique_id=551940435]
 shape = SubResource("ConvexPolygonShape2D_f5x0s")
 
 [node name="Massive" type="Sprite2D" parent="." unique_id=1383335893]
-scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_k8jc2")
 region_enabled = true
 region_rect = Rect2(217.69128, 498.10388, 260.2812, 221.09088)
 
-[node name="Massive collision" type="CollisionShape2D" parent="." unique_id=1255894112]
-scale = Vector2(0.25, 0.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Massive" unique_id=1255894112]
 shape = SubResource("ConvexPolygonShape2D_f4hyq")
