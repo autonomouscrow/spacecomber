@@ -70,7 +70,7 @@ shape = SubResource("ConvexPolygonShape2D_f4hyq")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_k8jc2")
 region_enabled = true
-region_rect = Rect2(702.4912, 154.10388, 123.108765, 118.29608)
+region_rect = Rect2(706.3999, 158.79999, 108.80005, 101.599976)
 
 [node name="tumbleweed collision" type="CollisionShape2D" parent="." unique_id=383950113]
 position = Vector2(-2, 0)
