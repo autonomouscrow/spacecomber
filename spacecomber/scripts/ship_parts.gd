@@ -13,6 +13,7 @@ const SCENES := {
 	"magnet": preload("res://prefabs/ship_parts/magnet.tscn"),
 	"magwood": preload("res://prefabs/ship_parts/magwood.tscn"),
 	"nagnet": preload("res://prefabs/ship_parts/nagnet.tscn"),
+	"mouth": preload("res://prefabs/ship_parts/mouth.tscn"),
 }
 
 # The bigger version shown in the build menu slots and shop
@@ -24,6 +25,7 @@ const BUILDER_SCENES := {
 	"magnet": preload("res://prefabs/ship_builder/magnet.tscn"),
 	"magwood": preload("res://prefabs/ship_builder/magwood.tscn"),
 	"nagnet": preload("res://prefabs/ship_builder/nagnet.tscn"),
+	"mouth": preload("res://prefabs/ship_builder/mouth.tscn"),
 }
 
 # Which engines fire on which key

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ftmjh8l7bmmb"]
+
+[ext_resource type="Script" uid="uid://de136128682k" path="res://scripts/magnet.gd" id="1_aekcq"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_sgwfq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deucb"]
+atlas = ExtResource("2_sgwfq")
+region = Rect2(445.9867, 173.47768, 65.02045, 60.578156)
+
+[node name="Mouth" type="Node2D" unique_id=1790979546]
+script = ExtResource("1_aekcq")
+item_type = "body"
+metadata/component_type = "mouth"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1773306725]
+rotation = 4.712389
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_deucb")
+
+[node name="Cone" type="Area2D" parent="." unique_id=1452876033]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cone" unique_id=1768305512]
+position = Vector2(-5, 0)
+polygon = PackedVector2Array(10, 0, 400, -230, 400, 230)
