@@ -20,10 +20,25 @@ const CRYSTAL_ITEM_SCENE = preload("res://prefabs/crystal_item.tscn")
 # How far from the asteroid's center the drops are scattered
 @export var drop_spread: float = 15.0
 
+# Tumbleweed drops wood instead of iron, never nimine, and sometimes corpses
+const WOOD_ITEM_SCENE = preload("res://prefabs/wood_item.tscn")
+const CORPSE_ITEM_SCENE = preload("res://prefabs/body_item.tscn")
+@export var min_wood_drop: int = 2
+@export var max_wood_drop: int = 4
+@export var corpse_chance: float = 1.0 / 10.0
+@export var corpse_jackpot_chance: float = 1.0 / 10000.0
+@export var corpse_jackpot_amount: int = 9000
+
+# How fast tumbleweed spins (radians per second, random direction)
+@export var min_tumble_spin: float = 1.0
+@export var max_tumble_spin: float = 3.0
+var spin_speed := 0.0
+
 var destroyed := false
+var size := ""
 
 # Pick a size in the Inspector, or leave it on Random to get a random one
-@export_enum("Random", "small", "medium", "big", "Massive") var asteroid_size: String = "Random"
+@export_enum("Random", "small", "medium", "big", "Massive", "tumbleweed") var asteroid_size: String = "Random"
 
 # Speed range for a small asteroid; bigger sizes are slowed down by SIZE_SPEED
 @export var min_speed: float = 20.0
@@ -39,6 +54,7 @@ const SIZE_SPEED := {
 	"medium": 0.75,
 	"big": 0.5,
 	"Massive": 0.3,
+	"tumbleweed": 1.0,
 }
 
 # Starting health for each size
@@ -47,10 +63,11 @@ const SIZE_HEALTH := {
 	"medium": 10,
 	"big": 15,
 	"Massive": 20,
+	"tumbleweed": 5,
 }
 
 func _ready():
-	var size = asteroid_size
+	size = asteroid_size
 	if size == "Random":
 		size = SIZE_SPEED.keys().pick_random()
 
@@ -74,6 +91,9 @@ func _ready():
 
 	var speed = randf_range(min_speed, max_speed) * SIZE_SPEED.get(size, 1.0)
 	velocity = Vector2.RIGHT.rotated(randf() * TAU) * speed
+
+	if size == "tumbleweed":
+		spin_speed = randf_range(min_tumble_spin, max_tumble_spin) * [-1, 1].pick_random()
 
 # Bullets only have an Area2D, which a body can't feel, so the asteroid gets
 # its own Area2D (a copy of its collision shape) to notice them
@@ -105,7 +125,17 @@ func take_damage(amount: int) -> void:
 		queue_free()
 
 # Drops iron and a little nimine crystal where the asteroid was
+# (tumbleweed drops wood, and sometimes corpses, instead)
 func drop_items() -> void:
+	if size == "tumbleweed":
+		for i in randi_range(min_wood_drop, max_wood_drop):
+			spawn_drop(WOOD_ITEM_SCENE)
+		if randf() < corpse_jackpot_chance:
+			for i in corpse_jackpot_amount:
+				spawn_drop(CORPSE_ITEM_SCENE)
+		elif randf() < corpse_chance:
+			spawn_drop(CORPSE_ITEM_SCENE)
+		return
 	for i in randi_range(min_iron_drop, max_iron_drop):
 		spawn_drop(IRON_ITEM_SCENE)
 	for i in randi_range(min_crystal_drop, max_crystal_drop):
@@ -127,6 +157,8 @@ func get_size() -> String:
 	return ""
 
 func _physics_process(delta):
+	rotation += spin_speed * delta
+
 	var collision = move_and_collide(velocity * delta)
 
 	if collision:
