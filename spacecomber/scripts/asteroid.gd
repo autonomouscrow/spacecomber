@@ -36,6 +36,11 @@ const CORPSE_ITEM_SCENE = preload("res://prefabs/body_item.tscn")
 # How fast tumbleweed spins (radians per second, random direction)
 @export var min_tumble_spin: float = 1.0
 @export var max_tumble_spin: float = 3.0
+# Rocks and logs sometimes turn slowly too: this chance of spinning, at a
+# speed between these (radians per second, much slower than tumbleweed)
+@export var slow_spin_chance: float = 0.5
+@export var min_slow_spin: float = 0.1
+@export var max_slow_spin: float = 0.4
 var spin_speed := 0.0
 
 var destroyed := false
@@ -98,8 +103,13 @@ func _ready():
 	var speed = randf_range(min_speed, max_speed) * SIZE_SPEED.get(size, 1.0)
 	velocity = Vector2.RIGHT.rotated(randf() * TAU) * speed
 
+	# Every asteroid starts facing a random way
+	rotation = randf() * TAU
+
 	if size == "tumbleweed":
 		spin_speed = randf_range(min_tumble_spin, max_tumble_spin) * [-1, 1].pick_random()
+	elif randf() < slow_spin_chance:
+		spin_speed = randf_range(min_slow_spin, max_slow_spin) * [-1, 1].pick_random()
 
 # Bullets only have an Area2D, which a body can't feel, so the asteroid gets
 # its own Area2D (a copy of its collision shape) to notice them
@@ -180,6 +190,11 @@ func _physics_process(delta):
 
 	if not get_visible_area().grow(despawn_margin).has_point(global_position):
 		queue_free()
+
+# Pushes (the player's ship bumping into it, black holes, towers) add to the
+# asteroid's drift; bigger asteroids are heavier, so they take less of it
+func push(amount: Vector2) -> void:
+	velocity += amount * SIZE_SPEED.get(size, 1.0)
 
 # The part of the world the player can currently see (follows a camera
 # if one is added later)

@@ -11,10 +11,10 @@ points = PackedVector2Array(61, 20, 1, 51, -51, 21, -46, -54, 48, -40)
 points = PackedVector2Array(-17, -64, 36, -52, 64, -3, 5, 57, -54, 46, -67, -24)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_f5x0s"]
-points = PackedVector2Array(48, 58, -1, 44, -40, 84, -99, 49, -53, -65, 24, -86, 79, -50, 98, 12)
+points = PackedVector2Array(-99, 49, -53, -65, 24, -86, 79, -50, 98, 12, 48, 58, -40, 84)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_f4hyq"]
-points = PackedVector2Array(82, 85, -31, 103, -112, 28, -119, -60, -60, -78, -41, -45, 15, -97, 96, -81, 119, -12)
+points = PackedVector2Array(-119, -60, -60, -78, 15, -97, 96, -81, 119, -12, 82, 85, -31, 103, -112, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17a84"]
 radius = 32.0

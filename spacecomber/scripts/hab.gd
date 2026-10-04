@@ -156,7 +156,31 @@ func _physics_process(delta: float) -> void:
 
 	rotation += rot_vel * delta
 
+	var velocity_before := velocity
 	move_and_slide()
+	push_what_we_hit(velocity_before)
+
+# Bumping into something that can be pushed (asteroids, enemy ships) hands it
+# this fraction of the ship's speed going into it, and the ship loses that much
+@export var collision_transfer: float = 0.5
+
+func push_what_we_hit(velocity_before: Vector2) -> void:
+	var pushed := []
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var body = collision.get_collider()
+		if body in pushed or not body.has_method("push"):
+			continue
+		# Measured along the line from the ship's centre to the object's centre
+		# (not the contact normal, which uneven or concave shapes can skew)
+		var toward: Vector2 = (body.global_position - global_position).normalized()
+		var speed_into := velocity_before.dot(toward)
+		if speed_into <= 0:
+			continue
+		pushed.append(body)
+		var transfer := toward * speed_into * collision_transfer
+		body.push(transfer)
+		velocity -= transfer
 
 func fire_engines(engine_vel: Vector2, engine_rot_vel: float, delta: float) -> void:
 	var real_engine_vel = engine_vel.rotated(rotation)
