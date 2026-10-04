@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bcvkhneoophmu"]
+
+[ext_resource type="Script" uid="uid://3roprs3pudrg" path="res://prefabs/space_sim_tower.gd" id="1_f32rw"]
+[ext_resource type="Texture2D" uid="uid://cfraunbyfax1f" path="res://spacecomb ships.png" id="2_f32rw"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_tilby"]
+points = PackedVector2Array(-12, -48, 13, -48, 19, 48, -19, 48)
+
+[node name="SpaceSimTower" type="CharacterBody2D" unique_id=1827956524]
+position = Vector2(426, 292)
+script = ExtResource("1_f32rw")
+min_float_speed = 1.0
+max_float_speed = 2.0
+min_spin_speed = 0.1
+max_spin_speed = 0.5
+
+[node name="Iron" type="Sprite2D" parent="." unique_id=1319354019]
+scale = Vector2(0.25629532, 0.25629532)
+texture = ExtResource("2_f32rw")
+region_enabled = true
+region_rect = Rect2(890.6105, 28.352665, 156.82043, 381.31488)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1729284724]
+shape = SubResource("ConvexPolygonShape2D_tilby")

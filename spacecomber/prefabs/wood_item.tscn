@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://cj7wfy2q6arkh"]
 
-[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="1_bcu2m"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_bcu2m"]
 [ext_resource type="Script" uid="uid://b7023sh1gdbto" path="res://scripts/item.gd" id="1_rn0cp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
 radius = 15.033297
 
 [node name="WoodItem" type="CharacterBody2D" unique_id=1827956524]
+scale = Vector2(0.25406972, 0.25406972)
 script = ExtResource("1_rn0cp")
 min_float_speed = 20.0
 max_spin_speed = 2.0

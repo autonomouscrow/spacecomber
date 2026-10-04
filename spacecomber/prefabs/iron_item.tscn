@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://1qcg0ef0r4vw"]
 
 [ext_resource type="Script" uid="uid://b7023sh1gdbto" path="res://scripts/item.gd" id="1_3dloj"]
-[ext_resource type="Texture2D" uid="uid://c4y6ic823jb5l" path="res://sprites.png" id="2_bl4c5"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_bl4c5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6a1j"]
 size = Vector2(23, 23)
 
 [node name="IronItem" type="CharacterBody2D" unique_id=1827956524]
+scale = Vector2(0.25878638, 0.25878638)
 script = ExtResource("1_3dloj")
 min_float_speed = 15.0
 max_float_speed = 40.0
