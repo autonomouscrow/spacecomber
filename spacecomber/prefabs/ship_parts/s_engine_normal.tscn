@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_501kn"]
 atlas = ExtResource("1_501kn")
-region = Rect2(13.275948, 250.19994, 72.05699, 71.5782)
+region = Rect2(273.64066, 8.919872, 72.05699, 71.5782)
 
 [node name="SEngineNormal" type="Node2D" unique_id=1790979546]
 metadata/component_type = "s_engine_normal"

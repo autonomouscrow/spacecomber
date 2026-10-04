@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kkoc"]
 atlas = ExtResource("2_41rw3")
-region = Rect2(445, 270.5, 78, 71)
+region = Rect2(403.72046, 9.268314, 78, 71)
 
 [node name="WEngineBetter" type="Node2D" unique_id=1790979546]
 metadata/component_type = "w_engine_better"

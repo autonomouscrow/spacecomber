@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0t3d"]
 atlas = ExtResource("2_podda")
-region = Rect2(356.8413, 264.78967, 78, 71)
+region = Rect2(403.97473, 8.861774, 78, 71)
 
 [node name="SEngineBetter" type="Node2D" unique_id=1790979546]
 metadata/component_type = "s_engine_better"
