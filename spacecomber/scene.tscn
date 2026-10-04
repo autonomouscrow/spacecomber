@@ -362,7 +362,7 @@ offset_bottom = 527.0
 [node name="ShopGrid" type="GridContainer" parent="CanvasLayer/BuildMenu/ScrollContainer" unique_id=1185377606]
 layout_mode = 2
 
-[node name="s" parent="CanvasLayer/BuildMenu" unique_id=1387891524 instance=ExtResource("4_ni31j")]
+[node name="sell" parent="CanvasLayer/BuildMenu" unique_id=1387891524 instance=ExtResource("4_ni31j")]
 offset_left = 417.0
 offset_top = 468.0
 offset_right = 487.0

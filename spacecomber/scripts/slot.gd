@@ -59,12 +59,11 @@ func _drop_data(at_position:Vector2, data:Variant)->void:
 			break
 		build_menu = build_menu.get_parent()
 		
-	build_menu.add_debt(drag_data.item_data)
 	if drag_data.source is ShopSlot:
 		build_menu.restock_shop(drag_data.item_data.item_name)
 		build_menu.add_just_bought(drag_data.destination.name)
 		
-	if drag_data.source is Slot:
+	if (drag_data.source is Slot) or(drag_data.source is SellSlot):
 		if curr_part != null:
 			drag_data.source.add_item(curr_part.duplicate())
 			drag_data.destination.remove_item(curr_part)

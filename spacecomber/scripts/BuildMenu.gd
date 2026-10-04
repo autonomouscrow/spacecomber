@@ -62,6 +62,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	active_set()
 	has_child_set()
+	calc_debts()
 	currency_display()
 
 func active_set() -> void:
@@ -166,15 +167,19 @@ func can_buy(data: ItemData) -> bool:
 		return false
 	return true
 
-func add_debt(data: ItemData) -> void:
-	if data == null:
-		return
-	else:
-		current_debit_credit[0] -= data.item_cost[0]
-		current_debit_credit[1] -= data.item_cost[1]
-		current_debit_credit[2] -= data.item_cost[2]
-		current_debit_credit[3] -= data.item_cost[3]
-		
+func calc_debts() -> void:
+	current_debit_credit = [0, 0, 0, 0]
+	
+	for dir in just_bought:
+		if dir != "sell":
+			var slot = loc_slots[dir]
+			
+			for item in slot.get_children():
+				if item is ShipBuilderPart:
+					current_debit_credit[0] -= get_cost(item.get_meta("component_type"))[0]
+					current_debit_credit[1] -= get_cost(item.get_meta("component_type"))[1]
+					current_debit_credit[2] -= get_cost(item.get_meta("component_type"))[2]
+					current_debit_credit[3] -= get_cost(item.get_meta("component_type"))[3]
 
 func restock_shop(item_name: String) -> void:
 	var shops = $ScrollContainer/ShopGrid
@@ -205,3 +210,9 @@ func swap_just_bought(dir1: String, dir2: String) -> void:
 		add_just_bought(dir2)
 	if has_dir2:
 		add_just_bought(dir1)
+
+func get_cost(component_type: String) -> Array:
+	for data in item_datas:
+		if data.component_type == component_type:
+			return data.item_cost
+	return Array()
