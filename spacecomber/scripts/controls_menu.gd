@@ -8,6 +8,7 @@ const CONTROLS := [
 	["W", "Fire engines (thrust)"],
 	["A / D  or  LEFT / RIGHT", "Turn the ship"],
 	["B", "Open / close build mode"],
+	["MOUSE DRAG", "Move parts between slots while in build mode"],
 	["O", "Open / close settings"],
 	["C", "Open / close controls"],
 	["ESCAPE", "Close settings / controls"],

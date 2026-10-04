@@ -1,6 +1,13 @@
 extends CharacterBody2D
 
+# Leave at 0 to use the size's health from SIZE_HEALTH, or set your own
 @export var health: int
+
+# How much health one bullet takes off
+@export var bullet_damage: int = 1
+
+# Bullets are recognised by their script (bullet.gd isn't changed)
+const BULLET_SCRIPT = preload("res://scripts/bullet.gd")
 
 # Pick a size in the Inspector, or leave it on Random to get a random one
 @export_enum("Random", "small", "medium", "big", "Massive") var asteroid_size: String = "Random"
@@ -21,10 +28,21 @@ const SIZE_SPEED := {
 	"Massive": 0.3,
 }
 
+# Starting health for each size
+const SIZE_HEALTH := {
+	"small": 5,
+	"medium": 10,
+	"big": 15,
+	"Massive": 20,
+}
+
 func _ready():
 	var size = asteroid_size
 	if size == "Random":
 		size = SIZE_SPEED.keys().pick_random()
+
+	if health <= 0:
+		health = SIZE_HEALTH.get(size, 1)
 
 	# Show only the chosen size's sprite
 	for other_size in SIZE_SPEED:
@@ -39,8 +57,35 @@ func _ready():
 		if shape:
 			shape.disabled = other_size != size
 
+	add_bullet_hitbox(size)
+
 	var speed = randf_range(min_speed, max_speed) * SIZE_SPEED.get(size, 1.0)
 	velocity = Vector2.RIGHT.rotated(randf() * TAU) * speed
+
+# Bullets only have an Area2D, which a body can't feel, so the asteroid gets
+# its own Area2D (a copy of its collision shape) to notice them
+func add_bullet_hitbox(size: String) -> void:
+	var shape = get_node_or_null(size + " collision")
+	if not shape:
+		return
+	var hitbox = Area2D.new()
+	hitbox.name = "Bullet hitbox"
+	hitbox.add_child(shape.duplicate())
+	hitbox.get_child(0).disabled = false
+	add_child(hitbox)
+	hitbox.area_entered.connect(_on_bullet_hitbox_area_entered)
+
+func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
+	var bullet = area.get_parent()
+	if bullet.get_script() != BULLET_SCRIPT or bullet.hit:
+		return
+	bullet.disappear()
+	take_damage(bullet_damage)
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		queue_free()
 
 # Returns the name of the visible size sprite, e.g. "Massive"
 func get_size() -> String:
