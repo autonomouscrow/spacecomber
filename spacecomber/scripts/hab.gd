@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 @export var engine_speed_mult: float = 300.0
 @export var engine_rot_mult: float = 1
-@export var manual_rotation_speed: float
+# How fast A / D (or the arrow keys) spin the ship up. Set here rather than
+# only in the scene, so the ship can still turn if the scene loses the value
+@export var manual_rotation_speed: float = 1.0
 
 @export var build_mode: bool = true
 

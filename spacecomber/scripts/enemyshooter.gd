@@ -1,7 +1,6 @@
 # BulletSpawner.gd
 extends Node2D
 
-const scenescene = preload("res://scene.tscn")
 
 const bullet_scene = preload("res://prefabs/enemybullet.tscn")   
 @export var fire_rate: float = 0.5     
