@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://8884vqq5a5ji"]
+
+[ext_resource type="Script" uid="uid://b2hcoa4n8eiqe" path="res://prefabs/shooter.gd" id="1_70ysr"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_70ysr"]
+[ext_resource type="PackedScene" uid="uid://bvohi0p70gmk" path="res://prefabs/enemyshooter.tscn" id="2_er8mf"]
+
+[node name="shooter" type="Node2D" unique_id=1232366354]
+position = Vector2(74, 46)
+script = ExtResource("1_70ysr")
+
+[node name="enemyshooter" parent="." unique_id=718952931 instance=ExtResource("2_er8mf")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1828277432]
+rotation = -1.5707964
+texture = ExtResource("2_70ysr")
+region_enabled = true
+region_rect = Rect2(387.01917, 103.14421, 11.631683, 0.71474457)
