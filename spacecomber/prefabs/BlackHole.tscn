@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bsx4nakcfemg"]
 
+[ext_resource type="Script" uid="uid://btcjen0emn38" path="res://prefabs/black_hole.gd" id="1_smkxa"]
 [ext_resource type="Script" uid="uid://bxxy6cavnrgxx" path="res://prefabs/animated_sprite_2d.gd" id="3_4jc7o"]
 [ext_resource type="Script" uid="uid://btcjen0emn38" path="res://prefabs/black_hole.gd" id="4_blackhole"]
 [ext_resource type="Texture2D" uid="uid://cu2pe5r74txlu" path="res://black hole.png" id="3_smkxa"]
