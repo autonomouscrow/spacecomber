@@ -90,6 +90,18 @@ func _process(_delta: float) -> void:
 	elif not in_game and ambient_player.playing:
 		ambient_player.stop()
 
+# Whether any visible sprite of this node is on screen. Things fully off
+# screen stay quiet: check this before playing a sound that comes from them
+func is_on_screen(node: Node2D) -> bool:
+	var viewport := node.get_viewport()
+	if viewport == null:
+		return false
+	var screen := viewport.get_canvas_transform().affine_inverse() * viewport.get_visible_rect()
+	for sprite in node.find_children("*", "Sprite2D", true, false):
+		if sprite.is_visible_in_tree() and screen.intersects(sprite.get_global_transform() * sprite.get_rect()):
+			return true
+	return false
+
 # Plays a sound once. Each call gets its own player, so sounds can overlap
 func play_sound(stream: AudioStream) -> void:
 	var player := AudioStreamPlayer.new()

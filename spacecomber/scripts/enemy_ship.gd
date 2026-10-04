@@ -28,10 +28,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if bullet.has_meta("owner_ship") and bullet.get_meta("owner_ship") == self:
 		return
 	bullet.disappear()
-	take_damage(bullet_damage)
+	# The player's lasers say how much they hit for; other bullets do bullet_damage
+	take_damage(bullet.get_meta("damage", bullet_damage))
 	# Lasers fired by an enemy ship's gun make a hit sound (unless that hit
-	# destroyed the ship, which plays an explosion instead)
-	if bullet.has_meta("owner_ship") and not destroyed:
+	# destroyed the ship, which plays an explosion instead, or it's off screen)
+	if bullet.has_meta("owner_ship") and not destroyed and SoundControl.is_on_screen(self):
 		SoundControl.play_random_enemy_lazer()
 
 func take_damage(amount: int) -> void:
@@ -40,7 +41,8 @@ func take_damage(amount: int) -> void:
 	Ship_health -= amount
 	if Ship_health <= 0:
 		destroyed = true
-		SoundControl.play_random_explosion_short()
+		if SoundControl.is_on_screen(self):
+			SoundControl.play_random_explosion_short()
 		drop_items()
 		queue_free()
 

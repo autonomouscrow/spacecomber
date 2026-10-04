@@ -6,6 +6,8 @@ extends Node2D
 @export var fire_rate: float = 0.2
 # Crystal fuel each shot uses (no shot without it)
 @export var crystal_cost: float = 1.0
+# Damage each laser does to what it hits
+@export var damage: int = 2
 
 @onready var gun = $Gun
 
@@ -29,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		# The bullet keeps the ship's speed, so the ship can't outrun it
 		var bullet = gun.spawn_bullet()
 		bullet.velocity = ship.velocity
+		bullet.set_meta("damage", damage)
 		if Engine.get_physics_frames() != last_sound_frame:
 			last_sound_frame = Engine.get_physics_frames()
 			SoundControl.play_random_short_lazer()

@@ -118,11 +118,12 @@ func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
 	var bullet = area.get_parent()
 	if bullet.get_script() != BULLET_SCRIPT or bullet.hit:
 		return
-	# Everything makes the hit sound except tumbleweed
-	if size != "tumbleweed":
+	# Everything makes the hit sound except tumbleweed (and nothing off screen)
+	if size != "tumbleweed" and SoundControl.is_on_screen(self):
 		SoundControl.play_explosion_short1()
 	bullet.disappear()
-	take_damage(bullet_damage)
+	# The player's lasers say how much they hit for; other bullets do bullet_damage
+	take_damage(bullet.get_meta("damage", bullet_damage))
 
 func take_damage(amount: int) -> void:
 	if destroyed:
