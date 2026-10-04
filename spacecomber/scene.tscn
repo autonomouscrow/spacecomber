@@ -471,10 +471,5 @@ monitorable = false
 [node name="pickup collision" type="CollisionShape2D" parent="hab/pickup area" unique_id=902475318]
 shape = SubResource("CircleShape2D_pickup")
 
-[node name="test orb" type="Sprite2D" parent="." unique_id=127475164]
-position = Vector2(553, 153)
-scale = Vector2(0.23767202, 0.23767202)
-texture = SubResource("AtlasTexture_g576v")
-
 [connection signal="area_entered" from="hab/hitbox" to="hab" method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="hab/pickup area" to="hab" method="_on_pickup_area_body_entered"]
