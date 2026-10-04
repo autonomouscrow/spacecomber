@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dmjhfi4wu36ln" path="res://prefabs/UnicornShip.tscn" id="9_xki5j"]
 [ext_resource type="PackedScene" uid="uid://casg5hcio550e" path="res://prefabs/BusShip.tscn" id="10_58pve"]
 [ext_resource type="PackedScene" uid="uid://bcvkhneoophmu" path="res://prefabs/SpaceSimTower.tscn" id="11_kmyvf"]
+[ext_resource type="PackedScene" uid="uid://bsx4nakcfemg" path="res://prefabs/BlackHole.tscn" id="12_kmyvf"]
+[ext_resource type="PackedScene" uid="uid://bxra1wx47th5a" path="res://prefabs/BigShip.tscn" id="13_627nh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3acn"]
 radius = 34.0
@@ -65,5 +67,14 @@ position = Vector2(464, 499)
 
 [node name="CharacterBody2D4" parent="." unique_id=113660695 instance=ExtResource("10_58pve")]
 position = Vector2(464, 499)
+
+[node name="BlackHole" parent="." unique_id=382168958 instance=ExtResource("12_kmyvf")]
+position = Vector2(142.00002, 278)
+
+[node name="CharacterBody2D5" parent="." unique_id=788914277 instance=ExtResource("13_627nh")]
+position = Vector2(279, 106)
+
+[node name="CharacterBody2D6" parent="." unique_id=622261339 instance=ExtResource("13_627nh")]
+position = Vector2(500, 134)
 
 [connection signal="body_entered" from="TestSkeff/Area2D" to="TestSkeff" method="_on_area_2d_body_entered"]

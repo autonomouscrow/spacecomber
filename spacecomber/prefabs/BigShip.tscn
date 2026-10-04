@@ -8,7 +8,7 @@
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_x3acn"]
 points = PackedVector2Array(-3.0000057, -130, 85.99999, -94, 98, -12.000004, 72, 40.999996, 1.0000046, 106, -78, 43.000004, -108, -20.999994, -84.00001, -92)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1546397987]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=788914277]
 scale = Vector2(0.27890193, 0.27890193)
 script = ExtResource("1_ry585")
 Ship_speed = 40.0
@@ -18,7 +18,7 @@ Wander_radius = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1661029812]
 position = Vector2(1.9999999, -3.9999998)
-rotation = -4.712389
+rotation = 1.5707964
 scale = Vector2(0.9203077, 0.9203077)
 shape = SubResource("ConvexPolygonShape2D_x3acn")
 
@@ -31,7 +31,7 @@ region_rect = Rect2(303.088, 18.533157, 226.9942, 265.78687)
 
 [node name="Fire" parent="." unique_id=1762692797 instance=ExtResource("3_k5rl7")]
 position = Vector2(-116, -4)
-rotation = 4.712389
+rotation = -1.5707964
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1108416037]
 
@@ -48,5 +48,5 @@ fire_rate = 0.2
 position = Vector2(143.41959, 43.025875)
 fire_rate = 0.2
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
