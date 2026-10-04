@@ -9,8 +9,8 @@ extends Node2D
 @export_category("Spawn Settings")
 @export var max_items: int = 20
 @export var min_spawn_distance: float = 1000.0  # Minimum distance from hab_node (not too close)
-@export var max_spawn_distance: float = 1500.0  # Maximum distance from hab_node to spawn within
-@export var spawn_interval: float = 0.01        # How often to attempt spawning (seconds)
+@export var max_spawn_distance: float = 1200.0  # Maximum distance from hab_node to spawn within
+@export var spawn_interval: float = 0.005        # How often to attempt spawning (seconds)
 
 @export_category("Despawn Settings")
 @export var max_despawn_distance: float = 2100.0 # Distance at which items get deleted

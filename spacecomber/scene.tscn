@@ -5,10 +5,16 @@
 [ext_resource type="StyleBox" uid="uid://boes6nkj50t8p" path="res://ship_build_panel.tres" id="1_ulcgi"]
 [ext_resource type="Script" uid="uid://c8i5s5w1dhic4" path="res://scripts/BuildMenu.gd" id="2_ni31j"]
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="3_3253y"]
+[ext_resource type="PackedScene" uid="uid://cmcl70kc26aud" path="res://prefabs/crystal_item.tscn" id="4_223my"]
 [ext_resource type="PackedScene" uid="uid://b5f1slofs4d16" path="res://prefabs/slot.tscn" id="4_ni31j"]
 [ext_resource type="Script" uid="uid://iv1crbi1xnfm" path="res://scripts/hab.gd" id="4_u3cyc"]
+[ext_resource type="PackedScene" uid="uid://cj7wfy2q6arkh" path="res://prefabs/wood_item.tscn" id="5_17rhs"]
+[ext_resource type="PackedScene" uid="uid://bd22uyluyh46e" path="res://prefabs/asteroids.tscn" id="5_223my"]
+[ext_resource type="PackedScene" uid="uid://casg5hcio550e" path="res://prefabs/BusShip.tscn" id="6_17rhs"]
 [ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="6_ni31j"]
 [ext_resource type="Script" uid="uid://bcyrc8hhiqm4g" path="res://prefabs/sell_slot.gd" id="7_5juve"]
+[ext_resource type="PackedScene" uid="uid://dmjhfi4wu36ln" path="res://prefabs/UnicornShip.tscn" id="9_5juve"]
+[ext_resource type="PackedScene" uid="uid://1qcg0ef0r4vw" path="res://prefabs/iron_item.tscn" id="9_73fnb"]
 [ext_resource type="Script" uid="uid://dtbtof1cly127" path="res://scripts/follow_camera.gd" id="10_cam"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2il8"]
@@ -44,6 +50,8 @@ radius = 40.0
 
 [node name="Node2D" parent="." unique_id=960636859 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_fy5k1")]
 hab_node = NodePath("../hab")
+item_prefabs = Array[PackedScene]([ExtResource("9_73fnb"), ExtResource("4_223my"), ExtResource("5_17rhs"), ExtResource("5_223my"), ExtResource("6_17rhs"), ExtResource("9_5juve"), ExtResource("5_223my"), ExtResource("5_223my"), ExtResource("5_223my"), ExtResource("5_223my"), ExtResource("4_223my"), ExtResource("9_73fnb"), ExtResource("4_223my"), ExtResource("4_223my"), ExtResource("9_73fnb"), ExtResource("5_223my"), ExtResource("5_223my"), ExtResource("5_17rhs"), ExtResource("5_17rhs")])
+max_items = 100
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1748203961]
 
