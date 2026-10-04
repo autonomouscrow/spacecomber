@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bn6ed6yfsmesr"]
+
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_501kn"]
+[ext_resource type="PackedScene" uid="uid://04hhf0wxwdp3" path="res://prefabs/fire.tscn" id="2_a3as5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_501kn"]
+atlas = ExtResource("1_501kn")
+region = Rect2(13.275948, 250.19994, 72.05699, 71.5782)
+
+[node name="WEngineNormal" type="Node2D" unique_id=1790979546]
+metadata/component_type = "s_engine_normal"
+
+[node name="container" type="Node2D" parent="." unique_id=1576357680]
+rotation = -1.5707964
+
+[node name="Engine2" type="Sprite2D" parent="container" unique_id=2053168508]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_501kn")
+
+[node name="Fire" parent="." unique_id=1762692797 instance=ExtResource("2_a3as5")]
+position = Vector2(10, 0)
+rotation = 1.5707964
+scale = Vector2(0.25, 0.25)

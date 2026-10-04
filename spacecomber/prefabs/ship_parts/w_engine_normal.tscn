@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://dx7rv6bbj76y6"]
 
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_jk3ne"]
+[ext_resource type="PackedScene" uid="uid://04hhf0wxwdp3" path="res://prefabs/fire.tscn" id="2_40ioa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hrsg2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_40ioa"]
 atlas = ExtResource("1_jk3ne")
-region = Rect2(274.4898, 8.338165, 71.04422, 72.12339)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
-atlas = ExtResource("1_jk3ne")
-region = Rect2(280.5462, 195.35443, 49.658997, 44.1239)
+region = Rect2(104.54314, 250.19994, 72.05699, 71.5782)
 
 [node name="WEngineNormal" type="Node2D" unique_id=1790979546]
 metadata/component_type = "w_engine_normal"
@@ -16,12 +13,11 @@ metadata/component_type = "w_engine_normal"
 [node name="container" type="Node2D" parent="." unique_id=1576357680]
 rotation = -1.5707964
 
-[node name="Engine" type="Sprite2D" parent="container" unique_id=2033344647]
+[node name="Engine" type="Sprite2D" parent="container" unique_id=1663067223]
 scale = Vector2(0.25, 0.25)
-texture = SubResource("AtlasTexture_hrsg2")
+texture = SubResource("AtlasTexture_40ioa")
 
-[node name="Fire" type="Sprite2D" parent="container" unique_id=1622638343]
-position = Vector2(0, 15)
-rotation = -3.1415925
+[node name="Fire" parent="." unique_id=1762692797 instance=ExtResource("2_40ioa")]
+position = Vector2(10, 0)
+rotation = 1.5707964
 scale = Vector2(0.25, 0.25)
-texture = SubResource("AtlasTexture_g576v")
