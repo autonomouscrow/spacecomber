@@ -116,6 +116,10 @@ func _ready() -> void:
 	open_builder()
 
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		game_over()
+		return
+
 	var direction := Input.get_axis("ui_left", "ui_right")
 	rot_vel += direction * manual_rotation_speed * delta
 
@@ -332,6 +336,18 @@ func spawn_part(component_type: String, location_data: LocationData, location_na
 func push(amount: Vector2) -> void:
 	velocity += amount
 
+# Out of health: back to the menu, which opens on the end (game over) screen
+const MENU_SCENE_SCRIPT = preload("res://scripts/menu_scene.gd")
+var is_game_over := false
+
+func game_over() -> void:
+	if is_game_over:
+		return
+	is_game_over = true
+	MENU_SCENE_SCRIPT.game_over = true
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://menu_scene.tscn")
+
 # Guns pay for each shot with crystal fuel. Returns false (and spends nothing)
 # when there isn't enough, so the gun doesn't fire
 func use_crystal_fuel(amount: float) -> bool:
@@ -340,6 +356,14 @@ func use_crystal_fuel(amount: float) -> bool:
 	crystal_fuel -= amount
 	crystal_fuel_used += amount
 	return true
+
+# Whether any gun on the ship has enough crystal fuel for a shot
+func can_afford_a_shot() -> bool:
+	for part in get_children():
+		var cost = part.get("crystal_cost")
+		if cost != null and crystal_fuel >= cost:
+			return true
+	return false
 
 # Which ship resource each item type adds to
 const ITEM_RESOURCES := {"iron": "iron", "wood": "wood", "crystal": "nimine", "body": "corpse"}

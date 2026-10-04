@@ -56,7 +56,10 @@ func _process(delta: float) -> void:
 	last_health = hab_node.health
 	show_used(wood_bar, wood_used, amount_used(wood_history, hab_node.wood_juice_burned))
 	show_used(health_bar, health_used, amount_used(health_history, health_lost))
-	show_used(crystal_bar, crystal_used, amount_used(crystal_history, hab_node.crystal_fuel_used))
+	# No strip while the guns can't afford a shot: an empty tank shouldn't look
+	# like fuel is being spent
+	var crystal_recent := amount_used(crystal_history, hab_node.crystal_fuel_used)
+	show_used(crystal_bar, crystal_used, crystal_recent if hab_node.can_afford_a_shot() else 0.0)
 	pass
 
 func make_used_strip(bar: ProgressBar) -> ColorRect:

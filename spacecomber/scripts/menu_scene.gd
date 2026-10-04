@@ -6,14 +6,21 @@ extends Node2D
 
 var current_screen: Control = null
 
+# Set by the game when the player dies, so the menu opens on the end screen
+static var game_over := false
+
 func _ready():
 	# Hide all screens at the start
 	for child in canvas_layer.get_children():
 		if child is Control:
 			child.hide()
 
-	# Show the starting screen
-	show_screen(start_menu)
+	# Show the end screen after a game over, otherwise the starting screen
+	if game_over:
+		game_over = false
+		show_screen(end_screen)
+	else:
+		show_screen(start_menu)
 
 func show_screen(screen: Control) -> void:
 	if current_screen:
