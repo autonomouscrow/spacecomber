@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4gqxd73m1mnm"]
 
-[ext_resource type="PackedScene" uid="uid://b75y8r5wckmxa" path="res://scene.tscn" id="1_gj23q"]
+[ext_resource type="PackedScene" uid="uid://bv2iqion2v5nh" path="res://skeff_boyardee.tscn" id="1_gj23q"]
 
 [node name="Node2D" type="Node2D" unique_id=2012604269]
 
@@ -13,8 +13,10 @@ stretch = true
 stretch_shrink = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=434403122]
+handle_input_locally = false
 size = Vector2i(480, 270)
 size_2d_override = Vector2i(960, 540)
 size_2d_override_stretch = true
+render_target_update_mode = 4
 
-[node name="root" parent="SubViewportContainer/SubViewport" unique_id=236387114 instance=ExtResource("1_gj23q")]
+[node name="Skeff Boyardee" parent="SubViewportContainer/SubViewport" unique_id=1867537977 instance=ExtResource("1_gj23q")]
