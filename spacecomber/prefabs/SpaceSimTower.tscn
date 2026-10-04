@@ -8,6 +8,7 @@ points = PackedVector2Array(-12, -48, 13, -48, 19, 48, -19, 48)
 
 [node name="SpaceSimTower" type="CharacterBody2D" unique_id=1827956524]
 position = Vector2(426, 292)
+scale = Vector2(2.0078235, 2.0078235)
 script = ExtResource("1_f32rw")
 min_float_speed = 1.0
 max_float_speed = 2.0
