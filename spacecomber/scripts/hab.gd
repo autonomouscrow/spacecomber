@@ -24,6 +24,13 @@ var w_engine_rot_vel: float = 0
 var s_engine_vel: Vector2 = Vector2.ZERO
 var s_engine_rot_vel: float = 0
 
+# The engines on the ship, saved when the ship is rebuilt in update_engines()
+var w_engines: Array[Node] = []
+var s_engines: Array[Node] = []
+# Whether their flames are showing, so they're only switched when that changes
+var w_flames_on := false
+var s_flames_on := false
+
 var part_locations = ["n", "e", "s", "w", "ne", "nw", "se", "sw", 
 					  "nl", "el", "sl", "wl", "nel", "nwl", "sel", "swl", 
 					  "nr", "er", "sr", "wr", "ner", "nwr", "ser", "swr"]
@@ -71,14 +78,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	rot_vel += direction * manual_rotation_speed * delta
-		
-	#if Input.is_action_just_pressed("ui_accept"):
-		#var w_engine = W_ENGINE_NORMAL_SCENE.instantiate()
-		#add_child(w_engine) 
-		
-	#if Input.is_action_just_pressed("debug_interact"):
-		#get_w_engine()
-		
+
 	if Input.is_action_just_pressed("build_mode_toggle"):
 		if build_mode:
 			build_mode = false
@@ -93,8 +93,12 @@ func _physics_process(delta: float) -> void:
 		fire_engines(w_engine_vel, w_engine_rot_vel, delta)
 	if s_firing:
 		fire_engines(s_engine_vel, s_engine_rot_vel, delta)
-	show_engine_flames(ShipParts.W_ENGINES, w_firing)
-	show_engine_flames(ShipParts.S_ENGINES, s_firing)
+	if w_firing != w_flames_on:
+		w_flames_on = w_firing
+		show_engine_flames(w_engines, w_firing)
+	if s_firing != s_flames_on:
+		s_flames_on = s_firing
+		show_engine_flames(s_engines, s_firing)
 
 	rotation += rot_vel * delta
 
@@ -107,8 +111,11 @@ func fire_engines(engine_vel: Vector2, engine_rot_vel: float, delta: float) -> v
 	rot_vel += engine_rot_vel * engine_rot_mult * delta
 
 # Flames show on the engines whose key is held
-func show_engine_flames(engine_types: Array, firing: bool) -> void:
-	for engine in get_engines(engine_types):
+func show_engine_flames(engines: Array[Node], firing: bool) -> void:
+	for engine in engines:
+		# Engines are removed while build mode is open
+		if not is_instance_valid(engine):
+			continue
 		var fire = engine.get_node_or_null("Fire")
 		if fire:
 			fire.fire_on(firing)
@@ -122,18 +129,23 @@ func get_engines(engine_types: Array) -> Array[Node]:
 # Works out the total push and spin of the W engines and the S engines
 # (normal and better engines have the same stats for now)
 func update_engines() -> void:
-	var w_result = get_engine_thrust(ShipParts.W_ENGINES)
+	w_engines = get_engines(ShipParts.W_ENGINES)
+	s_engines = get_engines(ShipParts.S_ENGINES)
+	var w_result = get_engine_thrust(w_engines)
 	w_engine_vel = w_result[0]
 	w_engine_rot_vel = w_result[1]
-	var s_result = get_engine_thrust(ShipParts.S_ENGINES)
+	var s_result = get_engine_thrust(s_engines)
 	s_engine_vel = s_result[0]
 	s_engine_rot_vel = s_result[1]
+	# New engines start with their flames off
+	w_flames_on = false
+	s_flames_on = false
 
-# Returns [total thrust, total torque] of the engines of these types
-func get_engine_thrust(engine_types: Array) -> Array:
+# Returns [total thrust, total torque] of these engines
+func get_engine_thrust(engines: Array[Node]) -> Array:
 	var total_thrust: Vector2 = Vector2.ZERO
 	var total_torque: float = 0
-	for engine in get_engines(engine_types):
+	for engine in engines:
 		var r_vec: Vector2 = engine.position
 		var distance: float = r_vec.length()
 		
@@ -213,9 +225,6 @@ func spawn_part(component_type: String, location_data: LocationData, location_na
 	part.name = location_name
 
 # Outside forces (black hole pull, tower launch). The ship keeps its
-# momentum, so these add straight to its velocity like the engines do
-func custom_pull(amount: Vector2) -> void:
-	velocity += amount
-
-func launch(amount: Vector2) -> void:
+# momentum, so pushes add straight to its velocity like the engines do
+func push(amount: Vector2) -> void:
 	velocity += amount

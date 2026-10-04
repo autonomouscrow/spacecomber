@@ -51,10 +51,7 @@ var push_velocity := Vector2.ZERO
 # How fast pushes fade (higher = shorter launches, weaker steady pulls)
 @export var push_damping: float = 0.5
 
-func custom_pull(amount: Vector2) -> void:
-	push_velocity += amount 
-
-func launch(amount: Vector2) -> void:
+func push(amount: Vector2) -> void:
 	push_velocity += amount
 
 func move_with_push(delta: float) -> void:

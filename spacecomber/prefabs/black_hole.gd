@@ -30,10 +30,10 @@ func _physics_process(delta: float) -> void:
 				var force = direction * pull_strength
 				body.apply_central_force(force)
 				
-			elif body.has_method("custom_pull"):
-				# If you have custom characters that move via move_and_slide(),
-				# you can call a custom method on them:
-				body.custom_pull(direction * pull_strength * delta)
+			elif body.has_method("push"):
+				# The player, enemy ships and items move via move_and_slide(),
+				# so they get pushed with their push() function instead
+				body.push(direction * pull_strength * delta)
 
 # Something reached the center of the black hole (the small inner Area2D).
 # Connected in BlackHole.tscn; nothing happens there yet
