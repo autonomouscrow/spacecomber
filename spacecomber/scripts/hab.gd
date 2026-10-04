@@ -44,10 +44,13 @@ var furnace_count := 0
 # Holding E with brakes on the ship adds friction: speed and spin fade by
 # this much per second for each brake (higher = stops quicker)
 @export var brake_strength: float = 1.5
+# Wood juice each brake burns per second while braking (half an engine's);
+# brakes don't work with an empty tank
+@export var wood_juice_per_brake_second: float = 1.0
 var brake_count := 0
 # Juice / health from a used-up wood / corpse that hasn't flowed in yet
 var juice_to_add := 0.0
-# All the wood juice the engines have ever burned (the HUD shows recent use)
+# All the wood juice the engines and brakes have ever burned (the HUD shows recent use)
 var wood_juice_burned := 0.0
 var health_to_add := 0.0
 var wood: int = 100
@@ -159,13 +162,20 @@ func fire_engines(engine_vel: Vector2, engine_rot_vel: float, delta: float) -> v
 
 # Friction from the brakes: slows the ship's movement and its spin
 func apply_brakes(delta: float) -> void:
+	if brake_count == 0 or wood_juice <= 0:
+		return
+	burn_juice(brake_count * wood_juice_per_brake_second * delta)
 	var friction := exp(-brake_strength * brake_count * delta)
 	velocity *= friction
 	rot_vel *= friction
 
 func burn_wood_juice(engines: Array[Node], delta: float) -> void:
 	var engine_count := engines.filter(is_instance_valid).size()
-	var burned: float = min(engine_count * wood_juice_per_engine_second * delta, wood_juice)
+	burn_juice(engine_count * wood_juice_per_engine_second * delta)
+
+# Takes wood juice out of the tank (never below empty) and counts it for the HUD
+func burn_juice(amount: float) -> void:
+	var burned: float = min(amount, wood_juice)
 	wood_juice -= burned
 	wood_juice_burned += burned
 

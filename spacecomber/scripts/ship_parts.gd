@@ -33,6 +33,7 @@ const BUILDER_SCENES := {
 	"lazergun": preload("res://prefabs/ship_builder/lazergun.tscn"),
 	"mikugun": preload("res://prefabs/ship_builder/mikugun.tscn"),
 	"furnace": preload("res://prefabs/ship_builder/furnace.tscn"),
+	"break": preload("res://prefabs/ship_builder/break.tscn"),
 }
 
 # Which engines fire on which key

@@ -7,11 +7,10 @@
 atlas = ExtResource("2_xg2ma")
 region = Rect2(892.32227, 121.80632, 68.10364, 99.42728)
 
-[node name="FurnaceBuilder" type="Node2D" unique_id=1735092846]
+[node name="BreakBuilder" type="Node2D" unique_id=1735092846]
 script = ExtResource("1_xg2ma")
 metadata/_custom_type_script = "uid://b8cvpce3e8vw4"
-metadata/component_type = "furnace"
+metadata/component_type = "break"
 
-[node name="Engine" type="Sprite2D" parent="." unique_id=1909327077]
-scale = Vector2(0.25, 0.25)
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1909327077]
 texture = SubResource("AtlasTexture_eeem4")

@@ -22,6 +22,7 @@ var item_datas: Array[ItemData] = [
 	ItemData.new("Lazergun", "pew pew (SPACE)", "lazergun", [0, 0, 0, 1]),
 	ItemData.new("Mikugun", "MIKU MIKU BEAM (V)", "mikugun", [0, 0, 0, 1]),
 	ItemData.new("Furnace", "regen fuel and health faster", "furnace", [0, 0, 0, 1]),
+	ItemData.new("Brake", "slows you down (E)", "break", [0, 0, 0, 1]),
 ]
 
 var current_debit_credit = [0, 0, 0, 0]
