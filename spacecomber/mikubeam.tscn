@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bi8kagfjhdd60"]
+
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="1_0rowy"]
+[ext_resource type="Script" uid="uid://igkg7epuhm22" path="res://mikubeam.gd" id="1_qg02g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3acn"]
+size = Vector2(17.83319, 0.8012543)
+
+[node name="Node2D" type="Node2D" unique_id=1175408558]
+position = Vector2(490.00003, 271)
+scale = Vector2(0.24777278, 0.24777278)
+script = ExtResource("1_qg02g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=196250914]
+position = Vector2(-0.00012220535, -0.8780594)
+scale = Vector2(1, -0.0389368)
+texture = ExtResource("1_0rowy")
+region_enabled = true
+region_rect = Rect2(217.2204, 257.98483, 45.984833, 46.26523)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1595238022]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1886500999]
+position = Vector2(0.296875, -0.92135453)
+scale = Vector2(2.2964559, 2.2964559)
+shape = SubResource("RectangleShape2D_x3acn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
