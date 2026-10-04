@@ -9,6 +9,19 @@ extends CharacterBody2D
 # Bullets are recognised by their script (bullet.gd isn't changed)
 const BULLET_SCRIPT = preload("res://scripts/bullet.gd")
 
+# What a destroyed asteroid drops (a random amount in each range,
+# the same for every size for now)
+const IRON_ITEM_SCENE = preload("res://prefabs/iron_item.tscn")
+const CRYSTAL_ITEM_SCENE = preload("res://prefabs/crystal_item.tscn")
+@export var min_iron_drop: int = 2
+@export var max_iron_drop: int = 4
+@export var min_crystal_drop: int = 0
+@export var max_crystal_drop: int = 1
+# How far from the asteroid's center the drops are scattered
+@export var drop_spread: float = 15.0
+
+var destroyed := false
+
 # Pick a size in the Inspector, or leave it on Random to get a random one
 @export_enum("Random", "small", "medium", "big", "Massive") var asteroid_size: String = "Random"
 
@@ -83,9 +96,27 @@ func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
 	take_damage(bullet_damage)
 
 func take_damage(amount: int) -> void:
+	if destroyed:
+		return
 	health -= amount
 	if health <= 0:
+		destroyed = true
+		drop_items()
 		queue_free()
+
+# Drops iron and a little nimine crystal where the asteroid was
+func drop_items() -> void:
+	for i in randi_range(min_iron_drop, max_iron_drop):
+		spawn_drop(IRON_ITEM_SCENE)
+	for i in randi_range(min_crystal_drop, max_crystal_drop):
+		spawn_drop(CRYSTAL_ITEM_SCENE)
+
+func spawn_drop(scene: PackedScene) -> void:
+	var item = scene.instantiate()
+	var spot = global_position + Vector2.RIGHT.rotated(randf() * TAU) * randf() * drop_spread
+	item.position = get_parent().to_local(spot)
+	# Added next frame: physics bodies can't be added mid-collision
+	get_parent().add_child.call_deferred(item)
 
 # Returns the name of the visible size sprite, e.g. "Massive"
 func get_size() -> String:
