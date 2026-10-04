@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://1qcg0ef0r4vw" path="res://prefabs/iron_item.tscn" id="1_07qe2"]
 [ext_resource type="PackedScene" uid="uid://cj7wfy2q6arkh" path="res://prefabs/wood_item.tscn" id="1_dj11j"]
+[ext_resource type="PackedScene" uid="uid://bvn5yhe4j00c4" path="res://SkeffControl.tscn" id="1_g6dlf"]
 [ext_resource type="PackedScene" uid="uid://04hhf0wxwdp3" path="res://prefabs/fire.tscn" id="1_gxgxw"]
 [ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_681g0"]
 [ext_resource type="PackedScene" uid="uid://c3yauhghfslk0" path="res://prefabs/body_item.tscn" id="2_xc041"]
@@ -18,6 +19,9 @@
 radius = 34.0
 
 [node name="Skeff Boyardee" type="Node2D" unique_id=1867537977]
+
+[node name="Node2D" parent="." unique_id=960636859 node_paths=PackedStringArray("hab_node") instance=ExtResource("1_g6dlf")]
+hab_node = NodePath("../TestSkeff")
 
 [node name="Fire" parent="." unique_id=1762692797 instance=ExtResource("1_gxgxw")]
 position = Vector2(458, 240)

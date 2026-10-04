@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bvn5yhe4j00c4"]
+
+[ext_resource type="Script" uid="uid://gn7b2alfjabg" path="res://skeff_control.gd" id="1_gnhmx"]
+[ext_resource type="PackedScene" uid="uid://1qcg0ef0r4vw" path="res://prefabs/iron_item.tscn" id="2_yp5ml"]
+[ext_resource type="PackedScene" uid="uid://c3yauhghfslk0" path="res://prefabs/body_item.tscn" id="3_kyy4r"]
+[ext_resource type="PackedScene" uid="uid://cmcl70kc26aud" path="res://prefabs/crystal_item.tscn" id="4_81sii"]
+[ext_resource type="PackedScene" uid="uid://cj7wfy2q6arkh" path="res://prefabs/wood_item.tscn" id="5_03cld"]
+[ext_resource type="PackedScene" uid="uid://bd22uyluyh46e" path="res://prefabs/asteroids.tscn" id="6_2oln5"]
+[ext_resource type="PackedScene" uid="uid://bsx4nakcfemg" path="res://prefabs/BlackHole.tscn" id="6_kyy4r"]
+[ext_resource type="PackedScene" uid="uid://casg5hcio550e" path="res://prefabs/BusShip.tscn" id="7_ctff6"]
+[ext_resource type="PackedScene" uid="uid://dmjhfi4wu36ln" path="res://prefabs/UnicornShip.tscn" id="8_wjq6t"]
+[ext_resource type="PackedScene" uid="uid://bcvkhneoophmu" path="res://prefabs/SpaceSimTower.tscn" id="10_c7813"]
+
+[node name="Node2D" type="Node2D" unique_id=960636859]
+script = ExtResource("1_gnhmx")
+item_prefabs = Array[PackedScene]([ExtResource("2_yp5ml"), ExtResource("4_81sii"), ExtResource("5_03cld"), ExtResource("6_2oln5"), ExtResource("7_ctff6"), ExtResource("8_wjq6t"), ExtResource("6_2oln5"), ExtResource("6_2oln5"), ExtResource("6_2oln5"), ExtResource("6_2oln5"), ExtResource("4_81sii"), ExtResource("2_yp5ml")])
+item_rare = Array[PackedScene]([ExtResource("6_kyy4r"), ExtResource("10_c7813"), ExtResource("3_kyy4r"), ExtResource("3_kyy4r")])
