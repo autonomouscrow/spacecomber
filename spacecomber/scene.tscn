@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b5f1slofs4d16" path="res://prefabs/slot.tscn" id="4_ni31j"]
 [ext_resource type="Script" uid="uid://iv1crbi1xnfm" path="res://scripts/hab.gd" id="4_u3cyc"]
 [ext_resource type="FontFile" uid="uid://bb5dtgauxgm1q" path="res://fonts/Orbitron.ttf" id="6_ni31j"]
-[ext_resource type="PackedScene" uid="uid://bd22uyluyh46e" path="res://prefabs/asteroids.tscn" id="8_73fnb"]
-[ext_resource type="PackedScene" uid="uid://dmjhfi4wu36ln" path="res://prefabs/UnicornShip.tscn" id="9_5juve"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g576v"]
 atlas = ExtResource("3_3253y")
@@ -364,13 +362,3 @@ texture = SubResource("AtlasTexture_g576v")
 position = Vector2(553, 153)
 scale = Vector2(0.23767202, 0.23767202)
 texture = SubResource("AtlasTexture_g576v")
-
-[node name="CharacterBody2D" parent="." unique_id=968976270 instance=ExtResource("8_73fnb")]
-position = Vector2(503, 277)
-
-[node name="CharacterBody2D2" parent="." unique_id=1546397987 node_paths=PackedStringArray("hab_node") instance=ExtResource("9_5juve")]
-position = Vector2(645, 231)
-hab_node = NodePath("../CharacterBody2D")
-
-[node name="CharacterBody2D3" parent="." unique_id=1132795819 instance=ExtResource("8_73fnb")]
-position = Vector2(658, 383)
