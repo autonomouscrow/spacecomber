@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b6o0cnuubs1dp"]
+
+[ext_resource type="Script" path="res://scripts/mikugun.gd" id="1_xrw2p"]
+[ext_resource type="Texture2D" uid="uid://dkdt1jwusye6u" path="res://sprites.png" id="2_e6ypc"]
+[ext_resource type="PackedScene" uid="uid://bi8kagfjhdd60" path="res://mikubeam.tscn" id="3_gm08k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrw2p"]
+atlas = ExtResource("2_e6ypc")
+region = Rect2(272.75992, 100.35199, 74.43997, 74.448)
+
+[node name="Mikugun" type="Node2D" unique_id=1790979546]
+script = ExtResource("1_xrw2p")
+metadata/component_type = "mikugun"
+
+[node name="Beam" parent="." unique_id=1263950418 instance=ExtResource("3_gm08k")]
+position = Vector2(10, 0)
+rotation = 1.5707964
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1849386340]
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_xrw2p")

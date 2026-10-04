@@ -14,6 +14,9 @@ const SCENES := {
 	"magwood": preload("res://prefabs/ship_parts/magwood.tscn"),
 	"nagnet": preload("res://prefabs/ship_parts/nagnet.tscn"),
 	"mouth": preload("res://prefabs/ship_parts/mouth.tscn"),
+	"lazergun": preload("res://prefabs/ship_parts/lazergun.tscn"),
+	"mikugun": preload("res://prefabs/ship_parts/mikugun.tscn"),
+	"furnace": preload("res://prefabs/ship_parts/furnace.tscn"),
 }
 
 # The bigger version shown in the build menu slots and shop
@@ -26,6 +29,8 @@ const BUILDER_SCENES := {
 	"magwood": preload("res://prefabs/ship_builder/magwood.tscn"),
 	"nagnet": preload("res://prefabs/ship_builder/nagnet.tscn"),
 	"mouth": preload("res://prefabs/ship_builder/mouth.tscn"),
+	"lazergun": preload("res://prefabs/ship_builder/lazergun.tscn"),
+	"mikugun": preload("res://prefabs/ship_builder/mikugun.tscn"),
 }
 
 # Which engines fire on which key
