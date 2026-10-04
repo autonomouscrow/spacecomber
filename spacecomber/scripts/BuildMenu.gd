@@ -11,19 +11,19 @@ var loc_slots: Dictionary
 var just_bought: Array = []
 
 var item_datas: Array[ItemData] = [
-	ItemData.new("Brake", "slows you down (E)", "break", [0, 0, 0, 1]),
-	ItemData.new("Basic Engine (W)", "nyoooom", "w_engine_normal", [0, 0, 0, 1]),
-	ItemData.new("Basic Engine (S)", "nyoooom", "s_engine_normal", [0, 0, 0, 1]),
-	ItemData.new("Better Engine (W)", "NYOOOOM", "w_engine_better", [0, 0, 0, 1]),
-	ItemData.new("Better Engine (S)", "NYOOOOM", "s_engine_better", [0, 0, 0, 1]),
-	ItemData.new("Magnet", "pulls in iron", "magnet", [0, 0, 0, 1]),
-	ItemData.new("Magwood", "pulls in wood", "magwood", [0, 0, 0, 1]),
-	ItemData.new("Nagnet", "pulls in nimine", "nagnet", [0, 0, 0, 1]),
-	ItemData.new("Mouth", "eats corpses", "mouth", [0, 0, 0, 1]),
-	ItemData.new("Lazergun", "pew pew (SPACE)", "lazergun", [0, 0, 0, 1]),
-	ItemData.new("Mikugun", "MIKU MIKU BEAM (V)", "mikugun", [0, 0, 0, 1]),
-	ItemData.new("Furnace", "regen fuel and health faster", "furnace", [0, 0, 0, 1]),
-	ItemData.new("Shield Generator", "is shield", "shield_generator", [0, 0, 0, 1]),
+	ItemData.new("Brake", "slows you down (E)", "break", [5, 5, 0, 0]),
+	ItemData.new("Lazergun", "pew pew (SPACE)", "lazergun", [0, 5, 10, 0]),
+	ItemData.new("Basic Engine (W)", "nyoooom", "w_engine_normal", [0, 10, 0, 0]),
+	ItemData.new("Basic Engine (S)", "nyoooom", "s_engine_normal", [0, 10, 0, 0]),
+	ItemData.new("Magnet", "pulls in iron", "magnet", [15, 5, 15, 1]),
+	ItemData.new("Magwood", "pulls in wood", "magwood", [5, 15, 15, 1]),
+	ItemData.new("Nagnet", "pulls in nimine", "nagnet", [15, 15, 5, 1]),
+	ItemData.new("Mouth", "eats corpses", "mouth", [0, 0, 0, 5]),
+	ItemData.new("Mikugun", "MIKU MIKU BEAM (V)", "mikugun", [0, 0, 25, 1]),
+	ItemData.new("Better Engine (W)", "NYOOOOM", "w_engine_better", [0, 15, 5, 0]),
+	ItemData.new("Better Engine (S)", "NYOOOOM", "s_engine_better", [0, 15, 5, 0]),
+	ItemData.new("Furnace", "regen fuel and health faster", "furnace", [20, 20, 0, 3]),
+	ItemData.new("Shield Generator", "is shield", "shield_generator", [10, 10, 10, 10]),
 ]
 
 var current_debit_credit = [0, 0, 0, 0]

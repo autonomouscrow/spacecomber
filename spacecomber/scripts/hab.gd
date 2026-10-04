@@ -56,10 +56,10 @@ var juice_to_add := 0.0
 # All the wood juice the engines and brakes have ever burned (the HUD shows recent use)
 var wood_juice_burned := 0.0
 var health_to_add := 0.0
-var wood: int = 100
-var iron: int = 100
-var nimine: int = 100
-var corpse: int = 5
+var wood: int = 5
+var iron: int = 20
+var nimine: int = 10
+var corpse: int = 0
 
 var w_engine_vel: Vector2 = Vector2.ZERO
 var w_engine_rot_vel: float = 0
