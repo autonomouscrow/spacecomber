@@ -44,3 +44,7 @@ func _on_settings_button_pressed():
 
 func _on_back_button_pressed():
 	go_to_start_menu()
+
+# Controls is its own autoloaded scene (controls_menu.tscn), like settings
+func _on_controls_button_pressed():
+	ControlsMenu.open()

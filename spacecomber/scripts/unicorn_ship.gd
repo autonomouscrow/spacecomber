@@ -7,6 +7,9 @@ extends CharacterBody2D
 @onready var Fire = $Fire 
 @onready var Fire2 = $Fire2 
 
+@onready var Gun1 =  $Area2D/enemyshooter
+@onready var Gun2 = $Area2D/enemyshooter2
+
 var target: Vector2
 var chase: bool = false
 
@@ -20,12 +23,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var direction = global_position.direction_to(target)
 	
+	
 	if hab_node and global_position.distance_to(hab_node.global_position) <= Wander_radius:
-		chase = true
+		if not chase:
+			chase = true
+			Gun1.auto_fire = true
+			Gun2.auto_fire = true
+			Gun1._start_auto_fire()
+			Gun2._start_auto_fire()
 		target = hab_node.global_position
 	else:
 		chase = false
-
+		Gun1.auto_fire = false
+		Gun2.auto_fire = false
+	
 	
 	if global_position.distance_to(target) > 10:
 		velocity = direction * Ship_speed
