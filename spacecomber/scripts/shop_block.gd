@@ -4,6 +4,8 @@ var component_type
 var bought = false
 var data
 
+var can_sell = true
+
 func _ready() -> void:
 	var drag_sign = $drag_sign
 	drag_sign.visible = false
@@ -42,18 +44,21 @@ func add_commas(value: int) -> String:
 
 
 func _on_buy_pressed() -> void:
-	var drag_sign = $drag_sign
-	var shop_slot = $ShopSlot
-	
-	var parent = $"../../.."
-	if parent.can_buy(data):
-		drag_sign.visible = true
+	if can_sell:
+		var drag_sign = $drag_sign
+		var shop_slot = $ShopSlot
 		
-		if ShipParts.BUILDER_SCENES.has(component_type):
-			var part = ShipParts.BUILDER_SCENES[component_type].instantiate()
-			shop_slot.add_child(part)
-			part.position = Vector2(35, 35)
-			part.rotation = 0
+		var parent = $"../../.."
+		if parent.can_buy(data):
+			drag_sign.visible = true
+			
+			if ShipParts.BUILDER_SCENES.has(component_type):
+				var part = ShipParts.BUILDER_SCENES[component_type].instantiate()
+				shop_slot.add_child(part)
+				part.position = Vector2(35, 35)
+				part.rotation = 0
+			
+			can_sell = false
 
 func turn_off_drag_sign() -> void:
 	var drag_sign = $drag_sign
