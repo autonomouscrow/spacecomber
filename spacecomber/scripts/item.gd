@@ -21,6 +21,10 @@ func _ready():
 	spin_speed = randf_range(min_spin_speed, max_spin_speed)
 	if randf() > 0.5:
 		spin_speed *= -1
+	
+	# Items never push or block the player's ship (it collects them instead)
+	for player in get_tree().get_nodes_in_group("player"):
+		add_collision_exception_with(player)
 
 
 func _physics_process(delta):

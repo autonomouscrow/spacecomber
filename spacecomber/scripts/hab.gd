@@ -229,3 +229,16 @@ func spawn_part(component_type: String, location_data: LocationData, location_na
 # momentum, so pushes add straight to its velocity like the engines do
 func push(amount: Vector2) -> void:
 	velocity += amount
+
+# Which ship resource each item type adds to
+const ITEM_RESOURCES := {"iron": "iron", "wood": "wood", "crystal": "nimine", "body": "corpse"}
+
+# Items touching the ship's pickup area get collected
+func _on_pickup_area_body_entered(body: Node2D) -> void:
+	var item_type = body.get("type")
+	if not ITEM_RESOURCES.has(item_type) or body.is_collected:
+		return
+	var resource: String = ITEM_RESOURCES[item_type]
+	set(resource, get(resource) + 1)
+	body.disappear()
+	SoundControl.play_item_pickup()

@@ -7,6 +7,7 @@ extends CanvasLayer
 const CONTROLS := [
 	["W / S", "Fire engines (thrust)"],
 	["A / D  or  LEFT / RIGHT", "Turn the ship"],
+	["SPACE", "Shoot"],
 	["B", "Open / close build mode"],
 	["MOUSE DRAG", "Move parts between slots while in build mode"],
 	["O", "Open / close settings"],

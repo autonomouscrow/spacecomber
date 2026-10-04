@@ -7,13 +7,11 @@
 atlas = ExtResource("1_501kn")
 region = Rect2(13.275948, 250.19994, 72.05699, 71.5782)
 
-[node name="WEngineNormal" type="Node2D" unique_id=1790979546]
+[node name="SEngineNormal" type="Node2D" unique_id=1790979546]
 metadata/component_type = "s_engine_normal"
 
-[node name="container" type="Node2D" parent="." unique_id=1576357680]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2053168508]
 rotation = -1.5707964
-
-[node name="Engine2" type="Sprite2D" parent="container" unique_id=2053168508]
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_501kn")
 

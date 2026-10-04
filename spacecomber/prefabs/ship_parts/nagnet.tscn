@@ -7,15 +7,12 @@
 atlas = ExtResource("1_deucb")
 region = Rect2(524.17957, 139.79994, 72.05699, 71.5782)
 
-[node name="WEngineNormal" type="Node2D" unique_id=1790979546]
+[node name="Nagnet" type="Node2D" unique_id=1790979546]
 script = ExtResource("3_magnet")
 item_type = "crystal"
 metadata/component_type = "nagnet"
 
-[node name="container" type="Node2D" parent="." unique_id=1576357680]
-rotation = -1.5707964
-
-[node name="Engine2" type="Sprite2D" parent="." unique_id=1773306725]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1773306725]
 rotation = 4.712389
 scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_deucb")

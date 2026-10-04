@@ -36,6 +36,9 @@ region = Rect2(656.4769, 155.75732, 33.64746, 44.659927)
 [sub_resource type="CircleShape2D" id="CircleShape2D_hab"]
 radius = 26.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
+radius = 40.0
+
 [node name="root" type="Node2D" unique_id=236387114]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1748203961]
@@ -359,7 +362,7 @@ offset_bottom = 527.0
 [node name="ShopGrid" type="GridContainer" parent="CanvasLayer/BuildMenu/ScrollContainer" unique_id=1185377606]
 layout_mode = 2
 
-[node name="hab" type="CharacterBody2D" parent="." unique_id=1977877888]
+[node name="hab" type="CharacterBody2D" parent="." unique_id=1977877888 groups=["player"]]
 position = Vector2(458, 264)
 motion_mode = 1
 platform_on_leave = 2
@@ -376,6 +379,13 @@ shape = SubResource("CircleShape2D_hab")
 [node name="Camera2D" type="Camera2D" parent="hab" unique_id=1093857142]
 process_callback = 0
 script = ExtResource("10_cam")
+
+[node name="pickup area" type="Area2D" parent="hab" unique_id=1648203917]
+collision_layer = 0
+monitorable = false
+
+[node name="pickup collision" type="CollisionShape2D" parent="hab/pickup area" unique_id=902475318]
+shape = SubResource("CircleShape2D_pickup")
 
 [node name="test orb" type="Sprite2D" parent="." unique_id=127475164]
 position = Vector2(553, 153)
@@ -426,3 +436,5 @@ position = Vector2(395, 404.00003)
 
 [node name="IronItem15" parent="." unique_id=170854 instance=ExtResource("9_73fnb")]
 position = Vector2(632, 215.00005)
+
+[connection signal="body_entered" from="hab/pickup area" to="hab" method="_on_pickup_area_body_entered"]
